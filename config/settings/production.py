@@ -4,31 +4,20 @@ from pathlib import Path
 from .base import * # noqa: F403
 from .base import DATABASES, INSTALLED_APPS, env
 
-# ==============================================================================
-# GENERAL & SECURITY
-# ==============================================================================
-# SECURITY WARNING: keep the secret key used in production secret!
+# GENERAL
+# ------------------------------------------------------------------------------
 SECRET_KEY = env("DJANGO_SECRET_KEY")
-
 # Allow Render subdomains by default
-ALLOWED_HOSTS = env.list(
-    "DJANGO_ALLOWED_HOSTS",
-    default=[".onrender.com"],
-)
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[".onrender.com"])
 
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_NAME = "__Secure-sessionid"
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_NAME = "__Secure-csrftoken"
-
-# ==============================================================================
-# DATABASES & CACHES
-# ==============================================================================
+# DATABASES
+# ------------------------------------------------------------------------------
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
 
+# CACHES
+# ------------------------------------------------------------------------------
 REDIS_URL = env("REDIS_URL", default=None)
+
 if REDIS_URL:
     CACHES = {
         "default": {
@@ -40,16 +29,30 @@ if REDIS_URL:
             },
         },
     }
+else:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        },
+    }
 
-# ==============================================================================
-# CLOUDINARY STORAGE (REPLACES AWS S3)
-# ==============================================================================
-# Remove conflicting apps if they exist in the inherited INSTALLED_APPS
-if "collectfasta" in INSTALLED_APPS:
-    INSTALLED_APPS.remove("collectfasta")
-if "storages" in INSTALLED_APPS:
-    INSTALLED_APPS.remove("storages")
+# SECURITY
+# ------------------------------------------------------------------------------
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_NAME = "__Secure-sessionid"
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_NAME = "__Secure-csrftoken"
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
+SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
+# STORAGES (Cloudinary)
+# ------------------------------------------------------------------------------
+# Removed AWS 'storages' and 'collectfasta' to prevent build crashes
+INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["collectfasta", "storages"]]
 INSTALLED_APPS += ["cloudinary_storage", "cloudinary"]
 
 CLOUDINARY_STORAGE = {
@@ -63,8 +66,7 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Using StaticCloudinaryStorage (not Hashed) to prevent 'Empty file' 
-        # and 'NoneType' path errors during deployment.
+        # Using StaticCloudinaryStorage (non-hashed) to prevent Empty File errors
         "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
     },
 }
@@ -72,22 +74,31 @@ STORAGES = {
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-# Required for collectstatic to function on Render
+# Ensure local path for collection before upload
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# ==============================================================================
-# EMAIL & ADMIN
-# ==============================================================================
+# EMAIL
+# ------------------------------------------------------------------------------
+DEFAULT_FROM_EMAIL = env(
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    default="edurock <noreply@example.com>",
+)
+SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
+EMAIL_SUBJECT_PREFIX = env("DJANGO_EMAIL_SUBJECT_PREFIX", default="[edurock] ")
+
+# ADMIN
+# ------------------------------------------------------------------------------
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 
+# Anymail
+# ------------------------------------------------------------------------------
 INSTALLED_APPS += ["anymail"]
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 ANYMAIL = {}
 
-# ==============================================================================
 # LOGGING
-# ==============================================================================
+# ------------------------------------------------------------------------------
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
