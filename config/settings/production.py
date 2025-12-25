@@ -43,7 +43,7 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-# CLOUDINARY STORAGE CONFIGURATION
+# CLOUDINARY
 # ------------------------------------------------------------------------------
 INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["cloudinary_storage", "cloudinary"]]
 INSTALLED_APPS = ["cloudinary_storage"] + INSTALLED_APPS + ["cloudinary"]
@@ -55,14 +55,8 @@ CLOUDINARY_STORAGE = {
     'SECURE': True,
 }
 
-# STORAGES (Fixes "Mutually Exclusive" and "InvalidStorage" errors)
+# STORAGES (Overrides base.py)
 # ------------------------------------------------------------------------------
-# Clear legacy keys imported from base.py
-if "STATICFILES_STORAGE" in globals():
-    del STATICFILES_STORAGE
-if "DEFAULT_FILE_STORAGE" in globals():
-    del DEFAULT_FILE_STORAGE
-
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
