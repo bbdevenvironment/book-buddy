@@ -15,15 +15,12 @@ DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
 
 # CACHES
 # ------------------------------------------------------------------------------
+# We switched to LocMemCache to stay on the Render Free Plan (No Redis required)
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": env("REDIS_URL"),
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "IGNORE_EXCEPTIONS": True,
-        },
-    },
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-snowflake",
+    }
 }
 
 # SECURITY
@@ -41,7 +38,6 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", def
 
 # CLOUDINARY & STORAGES
 # ------------------------------------------------------------------------------
-# 1. Add Cloudinary apps. 'cloudinary_storage' MUST be above 'django.contrib.staticfiles'
 INSTALLED_APPS = ["cloudinary_storage", *INSTALLED_APPS, "cloudinary"]
 
 CLOUDINARY_STORAGE = {
@@ -50,7 +46,6 @@ CLOUDINARY_STORAGE = {
     "API_SECRET": env("CLOUDINARY_API_SECRET"),
 }
 
-# Modern Django 4.2+ Storages configuration
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -60,7 +55,6 @@ STORAGES = {
     },
 }
 
-# Cloudinary handles the domain, but URLs are still needed for Django helpers
 MEDIA_URL = "/media/"
 STATIC_URL = "/static/"
 
