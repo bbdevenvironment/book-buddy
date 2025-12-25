@@ -83,8 +83,6 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.mfa",
     "allauth.socialaccount",
-    "cloudinary_storage",  # Added for Cloudinary
-    "cloudinary",  # Added for Cloudinary
 ]
 
 LOCAL_APPS = [
@@ -167,11 +165,15 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-# WhiteNoise configuration for static files
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-WHITENOISE_MANIFEST_STRICT = False  # Helps with missing files during development
-WHITENOISE_ALLOW_ALL_ORIGINS = True
-WHITENOISE_INDEX_FILE = True
+# WhiteNoise configuration for static files (development only - will be overridden in production)
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # MEDIA
 # ------------------------------------------------------------------------------
@@ -180,24 +182,13 @@ MEDIA_ROOT = str(APPS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
 
-# Cloudinary Configuration (for production)
+# Cloudinary Configuration (for production - will be overridden)
 # ------------------------------------------------------------------------------
-# These will be overridden in production.py
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env.str("CLOUDINARY_CLOUD_NAME", default=""),
     'API_KEY': env.str("CLOUDINARY_API_KEY", default=""),
     'API_SECRET': env.str("CLOUDINARY_API_SECRET", default=""),
     'SECURE': True,
-}
-
-# Storage configuration (will be overridden in production)
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
 }
 
 # TEMPLATES

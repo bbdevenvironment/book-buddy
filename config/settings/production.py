@@ -43,14 +43,19 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-# CLOUDINARY STORAGE FOR MEDIA FILES
+# CLOUDINARY STORAGE CONFIGURATION
 # ------------------------------------------------------------------------------
+# Add Cloudinary apps (they're already in base.py, but ensure they're in correct order)
+INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["cloudinary_storage", "cloudinary"]]
+INSTALLED_APPS = ["cloudinary_storage"] + INSTALLED_APPS + ["cloudinary"]
+
 # Cloudinary configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env("CLOUDINARY_CLOUD_NAME"),
     'API_KEY': env("CLOUDINARY_API_KEY"),
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
     'SECURE': True,
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'gif', 'svg', 'ico', 'webp', 'bmp'],
 }
 
 # Use Cloudinary for media files, WhiteNoise for static files
@@ -63,7 +68,7 @@ STORAGES = {
     },
 }
 
-# MEDIA URL - Cloudinary will serve media files
+# Media URL - Cloudinary will serve media files
 MEDIA_URL = '/media/'
 
 # EMAIL
