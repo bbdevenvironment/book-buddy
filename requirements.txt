@@ -33,3 +33,6 @@ Pillow
 
 # Optimization
 whitenoise[brotli]
+
+fido2>=1.0.0
+django-allauth[mfa]
