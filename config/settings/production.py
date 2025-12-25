@@ -1,6 +1,6 @@
 # production.py
 # ruff: noqa: E501
-from .base import *  # noqa: F403
+from .base import * # noqa: F403
 from .base import DATABASES, INSTALLED_APPS, env
 
 # GENERAL
@@ -13,7 +13,7 @@ DEBUG = False
 # ------------------------------------------------------------------------------
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
 
-# CACHES (Optional - comment out if not using Redis)
+# CACHES
 # ------------------------------------------------------------------------------
 REDIS_URL = env("REDIS_URL", default=None)
 if REDIS_URL:
@@ -45,11 +45,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # CLOUDINARY STORAGE CONFIGURATION
 # ------------------------------------------------------------------------------
-# Add Cloudinary apps (they're already in base.py, but ensure they're in correct order)
+# Re-order apps to ensure Cloudinary handles storage correctly
 INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["cloudinary_storage", "cloudinary"]]
 INSTALLED_APPS = ["cloudinary_storage"] + INSTALLED_APPS + ["cloudinary"]
 
-# Cloudinary configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env("CLOUDINARY_CLOUD_NAME"),
     'API_KEY': env("CLOUDINARY_API_KEY"),
@@ -57,6 +56,13 @@ CLOUDINARY_STORAGE = {
     'SECURE': True,
     'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'gif', 'svg', 'ico', 'webp', 'bmp'],
 }
+
+# Fix: Remove legacy storage settings imported from base.py to avoid conflict with STORAGES
+# ------------------------------------------------------------------------------
+if "STATICFILES_STORAGE" in globals():
+    del STATICFILES_STORAGE
+if "DEFAULT_FILE_STORAGE" in globals():
+    del DEFAULT_FILE_STORAGE
 
 # Use Cloudinary for media files, WhiteNoise for static files
 STORAGES = {
@@ -120,7 +126,5 @@ LOGGING = {
 
 # TEMPLATE DEBUG SETTING
 # ------------------------------------------------------------------------------
+# Note: Ensure TEMPLATES is imported or available from base.py
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
-
-# Your stuff...
-# ------------------------------------------------------------------------------

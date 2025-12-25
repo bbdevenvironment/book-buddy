@@ -1,7 +1,6 @@
 # ruff: noqa: ERA001, E501
 """Base settings to build other settings files upon."""
 
-import os
 from pathlib import Path
 
 import environ
@@ -46,11 +45,12 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
+
 DATABASES = {
-    "default": env.db(
-        "DATABASE_URL",
-        default="sqlite:///" + str(BASE_DIR / "db.sqlite3"),
-    ),
+    "default": {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
@@ -83,8 +83,6 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.mfa",
     "allauth.socialaccount",
-    "cloudinary_storage",  # Added for Cloudinary
-    "cloudinary",  # Added for Cloudinary
 ]
 
 LOCAL_APPS = [
@@ -139,7 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # Added for static files on Render
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -157,21 +154,12 @@ STATIC_ROOT = str(BASE_DIR / "staticfiles")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [
-    str(APPS_DIR / "static"),
-    str(BASE_DIR / "static"),  # Added for additional static files
-]
+STATICFILES_DIRS = [str(APPS_DIR / "static")]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
-# WhiteNoise configuration for static files
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-WHITENOISE_MANIFEST_STRICT = False  # Helps with missing files during development
-WHITENOISE_ALLOW_ALL_ORIGINS = True
-WHITENOISE_INDEX_FILE = True
 
 # MEDIA
 # ------------------------------------------------------------------------------
@@ -179,26 +167,6 @@ WHITENOISE_INDEX_FILE = True
 MEDIA_ROOT = str(APPS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
-
-# Cloudinary Configuration (for production)
-# ------------------------------------------------------------------------------
-# These will be overridden in production.py
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env.str("CLOUDINARY_CLOUD_NAME", default=""),
-    'API_KEY': env.str("CLOUDINARY_API_KEY", default=""),
-    'API_SECRET': env.str("CLOUDINARY_API_SECRET", default=""),
-    'SECURE': True,
-}
-
-# Storage configuration (will be overridden in production)
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
@@ -249,16 +217,12 @@ CSRF_COOKIE_HTTPONLY = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
 X_FRAME_OPTIONS = "DENY"
 
-# ALLOWED HOSTS
-# ------------------------------------------------------------------------------
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
-
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = env(
     "DJANGO_EMAIL_BACKEND",
-    default="django.core.mail.backends.console.EmailBackend",
+    default="django.core.mail.backends.smtp.EmailBackend",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
@@ -287,9 +251,6 @@ LOGGING = {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
         },
-        "simple": {
-            "format": "%(levelname)s %(message)s",
-        },
     },
     "handlers": {
         "console": {
@@ -299,13 +260,6 @@ LOGGING = {
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": "INFO",
-            "propagate": False,
-        },
-    },
 }
 
 # django-allauth
@@ -329,11 +283,6 @@ ACCOUNT_FORMS = {"signup": "edurock.users.forms.UserSignupForm"}
 SOCIALACCOUNT_ADAPTER = "edurock.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_FORMS = {"signup": "edurock.users.forms.UserSocialSignupForm"}
-
-# CSRF & CORS Settings
-# ------------------------------------------------------------------------------
-CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
-CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=[])
 
 # Your stuff...
 # ------------------------------------------------------------------------------
