@@ -1,97 +1,121 @@
+# production.py
 # ruff: noqa: E501
-import os
-from pathlib import Path
-from .base import * # noqa: F403
+from .base import *  # noqa: F403
 from .base import DATABASES, INSTALLED_APPS, env
 
-# ==============================================================================
-# GENERAL & SECURITY
-# ==============================================================================
+# GENERAL
+# ------------------------------------------------------------------------------
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["book-buddy-4i7i.onrender.com", ".onrender.com"])
-
-# Debug should always be False in production
 DEBUG = False
 
+# DATABASES
+# ------------------------------------------------------------------------------
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
+
+# CACHES (Optional - comment out if not using Redis)
+# ------------------------------------------------------------------------------
+REDIS_URL = env("REDIS_URL", default=None)
+if REDIS_URL:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "IGNORE_EXCEPTIONS": True,
+            },
+        },
+    }
+
+# SECURITY
+# ------------------------------------------------------------------------------
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://book-buddy-4i7i.onrender.com",
+    "https://*.onrender.com"
+] + env.list("CSRF_TRUSTED_ORIGINS", default=[])
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
-# ==============================================================================
-# CLOUDINARY STORAGE
-# ==============================================================================
-# Clean up INSTALLED_APPS before adding cloudinary
-INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["cloudinary_storage", "cloudinary", "storages"]]
-
-# Add Cloudinary apps in correct order
-INSTALLED_APPS = ["cloudinary_storage"] + INSTALLED_APPS + ["cloudinary"]
-
+# CLOUDINARY STORAGE FOR MEDIA FILES
+# ------------------------------------------------------------------------------
+# Cloudinary configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env("CLOUDINARY_CLOUD_NAME"),
     'API_KEY': env("CLOUDINARY_API_KEY"),
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
     'SECURE': True,
-    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'gif', 'svg', 'ico', 'webp'],
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'static'),
 }
 
-# Cloudinary storage configuration
+# Use Cloudinary for media files, WhiteNoise for static files
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "cloudinary_storage.storage.StaticHashedCloudinaryStorage",
-        # Or use this for non-hashed files:
-        # "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
-# Static and media URLs
-STATIC_URL = '/static/'
+# MEDIA URL - Cloudinary will serve media files
 MEDIA_URL = '/media/'
 
-# Required for static file collection
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-# Tell Django to look for static files in these directories
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
-
-# ==============================================================================
-# WHITENOISE FOR STATIC FILES (Alternative to Cloudinary for static files)
-# ==============================================================================
-# If Cloudinary isn't working for static files, consider using Whitenoise instead:
-# INSTALLED_APPS.insert(0, 'whitenoise.runserver_nostatic')
-# MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-#     },
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-#     },
-# }
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# ==============================================================================
-# DATABASES & EMAIL
-# ==============================================================================
-DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
-ADMIN_URL = env("DJANGO_ADMIN_URL")
-
-INSTALLED_APPS += ["anymail"]
+# EMAIL
+# ------------------------------------------------------------------------------
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = env("EMAIL_HOST", default="smtp.gmail.com")
+EMAIL_PORT = env.int("EMAIL_PORT", default=587)
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
+EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
+DEFAULT_FROM_EMAIL = env("DJANGO_DEFAULT_FROM_EMAIL", default="Book Buddy <noreply@book-buddy-4i7i.onrender.com>")
+SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 
-# ==============================================================================
-# TEMPLATE CONFIGURATION
-# ==============================================================================
-# Ensure templates are configured correctly for production
+# ADMIN
+# ------------------------------------------------------------------------------
+ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
+
+# LOGGING
+# ------------------------------------------------------------------------------
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+    },
+    "root": {"level": "INFO", "handlers": ["console"]},
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
+}
+
+# TEMPLATE DEBUG SETTING
+# ------------------------------------------------------------------------------
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
+
+# Your stuff...
+# ------------------------------------------------------------------------------
