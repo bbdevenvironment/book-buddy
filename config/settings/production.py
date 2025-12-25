@@ -54,7 +54,6 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
     'SECURE': True,
 }
-
 # STORAGES (Overrides base.py)
 # ------------------------------------------------------------------------------
 STORAGES = {
@@ -66,8 +65,10 @@ STORAGES = {
     },
 }
 
-MEDIA_URL = '/media/'
+# ADD THIS LINE TO PREVENT 500 ERRORS ON MISSING IMAGES
+WHITENOISE_MANIFEST_STRICT = False 
 
+MEDIA_URL = '/media/'
 # EMAIL
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
