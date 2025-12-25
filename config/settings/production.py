@@ -1,7 +1,7 @@
 # production.py
 # ruff: noqa: E501
 from .base import * # noqa: F403
-from .base import DATABASES, INSTALLED_APPS, env
+from .base import DATABASES, INSTALLED_APPS, env, TEMPLATES
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -45,7 +45,6 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # CLOUDINARY STORAGE CONFIGURATION
 # ------------------------------------------------------------------------------
-# Re-order apps to ensure Cloudinary handles storage correctly
 INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["cloudinary_storage", "cloudinary"]]
 INSTALLED_APPS = ["cloudinary_storage"] + INSTALLED_APPS + ["cloudinary"]
 
@@ -54,17 +53,16 @@ CLOUDINARY_STORAGE = {
     'API_KEY': env("CLOUDINARY_API_KEY"),
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
     'SECURE': True,
-    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'gif', 'svg', 'ico', 'webp', 'bmp'],
 }
 
-# Fix: Remove legacy storage settings imported from base.py to avoid conflict with STORAGES
+# STORAGES (Fixes "Mutually Exclusive" and "InvalidStorage" errors)
 # ------------------------------------------------------------------------------
+# Clear legacy keys imported from base.py
 if "STATICFILES_STORAGE" in globals():
     del STATICFILES_STORAGE
 if "DEFAULT_FILE_STORAGE" in globals():
     del DEFAULT_FILE_STORAGE
 
-# Use Cloudinary for media files, WhiteNoise for static files
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -74,7 +72,6 @@ STORAGES = {
     },
 }
 
-# Media URL - Cloudinary will serve media files
 MEDIA_URL = '/media/'
 
 # EMAIL
@@ -87,10 +84,6 @@ EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 DEFAULT_FROM_EMAIL = env("DJANGO_DEFAULT_FROM_EMAIL", default="Book Buddy <noreply@book-buddy-4i7i.onrender.com>")
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
-
-# ADMIN
-# ------------------------------------------------------------------------------
-ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
 
 # LOGGING
 # ------------------------------------------------------------------------------
@@ -110,21 +103,8 @@ LOGGING = {
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-        "django.request": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-    },
 }
 
-# TEMPLATE DEBUG SETTING
+# TEMPLATES
 # ------------------------------------------------------------------------------
-# Note: Ensure TEMPLATES is imported or available from base.py
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
