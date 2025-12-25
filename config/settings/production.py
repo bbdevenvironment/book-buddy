@@ -1,49 +1,25 @@
 # production.py
-# ruff: noqa: E501
-from .base import * # noqa: F403
+from .base import *
 from .base import DATABASES, INSTALLED_APPS, env, TEMPLATES
 
-# GENERAL
+# 1. STOP THE CRASHING (Critical for WhiteNoise)
+# ------------------------------------------------------------------------------
+# This prevents the ValueError: Missing staticfiles manifest entry crash
+WHITENOISE_MANIFEST_STRICT = False 
+
+# 2. GENERAL & SECURITY
 # ------------------------------------------------------------------------------
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["book-buddy-4i7i.onrender.com", ".onrender.com"])
 DEBUG = False
 
-# DATABASES
-# ------------------------------------------------------------------------------
-DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
-
-# CACHES
-# ------------------------------------------------------------------------------
-REDIS_URL = env("REDIS_URL", default=None)
-if REDIS_URL:
-    CACHES = {
-        "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": REDIS_URL,
-            "OPTIONS": {
-                "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                "IGNORE_EXCEPTIONS": True,
-            },
-        },
-    }
-
-# SECURITY
-# ------------------------------------------------------------------------------
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = [
-    "https://book-buddy-4i7i.onrender.com",
-    "https://*.onrender.com"
-] + env.list("CSRF_TRUSTED_ORIGINS", default=[])
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
+CSRF_TRUSTED_ORIGINS = ["https://book-buddy-4i7i.onrender.com", "https://*.onrender.com"]
 
-# CLOUDINARY CONFIGURATION
+# 3. CLOUDINARY (Using your "book buddy" preset)
 # ------------------------------------------------------------------------------
 INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["cloudinary_storage", "cloudinary"]]
 INSTALLED_APPS = ["cloudinary_storage"] + INSTALLED_APPS + ["cloudinary"]
@@ -53,10 +29,10 @@ CLOUDINARY_STORAGE = {
     'API_KEY': env("CLOUDINARY_API_KEY"),
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
     'SECURE': True,
-    'UPLOAD_PRESET': 'book buddy', # Matches your screenshot
+    'UPLOAD_PRESET': 'book buddy', 
 }
 
-# STORAGES
+# 4. STORAGES
 # ------------------------------------------------------------------------------
 STORAGES = {
     "default": {
@@ -67,42 +43,6 @@ STORAGES = {
     },
 }
 
-# CRITICAL FIX: Stop WhiteNoise from crashing when a file like favicon.png is missing
-WHITENOISE_MANIFEST_STRICT = False 
-
-MEDIA_URL = '/media/'
-
-# EMAIL
-# ------------------------------------------------------------------------------
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = env("EMAIL_HOST", default="smtp.gmail.com")
-EMAIL_PORT = env.int("EMAIL_PORT", default=587)
-EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
-EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
-DEFAULT_FROM_EMAIL = env("DJANGO_DEFAULT_FROM_EMAIL", default="Book Buddy <noreply@book-buddy-4i7i.onrender.com>")
-SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
-
-# LOGGING
-# ------------------------------------------------------------------------------
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
-        },
-    },
-    "handlers": {
-        "console": {
-            "level": "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },
-    },
-    "root": {"level": "INFO", "handlers": ["console"]},
-}
-
-# TEMPLATES
+# 5. TEMPLATES
 # ------------------------------------------------------------------------------
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
