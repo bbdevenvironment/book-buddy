@@ -2,7 +2,15 @@
 Django>=4.2,<5.2
 django-environ
 
-# Cloudinary Storage (Replaces django-storages/S3)
+# Forms
+django-crispy-forms>=2.0
+crispy-bootstrap5
+
+# Auth & MFA
+django-allauth
+argon2-cffi
+
+# Cloudinary Storage
 cloudinary>=1.40.0
 django-cloudinary-storage>=0.3.0
 
@@ -10,7 +18,7 @@ django-cloudinary-storage>=0.3.0
 psycopg2-binary
 dj-database-url
 
-# Cache & Sessions (Redis)
+# Cache & Sessions
 redis
 django-redis
 
@@ -20,8 +28,8 @@ django-anymail
 # Production Server
 gunicorn
 
-# Image Processing (Required for Cloudinary/Django ImageFields)
+# Image Processing
 Pillow
 
-# Optimization (Optional but recommended for Render)
+# Optimization
 whitenoise[brotli]

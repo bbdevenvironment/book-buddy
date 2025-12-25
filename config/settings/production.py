@@ -11,11 +11,12 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
+# Render provides DATABASE_URL automatically if linked
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
 
 # CACHES
 # ------------------------------------------------------------------------------
-# We switched to LocMemCache to stay on the Render Free Plan (No Redis required)
+# Using LocMemCache for Render Free Tier (No Redis Service needed)
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
@@ -66,7 +67,8 @@ EMAIL_SUBJECT_PREFIX = env("DJANGO_EMAIL_SUBJECT_PREFIX", default="[edurock] ")
 
 # ADMIN
 # ------------------------------------------------------------------------------
-ADMIN_URL = env("DJANGO_ADMIN_URL")
+# Set this to 'admin/' or a secret path in Render Env Vars
+ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
 
 # Anymail
 # ------------------------------------------------------------------------------
