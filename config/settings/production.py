@@ -59,7 +59,7 @@ SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
 # ==============================================================================
-# CLOUDINARY STORAGE (REPLACED AWS S3)
+# CLOUDINARY STORAGE
 # ==============================================================================
 
 # Add necessary apps for Cloudinary
@@ -72,18 +72,19 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
 }
 
-# Define Storages (Compatible with Django 4.2+)
+# Define Storages
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "cloudinary_storage.storage.StaticHashedCloudinaryStorage",
+        # FIXED: Changed from StaticHashedCloudinaryStorage to StaticCloudinaryStorage
+        # This prevents the "NoneType" path error during deployment
+        "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
     },
 }
 
 # URLs for media and static files
-# Cloudinary handles the full URL, so we point them to the root /
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
@@ -100,7 +101,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 ANYMAIL = {}
 
 # ==============================================================================
-# COLLECTFASTA (Cloudinary handles its own optimization, usually not needed)
+# COLLECTFASTA (Cloudinary handles its own optimization)
 # ==============================================================================
 
 # Note: Cloudinary is fast by default. I have kept your app structure 
