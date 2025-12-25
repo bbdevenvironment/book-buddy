@@ -1,1 +1,27 @@
--r requirements/production.txt
+# Core Django
+Django>=4.2,<5.2
+django-environ
+
+# Cloudinary Storage (Replaces django-storages/S3)
+cloudinary>=1.40.0
+django-cloudinary-storage>=0.3.0
+
+# Database (PostgreSQL)
+psycopg2-binary
+dj-database-url
+
+# Cache & Sessions (Redis)
+redis
+django-redis
+
+# Email (Anymail)
+django-anymail
+
+# Production Server
+gunicorn
+
+# Image Processing (Required for Cloudinary/Django ImageFields)
+Pillow
+
+# Optimization (Optional but recommended for Render)
+whitenoise[brotli]
