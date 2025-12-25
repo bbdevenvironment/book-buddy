@@ -8,8 +8,6 @@ from .base import DATABASES, INSTALLED_APPS, env
 # GENERAL
 # ==============================================================================
 SECRET_KEY = env("DJANGO_SECRET_KEY")
-
-# Allow Render subdomains
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[".onrender.com"])
 
 # ==============================================================================
@@ -57,18 +55,14 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", def
 # ==============================================================================
 # CLOUDINARY STORAGE
 # ==============================================================================
-# 1. Add Cloudinary to Installed Apps
 INSTALLED_APPS += ["cloudinary_storage", "cloudinary"]
 
-# 2. Configure Cloudinary Credentials
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env("CLOUDINARY_CLOUD_NAME"),
     'API_KEY': env("CLOUDINARY_API_KEY"),
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
 }
 
-# 3. Set Backends
-# We use StaticCloudinaryStorage (not Hashed) to prevent the NoneType error
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -78,34 +72,23 @@ STORAGES = {
     },
 }
 
-# 4. Define URLs
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-# 5. Local Path Configuration (Crucial for collectstatic to work on Render)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # ==============================================================================
-# EMAIL / ADMIN
+# EMAIL / ADMIN / ANYMAIL
 # ==============================================================================
 DEFAULT_FROM_EMAIL = env("DJANGO_DEFAULT_FROM_EMAIL", default="edurock <noreply@example.com>")
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 EMAIL_SUBJECT_PREFIX = env("DJANGO_EMAIL_SUBJECT_PREFIX", default="[edurock] ")
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 
-# ==============================================================================
-# ANYMAIL
-# ==============================================================================
 INSTALLED_APPS += ["anymail"]
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 ANYMAIL = {}
-
-# ==============================================================================
-# COLLECTFASTA
-# ==============================================================================
-# Note: Cloudinary is highly optimized; Collectfasta is often redundant here.
-INSTALLED_APPS = ["collectfasta", *INSTALLED_APPS]
 
 # ==============================================================================
 # LOGGING
