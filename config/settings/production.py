@@ -43,7 +43,7 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-# CLOUDINARY
+# CLOUDINARY CONFIGURATION
 # ------------------------------------------------------------------------------
 INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ["cloudinary_storage", "cloudinary"]]
 INSTALLED_APPS = ["cloudinary_storage"] + INSTALLED_APPS + ["cloudinary"]
@@ -53,8 +53,10 @@ CLOUDINARY_STORAGE = {
     'API_KEY': env("CLOUDINARY_API_KEY"),
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
     'SECURE': True,
+    'UPLOAD_PRESET': 'book buddy', # Matches your screenshot
 }
-# STORAGES (Overrides base.py)
+
+# STORAGES
 # ------------------------------------------------------------------------------
 STORAGES = {
     "default": {
@@ -65,10 +67,11 @@ STORAGES = {
     },
 }
 
-# ADD THIS LINE TO PREVENT 500 ERRORS ON MISSING IMAGES
+# CRITICAL FIX: Stop WhiteNoise from crashing when a file like favicon.png is missing
 WHITENOISE_MANIFEST_STRICT = False 
 
 MEDIA_URL = '/media/'
+
 # EMAIL
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
