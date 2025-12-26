@@ -5,18 +5,14 @@
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-  <title>{% block title %}
-
-  {% endblock title %} Book Buddy</title>
+  <title>{% block title %}{% endblock title %} Book Buddy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Edurock - LMS Online Courses & Education Template">
   <meta name="author" content="coderthemes"/>
   <link rel="icon" href="{% static 'img/favicon.png' %}"/>
 
   {% block css %}
-
     {% block extra_css %} {% endblock extra_css %}
-
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/animate.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/aos.min.css' %}" rel="stylesheet"/>
@@ -28,7 +24,6 @@
   {% endblock css %}
 
   <script>
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       document.documentElement.classList.add("is_dark");
     }
@@ -37,34 +32,29 @@
     }
   </script>
 
-
-
-<style>
-  /* This makes content visible even if JavaScript fails to load */
-  [data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-  }
-</style>
-
-
-
-
-
+  <style>
+    /* Content visibility safety net */
+    [data-aos] {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+  </style>
 </head>
+
 <body {% block body_attribute %}class="body__wrapper"{% endblock body_attribute %}>
 
 {% block preloader %}{% endblock %}
-
 {% block content %}{% endblock %}
-
 {% block modal %}{% endblock %}
 
 {% block javascript %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
   <script src="{% static 'js/vendor/jquery-3.6.0.min.js' %}"></script>
+  
   <script src="{% static 'js/popper.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
@@ -87,7 +77,6 @@
 {% endblock javascript %}
 
 <script>
-  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
     document.getElementById("light--to-dark-button")?.classList.add("dark--mode");
   }
