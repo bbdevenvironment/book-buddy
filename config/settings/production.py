@@ -30,7 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static').replace('\\', '/')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'edurock').replace('\\', '/')
+
+# Ensure templates are also found correctly if they are in edurock/templates
+TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'edurock', 'templates')]
 
 # ==============================================================================
 # DATABASES & CACHES
