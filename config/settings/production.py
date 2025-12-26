@@ -21,9 +21,9 @@ SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
 # ==============================================================================
-# MIDDLEWARE (Enable WhiteNoise)
+# MIDDLEWARE (WhiteNoise Setup)
 # ==============================================================================
-# WhiteNoise must be placed directly after SecurityMiddleware
+# WhiteNoiseMiddleware must follow SecurityMiddleware
 MIDDLEWARE.insert(
     MIDDLEWARE.index("django.middleware.security.SecurityMiddleware") + 1,
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -34,19 +34,19 @@ MIDDLEWARE.insert(
 # ==============================================================================
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Point to your source static files
+# Correct path for edurock/static as shown in your folder structure
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'edurock', 'static').replace('\\', '/')
 ]
 
-# Where collectstatic will gather files on Render
+# Standard folder for gathered static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
 
-# Ensure templates are found inside edurock/templates
+# Correct template folder path
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'edurock', 'templates')]
 
 # ==============================================================================
-# STORAGE CONFIGURATION (WhiteNoise + Cloudinary)
+# STORAGE CONFIGURATION (Hybrid Storage)
 # ==============================================================================
 INSTALLED_APPS += ["cloudinary_storage", "cloudinary"]
 
@@ -56,13 +56,14 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
 }
 
-# Hybrid Storage: WhiteNoise for Static, Cloudinary for Media
+# Use WhiteNoise for Static (Scripts/CSS/Fonts) and Cloudinary for Media (Images)
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        # Using CompressedStaticFilesStorage to avoid build crashes from missing CSS references
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
