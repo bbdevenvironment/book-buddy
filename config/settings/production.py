@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 from .base import * # noqa: F403
-from .base import DATABASES, INSTALLED_APPS, env, TEMPLATES
+from .base import DATABASES, INSTALLED_APPS, env
 
 # ==============================================================================
 # GENERAL & SECURITY
@@ -16,25 +16,23 @@ SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_NAME = "__Secure-sessionid"
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_NAME = "__Secure-csrftoken"
-SECURE_HSTS_SECONDS = 31536000 
+SECURE_HSTS_SECONDS = 31536000 # Increased for better security
 SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
 SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
 # ==============================================================================
-# PATH CONFIGURATION (Fixed for your 'edurock' folder structure)
+# PATH CONFIGURATION (Fixed for Windows & Cloudinary)
 # ==============================================================================
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# 1. Look for source files inside edurock/static
+# Force forward slashes to prevent "admin%5Ccss" errors on Cloudinary
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'edurock', 'static').replace('\\', '/')
+    os.path.join(BASE_DIR, 'static').replace('\\', '/')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'edurock').replace('\\', '/')
 
-# 2. Gather files into a separate folder for deployment (NOT edurock)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
-
-# 3. Ensure templates are found inside edurock/templates
+# Ensure templates are also found correctly if they are in edurock/templates
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'edurock', 'templates')]
 
 # ==============================================================================
@@ -71,7 +69,6 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Using StaticCloudinaryStorage
         "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
     },
 }
