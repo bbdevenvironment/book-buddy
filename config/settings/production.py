@@ -1,4 +1,4 @@
-# ruff: noqa: E501
+# config/settings/production.py
 import os
 from pathlib import Path
 from .base import * # noqa: F403
@@ -16,10 +16,21 @@ SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_NAME = "__Secure-sessionid"
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_NAME = "__Secure-csrftoken"
-SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_SECONDS = 31536000 # Increased for better security
 SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
 SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
+
+# ==============================================================================
+# PATH CONFIGURATION (Fixed for Windows & Cloudinary)
+# ==============================================================================
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+# Force forward slashes to prevent "admin%5Ccss" errors on Cloudinary
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static').replace('\\', '/')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
 
 # ==============================================================================
 # DATABASES & CACHES
@@ -40,9 +51,8 @@ if REDIS_URL:
     }
 
 # ==============================================================================
-# CLOUDINARY STORAGE (Corrected)
+# CLOUDINARY STORAGE
 # ==============================================================================
-# Removed 'storages' (AWS) and 'collectfasta' to prevent conflicts
 INSTALLED_APPS += ["cloudinary_storage", "cloudinary"]
 
 CLOUDINARY_STORAGE = {
@@ -56,17 +66,12 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Using StaticCloudinaryStorage instead of Hashed to avoid path errors
         "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
     },
 }
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-
-# Ensure local path exists for Render to collect files before upload
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # ==============================================================================
 # EMAIL & ADMIN

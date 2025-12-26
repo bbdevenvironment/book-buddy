@@ -6,8 +6,8 @@
   <meta charset="utf-8"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge"/>
   <title>{% block title %}
-    Edurock
-  {% endblock title %} - Education LMS Template</title>
+
+  {% endblock title %} Book Buddy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Edurock - LMS Online Courses & Education Template">
   <meta name="author" content="coderthemes"/>
@@ -36,6 +36,21 @@
       document.documentElement.classList.remove("is_dark");
     }
   </script>
+
+
+
+<style>
+  /* This makes content visible even if JavaScript fails to load */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+</style>
+
+
+
+
 
 </head>
 <body {% block body_attribute %}class="body__wrapper"{% endblock body_attribute %}>
