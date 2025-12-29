@@ -23,13 +23,12 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", def
 # ==============================================================================
 # MIDDLEWARE (WhiteNoise Setup)
 # ==============================================================================
-# WhiteNoiseMiddleware must follow SecurityMiddleware
 MIDDLEWARE.insert(
     MIDDLEWARE.index("django.middleware.security.SecurityMiddleware") + 1,
     "whitenoise.middleware.WhiteNoiseMiddleware",
 )
 
-# SAFETY SETTINGS: Prevent 500 errors when CSS/JS files or .map files are missing
+# SAFETY SETTINGS
 WHITENOISE_MANIFEST_STRICT = False
 WHITENOISE_USE_FINDERS = True
 
@@ -38,19 +37,16 @@ WHITENOISE_USE_FINDERS = True
 # ==============================================================================
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Correct path for edurock/static as shown in your folder structure
+# Standardized path joining for Render's Linux environment
 STATICFILES_DIRS = [
-    BASE_DIR / "edurock" / "static"
+    os.path.join(BASE_DIR, 'edurock', 'static'),
 ]
 
-# Standard folder for gathered static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
-
-# Correct template folder path
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'edurock', 'templates')]
 
 # ==============================================================================
-# STORAGE CONFIGURATION (Hybrid Storage)
+# STORAGE CONFIGURATION
 # ==============================================================================
 INSTALLED_APPS += ["cloudinary_storage", "cloudinary"]
 
@@ -60,14 +56,13 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
 }
 
-# Use WhiteNoise for Static and Cloudinary for Media
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Changed to CompressedStaticFilesStorage to prevent "Missing Manifest Entry" crashes
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        # Using the standard StaticFilesStorage is safer when path issues persist
+        "BACKEND": "whitenoise.storage.StaticFilesStorage",
     },
 }
 
@@ -92,9 +87,6 @@ if REDIS_URL:
         },
     }
 
-# ==============================================================================
-# EMAIL & ADMIN
-# ==============================================================================
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 INSTALLED_APPS += ["anymail"]
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
