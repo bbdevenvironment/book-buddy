@@ -23,13 +23,24 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
   {% endblock css %}
 
+  <!-- DEBUG SCRIPT - Add this to see what's happening -->
   <script>
-    if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      document.documentElement.classList.add("is_dark");
+    console.log("DEBUG: Django static URL is:", "{% static '' %}");
+    
+    // Function to test if static files exist
+    function testStaticFile(path) {
+      var img = new Image();
+      img.onload = function() { console.log("✓ " + path + " exists"); };
+      img.onerror = function() { console.log("✗ " + path + " NOT FOUND"); };
+      img.src = path;
     }
-    if (localStorage.getItem("theme-color") === "light") {
-      document.documentElement.classList.remove("is_dark");
-    }
+    
+    // Test key files when page loads
+    window.addEventListener('load', function() {
+      console.log("=== Testing static files ===");
+      testStaticFile("{% static 'js/vendor/jquery-3.6.0.min.js' %}");
+      testStaticFile("{% static 'js/bootstrap.min.js' %}");
+    });
   </script>
 
   <style>
@@ -47,34 +58,65 @@
 {% block preloader %}{% endblock %}
 {% block content %}{% endblock %}
 {% block modal %}{% endblock %}
-{% block javascript %}
-  <!-- LOAD JQUERY FIRST - note: it's in vendor folder -->
-  <script src="{% static 'js/vendor/jquery-3.6.0.min.js' %}"></script>
-  
-  <!-- Load other vendor scripts -->
-  <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
-  
-  <!-- Load regular JS files (NOT in vendor folder) -->
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-  <script src="{% static 'js/slick.min.js' %}"></script>
-  <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
-  <script src="{% static 'js/ajax-form.js' %}"></script>
-  <script src="{% static 'js/wow.min.js' %}"></script>
-  <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
-  <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
-  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-  <script src="{% static 'js/waypoints.min.js' %}"></script>
-  <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-  <script src="{% static 'js/plugins.js' %}"></script>
-  <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
-  
-  <!-- Load Chart.js from CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 
-  <!-- Main JS -->
-  <script src="{% static 'js/main.js' %}"></script>
+{% block javascript %}
+  <!-- Option A: Use CDN for critical JS files temporarily -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Option B: Keep your local files but check if they exist -->
+  <script>
+    // This script loads local files only if they exist
+    function loadScript(src, onSuccess, onError) {
+      var script = document.createElement('script');
+      script.src = src;
+      script.onload = onSuccess || function() { console.log('Loaded: ' + src); };
+      script.onerror = onError || function() { console.error('Failed: ' + src); };
+      document.head.appendChild(script);
+    }
+    
+    // Load your scripts one by one
+    document.addEventListener('DOMContentLoaded', function() {
+      // Since jQuery is already loaded from CDN, set window.$ and window.jQuery
+      window.$ = window.jQuery = jQuery;
+      
+      // Now load your other scripts
+      var scripts = [
+        "{% static 'js/vendor/modernizr-3.5.0.min.js' %}",
+        "{% static 'js/bootstrap.min.js' %}",
+        "{% static 'js/isotope.pkgd.min.js' %}",
+        "{% static 'js/slick.min.js' %}",
+        "{% static 'js/jquery.meanmenu.min.js' %}",
+        "{% static 'js/ajax-form.js' %}",
+        "{% static 'js/wow.min.js' %}",
+        "{% static 'js/jquery.scrollUp.min.js' %}",
+        "{% static 'js/imagesloaded.pkgd.min.js' %}",
+        "{% static 'js/jquery.magnific-popup.min.js' %}",
+        "{% static 'js/waypoints.min.js' %}",
+        "{% static 'js/jquery.counterup.min.js' %}",
+        "{% static 'js/plugins.js' %}",
+        "{% static 'js/swiper-bundle.min.js' %}",
+        "{% static 'js/main.js' %}"
+      ];
+      
+      // Load scripts sequentially
+      function loadNextScript(index) {
+        if (index < scripts.length) {
+          loadScript(scripts[index], function() {
+            loadNextScript(index + 1);
+          }, function() {
+            console.warn('Skipping: ' + scripts[index]);
+            loadNextScript(index + 1);
+          });
+        }
+      }
+      
+      loadNextScript(0);
+    });
+  </script>
+
+  <!-- Chart.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 
   {% block extra_javascript %} {% endblock extra_javascript %}
 {% endblock javascript %}
