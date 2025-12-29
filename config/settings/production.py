@@ -31,7 +31,7 @@ SECURE_BROWSER_XSS_FILTER = env.bool("DJANGO_SECURE_BROWSER_XSS_FILTER", default
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # ==============================================================================
-# STATIC FILES CONFIGURATION (SIMPLIFIED FOR RENDER)
+# STATIC FILES CONFIGURATION
 # ==============================================================================
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -185,14 +185,18 @@ else:
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 # ==============================================================================
-# DEBUG TOOLS (ONLY FOR DEBUGGING - REMOVE IN PRODUCTION)
+# WHITENOISE CONFIGURATION FOR BETTER STATIC FILES SERVING
 # ==============================================================================
-# Uncomment these lines only for debugging static files issue
-# DEBUG = True  # TEMPORARY: Set to True to see detailed error pages
-# ALLOWED_HOSTS = ['*']  # TEMPORARY: Allow all hosts for debugging
+# Add WhiteNoise middleware
+MIDDLEWARE.insert(
+    1,  # Right after SecurityMiddleware
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+)
 
-# Add debug static view to INSTALLED_APPS
-INSTALLED_APPS += ['django.contrib.staticfiles']
+# WhiteNoise configuration for better performance
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_ALLOW_ALL_ORIGINS = True
 
 # ==============================================================================
 # FINAL SETUP
@@ -200,9 +204,18 @@ INSTALLED_APPS += ['django.contrib.staticfiles']
 # Ensure DEBUG is False in production (override any other settings)
 DEBUG = False
 
+# Remove duplicate 'staticfiles' from INSTALLED_APPS if exists
+# This is the fix for the error
+if 'django.contrib.staticfiles' in INSTALLED_APPS:
+    # Already included, don't add again
+    pass
+else:
+    INSTALLED_APPS += ['django.contrib.staticfiles']
+
 # Log current settings for debugging
 print(f"DEBUG: Static URL: {STATIC_URL}")
 print(f"DEBUG: Static Root: {STATIC_ROOT}")
-print(f"DEBUG: Static Dirs: {STATICFILES_DIRS}")
+print(f"DEBUG: Static Dirs: {[str(d) for d in STATICFILES_DIRS]}")
 print(f"DEBUG: Debug Mode: {DEBUG}")
 print(f"DEBUG: Allowed Hosts: {ALLOWED_HOSTS}")
+print(f"DEBUG: Staticfiles in INSTALLED_APPS: {'django.contrib.staticfiles' in INSTALLED_APPS}")
