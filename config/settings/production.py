@@ -29,6 +29,10 @@ MIDDLEWARE.insert(
     "whitenoise.middleware.WhiteNoiseMiddleware",
 )
 
+# SAFETY SETTINGS: Prevent 500 errors when CSS/JS files or .map files are missing
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_USE_FINDERS = True
+
 # ==============================================================================
 # PATH CONFIGURATION
 # ==============================================================================
@@ -38,7 +42,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATICFILES_DIRS = [
     BASE_DIR / "edurock" / "static"
 ]
-
 
 # Standard folder for gathered static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
@@ -57,14 +60,14 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env("CLOUDINARY_API_SECRET"),
 }
 
-# Use WhiteNoise for Static (Scripts/CSS/Fonts) and Cloudinary for Media (Images)
+# Use WhiteNoise for Static and Cloudinary for Media
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Using CompressedStaticFilesStorage to avoid build crashes from missing CSS references
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        # Changed to CompressedStaticFilesStorage to prevent "Missing Manifest Entry" crashes
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
