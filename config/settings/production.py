@@ -1,74 +1,94 @@
-"""
-Production Settings for Django on Render.com
-"""
-
 import os
 from pathlib import Path
-from .base import *  # noqa: F403
+from .base import * # noqa: F403
+from .base import DATABASES, INSTALLED_APPS, MIDDLEWARE, env, TEMPLATES
 
 # ==============================================================================
-# GENERAL
+# GENERAL & SECURITY
 # ==============================================================================
-DEBUG = False
-SECRET_KEY = os.environ.get('SECRET_KEY', 'dummy-secret-key-for-now')
-ALLOWED_HOSTS = ['*']  # Allow all for debugging
+SECRET_KEY = env("DJANGO_SECRET_KEY")
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[".onrender.com"])
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_NAME = "__Secure-sessionid"
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_NAME = "__Secure-csrftoken"
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
+SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
 # ==============================================================================
-# PATHS - CRITICAL FIX
+# MIDDLEWARE (WhiteNoise Setup)
+# ==============================================================================
+MIDDLEWARE.insert(
+    MIDDLEWARE.index("django.middleware.security.SecurityMiddleware") + 1,
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+)
+
+# SAFETY SETTINGS: Prevent 500 errors and force lookup if cache is missing
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_USE_FINDERS = True
+
+# ==============================================================================
+# PATH CONFIGURATION
 # ==============================================================================
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# ==============================================================================
-# STATIC FILES - SIMPLIFIED APPROACH
-# ==============================================================================
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Use Path objects converted to strings
+# Explicitly tell Django to look inside edurock/static
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'edurock', 'static'),
 ]
 
-# Use simple storage for now
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-# ==============================================================================
-# MEDIA FILES
-# ==============================================================================
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# ==============================================================================
-# TEMPLATES
-# ==============================================================================
+# Standard folder for gathered static files on Render
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'edurock', 'templates')]
 
 # ==============================================================================
-# DATABASES
+# STORAGE CONFIGURATION
 # ==============================================================================
-DATABASES["default"]["CONN_MAX_AGE"] = 60
+INSTALLED_APPS += ["cloudinary_storage", "cloudinary"]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': env("CLOUDINARY_API_KEY"),
+    'API_SECRET': env("CLOUDINARY_API_SECRET"),
+}
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        # Using the standard StaticFilesStorage is safest when 404s persist
+        "BACKEND": "whitenoise.storage.StaticFilesStorage",
+    },
+}
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 # ==============================================================================
-# MIDDLEWARE - Add WhiteNoise
+# DATABASES & CACHES
 # ==============================================================================
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
 
-# ==============================================================================
-# SECURITY - Disable temporarily for debugging
-# ==============================================================================
-# Comment these out temporarily
-# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
+REDIS_URL = env("REDIS_URL", default=None)
+if REDIS_URL:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "IGNORE_EXCEPTIONS": True,
+            },
+        },
+    }
 
-# ==============================================================================
-# DEBUG OUTPUT
-# ==============================================================================
-print("=" * 80)
-print("PRODUCTION SETTINGS LOADED")
-print(f"BASE_DIR: {BASE_DIR}")
-print(f"STATIC_ROOT: {STATIC_ROOT}")
-print(f"STATICFILES_DIRS: {STATICFILES_DIRS}")
-print(f"DEBUG: {DEBUG}")
-print("=" * 80)
+ADMIN_URL = env("DJANGO_ADMIN_URL")
+INSTALLED_APPS += ["anymail"]
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+ANYMAIL = {}
