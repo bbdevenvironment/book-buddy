@@ -36,8 +36,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Correct path for edurock/static as shown in your folder structure
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'edurock', 'static').replace('\\', '/')
+    BASE_DIR / "edurock" / "static"
 ]
+
 
 # Standard folder for gathered static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
@@ -63,7 +64,7 @@ STORAGES = {
     },
     "staticfiles": {
         # Using CompressedStaticFilesStorage to avoid build crashes from missing CSS references
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 

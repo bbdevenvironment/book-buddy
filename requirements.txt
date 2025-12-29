@@ -32,7 +32,7 @@ gunicorn
 Pillow
 
 # Optimization
-whitenoise[brotli]
+whitenoise
 
 fido2>=1.0.0
 django-allauth[mfa]
