@@ -70,7 +70,7 @@
   --whitegrey1: #EDEDED;
   --whitegrey2: #F2F6F7;
   --whitegrey3: #E7DEFF;
-  --headingColor: #222222;
+  --headingColor: #F7F7F7;
   --contentColor: #5F6C76;
   --contentColor2: #5C727D;
 --primaryColor: #740f28;
@@ -104,7 +104,7 @@
   --borderColor2: #dddddd;
   --borderColor3: #f8f8f8;
   --borderColor4: #cacaca;
-  --darkdeep1: #dec680;
+  --darkdeep1: #37404E;
   --darkdeep2: #37404E;
   --darkdeep3: #F4F4F8;
   --darkdeep4: #949392;
@@ -4394,35 +4394,39 @@ Popular Area
   transition: var(--transition);
   position: relative;
   border-radius: var(--borderRadius3);
-  background: var(--whiteColor);
+   color: var(--whiteColor);
+  
+   background: var(--primaryColor);
 }
 .single__service:hover {
-  background: var(--primaryColor);
+  background: var(--whiteColor);
   transform: translateY(-5px);
 }
 .single__service:hover .service__small__img svg {
   opacity: 1;
 }
 .single__service:hover .service__img {
-  color: var(--whiteColor);
+  color: var(--primaryColor);
 }
 .single__service:hover .service__img .service__icon path {
-  fill: var(--whiteColor);
+  fill: var(--primaryColor);
 }
 .single__service:hover .service__img .service__icon__bg path {
-  fill: var(--whiteColor);
+  fill: var(--primaryColor);
 }
 .single__service:hover .service__content h3 a {
-  color: var(--whiteColor);
+  color: var(--primaryColor);
 }
+
+
 .single__service:hover .service__content h3 a:hover {
   color: var(--secondaryColor);
 }
 .single__service:hover .service__content p {
-  color: var(--whiteColor);
+  color: var(--primaryColor);
 }
 .single__service:hover .service__button a {
-  color: var(--whiteColor);
+  color: var(--primaryColor);
 }
 .single__service.ss_margin {
   margin-top: 50px;
@@ -4433,7 +4437,7 @@ Popular Area
   }
 }
 .single__service .service__content h3 a {
-  color: var(--blackColor);
+  color: var(--whiteColor);
   font-family: var(--headingFont);
   transition: var(--transition);
 }
@@ -4518,13 +4522,17 @@ Popular Area
 @media (min-width: 768px) and (max-width: 991px) {
   .populerarea__2 .service__content__2 h3 {
     margin-bottom: 0;
+    
   }
 }
 
 .service__content__2 p {
   font-size: 14px;
   line-height: 24px;
+  color: white;
 }
+
+
 @media (min-width: 992px) and (max-width: 1365px) {
   .service__content__2 p {
     font-size: 11px;
@@ -4549,7 +4557,7 @@ Popular Area
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: var(--blackColor);
+  color: var(--whiteColor);
 }
 
 .populerarea__2 {
@@ -11947,7 +11955,7 @@ Breadcrumb Area
 Footer Area
 -------------------------------*/
 .footerarea {
-  background: var(--darkblack);
+  background: var(--primaryColor);
 }
 .footerarea__newsletter__wraper {
   padding-bottom: 45px;
@@ -12022,19 +12030,19 @@ Footer Area
 
 .footerarea__wrapper {
   padding-top: 110px;
-  padding-bottom: 80px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--darkcolor);
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .footerarea__wrapper {
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
   }
 }
 @media (max-width: 767px) {
   .footerarea__wrapper {
     padding-top: 60px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
   }
 }
 .footerarea__wrapper.footerarea__wrapper__2 {
@@ -12095,14 +12103,14 @@ Footer Area
 .footerarea__wrapper .footerarea__inner .footerarea__heading h3 {
   font-size: 22px;
   font-weight: 700;
-  color: var(--whiteColor);
+  color: var(--darkgray);
   font-family: var(--headingFont);
 }
 .footerarea__wrapper .footerarea__inner .footerarea__content {
   margin-bottom: 30px;
 }
 .footerarea__wrapper .footerarea__inner .footerarea__content p {
-  color: var(--darkgray);
+  color: var(--whiteColor);
 }
 @media (min-width: 992px) and (max-width: 1365px) {
   .footerarea__wrapper .footerarea__inner .footerarea__content p {
@@ -12141,7 +12149,7 @@ Footer Area
   margin-bottom: 12px;
 }
 .footerarea__wrapper .footerarea__inner .footerarea__list ul li a {
-  color: var(--darkgray);
+  color: var(--whiteColor);
   font-size: 16px;
   font-weight: 400;
   font-family: var(--contentFont);
@@ -12161,7 +12169,7 @@ Footer Area
   transition: 0.3s;
 }
 .footerarea__wrapper .footerarea__inner .footerarea__list ul li a:hover {
-  color: var(--primaryColor);
+  color: var(--secondaryColor);
 }
 .footerarea__wrapper .footerarea__inner .footerarea__list ul li a:hover::after {
   opacity: 1;
@@ -12178,7 +12186,7 @@ Footer Area
   align-items: center;
 }
 .footerarea__right__wraper .footerarea__right__list ul li a:hover .footerarea__right__content h6 {
-  color: var(--primaryColor);
+  color: var(--secondaryColor);
 }
 .footerarea__right__wraper .footerarea__right__list ul li a .footerarea__right__img {
   margin-right: 11px;
@@ -12232,7 +12240,7 @@ Footer Area
   margin-bottom: 0;
 }
 .footerarea__copyright__wrapper .footerarea__copyright__content p span {
-  color: var(--primaryColor);
+  color: var(--secondaryColor);
 }
 .footerarea__copyright__wrapper .footerarea__copyright__content p a {
   color: var(--darkgray);
