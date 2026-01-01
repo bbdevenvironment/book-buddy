@@ -13,7 +13,7 @@
 
             <li><a href="{% url 'pages:dynamic_pages' template_name='index' %}">Home</a> </li>
 
-            <li><a href="">About Us</a> </li>
+            <li><a href="{% url 'pages:dynamic_pages' template_name='about' %}">About Us</a> </li>
 
 
             <li class="menu-item-has-children "><a href="#">Books & Membership</a>
@@ -40,25 +40,57 @@
 
 
 
-          <li class="menu-item-has-children "><a href="#">School Support</a>
+         
+
+
+
+
+
+
+    <li class="menu-item-has-children "><a href="">School Support</a>
 
             <ul class="dropdown">
               <li class="menu-item-has-children">
+                <a href="#">Higher Secondary Level</a>
 
-              <li><a href="">Grade 12</a></li>
-              <li><a href="">Grade 11</a></li>
-              <li><a href="">Grade 10</a></li>
-              <li><a href="">Grade 9</a></li>
-              <li><a href="">Grade 8</a></li>
-              <li><a href="">Grade 7</a></li>
-              <li><a href="">Grade 6</a></li>
-              <li><a href="">Grade 5</a></li>
-              <li><a href="">Grade 4</a></li>
-              <li><a href="">Grade 1-3</a></li>
+                <ul class="dropdown">
+                  <li><a href="">Grade 12</a></li>
+                    <li><a href="">Grade 11</a></li>
+                    <li><a href="">Grade 10</a></li>
+                    <li><a href="">Grade 9</a></li>
+                </ul>
+              </li>
 
+              <li class="menu-item-has-children">
+                <a href="#">Middle School Level </a>
+                <ul class="dropdown">
+                   <li><a href="">Grade 8</a></li>
+                    <li><a href="">Grade 7</a></li>
+                    <li><a href="">Grade 6</a></li>
+                 </ul>
+              </li>
+
+              <li class="menu-item-has-children">
+                <a href="#">Primary Level</a>
+                <ul class="dropdown">
+                  <li><a href="">Grade 5</a></li>
+                    <li><a href="">Grade 4</a></li>
+                    <li><a href="">Grade 3</a></li>
+                    <li><a href="">Grade 2</a></li>
+                    <li><a href="">Grade 1</a></li>
+                </ul>
+              </li>
+
+
+ <li class="menu-item-has-children">
+                <a href="#">Kindergarten </a>
+                
+              </li>
+
+            </ul>
           </li>
-          </ul>
-          </li>
+
+
 
 
 
@@ -99,9 +131,11 @@
  <li class="menu-item-has-children">
                 <a href="#">Magazine </a>
                 <ul class="dropdown">
+                   <li><a href="{% url 'pages:dynamic_pages' template_name='magazine' %}">Monthly Magazine</a></li>
+
                 <li><a href="">Daily Challenges</a></li>
                         <li><a href="">Newspaper</a></li>
-                        <li><a href="">Monthly Magazine</a></li>
+                   
                 </ul>
               </li>
 

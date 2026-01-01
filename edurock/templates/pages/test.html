@@ -1,0 +1,785 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+{% include 'partials/theme-switch.html' %}
+
+<main class="main_wrapper" style="overflow: visible !important;">
+
+    <!-- topbar__section__stert -->
+    {% include 'partials/top-banner-2.html' %}
+    <!-- topbar__section__end -->
+
+    <!-- headar section start -->
+    {% include 'partials/navbar-2.html' %}
+    <!-- header section end -->
+
+    <!-- Mobile Menu Start Here -->
+    {% include 'partials/mobile-menu.html' %}
+    <!-- Mobile Menu end Here -->
+
+    <!-- theme fixed shadow -->
+    <div>
+        <div class="theme__shadow__circle"></div>
+        <div class="theme__shadow__circle shadow__right"></div>
+    </div>
+    <!-- theme fixed shadow -->
+
+    <!-- breadcrumbarea__section__start -->
+    <div class="breadcrumbarea" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb__content__wraper">
+                        <div class="breadcrumb__title">
+                            <h2 class="heading">About Page</h2>
+                        </div>
+                        <div class="breadcrumb__inner">
+                            <ul>
+                                <li><a href="{% url 'pages:dynamic_pages' template_name='index' %}">Home</a></li>
+                                <li> About Page</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shape__icon__2">
+            <img loading="lazy" class=" shape__icon__img shape__icon__img__1" src="{% static 'img/herobanner/herobanner__1.png' %}"
+                alt="photo">
+            <img loading="lazy" class=" shape__icon__img shape__icon__img__2" src="{% static 'img/herobanner/herobanner__2.png' %}"
+                alt="photo">
+            <img loading="lazy" class=" shape__icon__img shape__icon__img__3" src="{% static 'img/herobanner/herobanner__3.png' %}"
+                alt="photo">
+            <img loading="lazy" class=" shape__icon__img shape__icon__img__4" src="{% static 'img/herobanner/herobanner__5.png' %}"
+                alt="photo">
+        </div>
+    </div>
+    <!-- breadcrumbarea__section__end-->
+
+    <!-- Add custom styles for cyberpunk theme -->
+    <style>
+        :root {
+            --primaryColor: #740f28;
+            --secondaryColor: #17776f;
+            --accentColor: #00ffea;
+            --darkBg: #0a0a0a;
+            --textColor: #ffffff;
+        }
+
+        /* Cyberpunk Container - Full Viewport */
+        .cyberpunk-container {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: 
+                radial-gradient(circle at 20vw 50vh, rgba(116, 15, 40, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80vw 20vh, rgba(23, 119, 111, 0.2) 0%, transparent 50%),
+                linear-gradient(45deg, #0a0a0a 0%, #111 100%);
+            padding: 10vh 0;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: absolute;
+            width: 200vw;
+            height: 200vh;
+            background-image: 
+                linear-gradient(rgba(23, 119, 111, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(23, 119, 111, 0.1) 1px, transparent 1px);
+            background-size: 5vw 5vh;
+            animation: gridMove 20s linear infinite;
+            transform: perspective(500px) rotateX(60deg);
+            z-index: 0;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(5vh); }
+        }
+
+        /* Central Core */
+        .central-core {
+            position: absolute;
+            width: 15vw;
+            height: 15vw;
+            min-width: 150px;
+            min-height: 150px;
+            max-width: 200px;
+            max-height: 200px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 20;
+            border: 0.3vw solid var(--secondaryColor);
+            box-shadow: 
+                0 0 3vw var(--secondaryColor),
+                inset 0 0 3vw var(--secondaryColor);
+            padding: 2vw;
+            color: var(--secondaryColor);
+            animation: corePulse 2s ease-in-out infinite;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes corePulse {
+            0%, 100% { 
+                box-shadow: 0 0 3vw var(--secondaryColor), inset 0 0 3vw var(--secondaryColor);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 6vw var(--secondaryColor), inset 0 0 6vw var(--secondaryColor);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        .core-title {
+            font-size: calc(1vw + 1.2rem);
+            font-weight: bold;
+            margin-bottom: 1vh;
+            text-transform: uppercase;
+            letter-spacing: 0.2vw;
+            text-shadow: 0 0 1vw var(--secondaryColor);
+            line-height: 1.2;
+        }
+
+        .core-subtitle {
+            font-size: calc(0.5vw + 0.5rem);
+            color: var(--secondaryColor);
+            line-height: 1.3;
+            opacity: 0.9;
+            max-width: 80%;
+        }
+
+        /* Data Nodes */
+        .data-node {
+            position: absolute;
+            width: 25vw;
+            min-width: 250px;
+            max-width: 300px;
+            min-height: 25vw;
+            background: rgba(0, 0, 0, 0.95);
+            border: 0.2vw solid;
+            z-index: 15;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 0.5vw;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 
+                0 0 2vw currentColor,
+                inset 0 0 2vw rgba(255, 255, 255, 0.1);
+        }
+
+        .data-node:hover {
+            transform: scale(1.1);
+            z-index: 100;
+            box-shadow: 0 0 4vw currentColor;
+        }
+
+        /* Node Header */
+        .node-header {
+            height: 8vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2vw;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 0.1vw solid currentColor;
+            position: relative;
+        }
+
+        .node-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, currentColor, transparent);
+            opacity: 0.1;
+            animation: scanLine 3s linear infinite;
+        }
+
+        @keyframes scanLine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .node-id {
+            width: 3.5vw;
+            height: 3.5vw;
+            min-width: 35px;
+            min-height: 35px;
+            background: black;
+            border: 0.2vw solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: calc(0.8vw + 0.5rem);
+            color: currentColor;
+            margin-right: 1.5vw;
+            position: relative;
+            z-index: 2;
+        }
+
+        .node-title-container {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .node-title {
+            font-size: calc(0.8vw + 0.7rem);
+            font-weight: bold;
+            color: currentColor;
+            text-transform: uppercase;
+            letter-spacing: 0.1vw;
+            margin-bottom: 0.5vh;
+        }
+
+        .node-subtitle {
+            font-size: calc(0.5vw + 0.4rem);
+            color: currentColor;
+            opacity: 0.8;
+        }
+
+        /* Node Body */
+        .node-body {
+            flex: 1;
+            padding: 2vw;
+            overflow-y: auto;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .node-content {
+            font-size: calc(0.6vw + 0.5rem);
+            line-height: 1.6;
+            color: var(--secondaryColor);
+            margin-bottom: 2vh;
+        }
+
+        .data-list {
+            list-style: none;
+            margin-top: 2vh;
+        }
+
+        .data-list li {
+            padding: 1vh 0;
+            padding-left: 2.5vw;
+            position: relative;
+            font-size: calc(0.5vw + 0.5rem);
+            color: var(--secondaryColor);
+            line-height: 1.4;
+            border-bottom: 0.1vh dashed rgba(23, 119, 111, 0.3);
+        }
+
+        .data-list li:before {
+            content: "◈";
+            position: absolute;
+            left: 0;
+            color: currentColor;
+            font-size: calc(0.8vw + 0.2rem);
+        }
+
+        /* Node Colors & Positioning */
+        .node-1 {
+            color: var(--primaryColor);
+            border-color: var(--primaryColor);
+            animation: floatNode1 8s ease-in-out infinite;
+        }
+
+        .node-2 {
+            color: var(--secondaryColor);
+            border-color: var(--secondaryColor);
+            animation: floatNode2 9s ease-in-out infinite;
+        }
+
+        .node-3 {
+            color: #ff6b35;
+            border-color: #ff6b35;
+            animation: floatNode3 10s ease-in-out infinite;
+        }
+
+        .node-4 {
+            color: #9d4edd;
+            border-color: #9d4edd;
+            animation: floatNode4 11s ease-in-out infinite;
+        }
+
+        /* Connection Beams */
+        .connection-beam {
+            position: absolute;
+            height: 0.2vh;
+            background: linear-gradient(90deg, transparent, currentColor, transparent);
+            transform-origin: 0 0;
+            z-index: 10;
+            filter: blur(0.1vh);
+        }
+
+        /* Binary Rain Effect */
+        .binary-rain {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .binary-digit {
+            position: absolute;
+            color: rgba(23, 119, 111, 0.4);
+            font-size: calc(0.8vw + 0.2rem);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+
+        /* Terminal Lines */
+        .terminal-line {
+            position: absolute;
+            width: 100vw;
+            height: 0.1vh;
+            background: linear-gradient(90deg, transparent, var(--secondaryColor), transparent);
+            animation: terminalScan 4s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes terminalScan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100vh; opacity: 0; }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .cyberpunk-container {
+                position: relative;
+                height: auto;
+                min-height: auto;
+                padding: 5vh 5vw;
+                overflow: visible;
+                display: block;
+            }
+
+            .grid-bg {
+                display: none;
+            }
+
+            .central-core {
+                position: relative;
+                animation: mobileCorePulse 2s ease-in-out infinite;
+                margin: 0 auto 5vh auto;
+                top: auto;
+                left: auto;
+                transform: none;
+                width: 30vw;
+                height: 30vw;
+                min-width: 150px;
+                min-height: 150px;
+                border-width: 0.5vw;
+            }
+
+            @keyframes mobileCorePulse {
+                0%, 100% { 
+                    box-shadow: 0 0 4vw var(--secondaryColor), inset 0 0 4vw var(--secondaryColor);
+                    transform: scale(1);
+                }
+                50% { 
+                    box-shadow: 0 0 8vw var(--secondaryColor), inset 0 0 8vw var(--secondaryColor);
+                    transform: scale(1.05);
+                }
+            }
+
+            .connection-beam {
+                display: none;
+            }
+
+            .data-node {
+                position: relative !important;
+                width: 90vw;
+                max-width: 90vw;
+                min-height: auto;
+                height: auto;
+                margin: 3vh auto;
+                animation: none !important;
+                transform: none !important;
+                left: auto !important;
+                top: auto !important;
+                border-width: 0.5vw;
+                border-radius: 2vw;
+            }
+
+            .node-header {
+                height: 10vh;
+                padding: 0 4vw;
+            }
+
+            .node-id {
+                width: 8vw;
+                height: 8vw;
+                min-width: 40px;
+                min-height: 40px;
+                border-width: 0.5vw;
+                margin-right: 4vw;
+            }
+
+            .node-body {
+                padding: 4vw;
+            }
+
+            .terminal-line {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .central-core {
+                width: 40vw;
+                height: 40vw;
+            }
+
+            .core-title {
+                font-size: calc(2vw + 0.8rem);
+            }
+
+            .data-node {
+                width: 95vw;
+            }
+        }
+
+        /* Custom Scrollbar */
+        .node-body::-webkit-scrollbar {
+            width: 0.5vw;
+        }
+
+        .node-body::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0.25vw;
+        }
+
+        .node-body::-webkit-scrollbar-thumb {
+            background: var(--primaryColor);
+            border-radius: 0.25vw;
+        }
+
+        .node-body::-webkit-scrollbar-thumb:hover {
+            background: var(--secondaryColor);
+        }
+    </style>
+
+    <!-- Cyberpunk Section -->
+    <section class="cyberpunk-container">
+        <!-- Binary Rain Effect -->
+        <div class="binary-rain" id="binaryRain"></div>
+        
+        <!-- Terminal Scan Line -->
+        <div class="terminal-line"></div>
+        
+        <!-- Grid Background -->
+        <div class="grid-bg"></div>
+
+        <!-- Central Core -->
+        <div class="central-core">
+            <div class="core-title">BOOK BUDDY</div>
+            <div class="core-subtitle">[SYSTEM: ACTIVE] CONCEPT NETWORK ONLINE</div>
+        </div>
+
+        <!-- Data Node 1: Why Book Buddy Exists -->
+        <div class="data-node node-1" id="node1">
+            <div class="node-header">
+                <div class="node-id">01</div>
+                <div class="node-title-container">
+                    <div class="node-title">SYSTEM PURPOSE</div>
+                    <div class="node-subtitle">WHAT WE LOVE</div>
+                </div>
+            </div>
+            <div class="node-body">
+                <div class="node-content">
+                    > We love reading, stories, and meaningful learning.<br>
+                    > We believe learning should feel joyful, curious, and connected.<br>
+                    > Not rushed or stressful. This is where reading begins and skills grow.
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Node 2: What Makes Us Different -->
+        <div class="data-node node-2" id="node2">
+            <div class="node-header">
+                <div class="node-id">02</div>
+                <div class="node-title-container">
+                    <div class="node-title">CORE COMPETENCIES</div>
+                    <div class="node-subtitle">WHAT WE EXCEL AT</div>
+                </div>
+            </div>
+            <div class="node-body">
+                <ul class="data-list">
+                    <li>Building strong reading habits</li>
+                    <li>Story-based conceptual learning</li>
+                    <li>Balancing school & life skills</li>
+                    <li>Safe, supportive community</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Data Node 3: Why Families Choose Us -->
+        <div class="data-node node-3" id="node3">
+            <div class="node-header">
+                <div class="node-id">03</div>
+                <div class="node-title-container">
+                    <div class="node-title">USER BENEFITS</div>
+                    <div class="node-subtitle">WHAT THE WORLD NEEDS</div>
+                </div>
+            </div>
+            <div class="node-body">
+                <ul class="data-list">
+                    <li>Less pressure, more understanding</li>
+                    <li>Strong critical thinking skills</li>
+                    <li>Learning that goes beyond textbooks</li>
+                    <li>Balance of academics and creativity</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Data Node 4: What Sustains Us -->
+        <div class="data-node node-4" id="node4">
+            <div class="node-header">
+                <div class="node-id">04</div>
+                <div class="node-title-container">
+                    <div class="node-title">SUSTAINABILITY MATRIX</div>
+                    <div class="node-subtitle">HOW WE GROW TOGETHER</div>
+                </div>
+            </div>
+            <div class="node-body">
+                <div class="node-content">
+                    > We offer a community library, classroom-complementary support,<br>
+                    > and beyond-school learning for both kids and adults<br>
+                    > through online resources and live events.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Effects -->
+    <script>
+        // Create binary rain effect
+        function createBinaryRain() {
+            const rainContainer = document.getElementById('binaryRain');
+            const digits = ['0', '1'];
+            
+            for (let i = 0; i < 60; i++) {
+                const digit = document.createElement('div');
+                digit.className = 'binary-digit';
+                digit.textContent = digits[Math.floor(Math.random() * digits.length)];
+                digit.style.left = `${Math.random() * 100}vw`;
+                digit.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                digit.style.animationDelay = `${Math.random() * 2}s`;
+                digit.style.opacity = Math.random() * 0.4 + 0.1;
+                digit.style.color = Math.random() > 0.7 ? 'rgba(116, 15, 40, 0.3)' : 'rgba(23, 119, 111, 0.3)';
+                rainContainer.appendChild(digit);
+            }
+        }
+
+        // Position nodes around center using vw/vh units
+        function positionNodes() {
+            const nodes = document.querySelectorAll('.data-node');
+            
+            if (window.innerWidth <= 768) {
+                // Mobile layout - remove positioning
+                nodes.forEach(node => {
+                    node.style.position = 'relative';
+                    node.style.left = 'auto';
+                    node.style.top = 'auto';
+                    node.style.transform = 'none';
+                });
+                return;
+            }
+            
+            // Get viewport dimensions
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            
+            // Node positions based on viewport percentages
+            const positions = [
+                { x: '30vw', y: '30vh' },  // Top-left
+                { x: '70vw', y: '30vh' },  // Top-right
+                { x: '30vw', y: '70vh' },  // Bottom-left
+                { x: '70vw', y: '70vh' }   // Bottom-right
+            ];
+            
+            // Apply positions
+            nodes.forEach((node, index) => {
+                node.style.position = 'absolute';
+                node.style.left = positions[index].x;
+                node.style.top = positions[index].y;
+                node.style.transform = 'translate(-50%, -50%)';
+            });
+            
+            // Update animation keyframes for positioned nodes
+            updateAnimations(positions);
+        }
+
+        // Update animation keyframes based on vw/vh positions
+        function updateAnimations(positions) {
+            const styleSheet = document.createElement('style');
+            
+            // Parse vw/vh values for animation
+            const pos1 = positions[0];
+            const pos2 = positions[1];
+            const pos3 = positions[2];
+            const pos4 = positions[3];
+            
+            styleSheet.textContent = `
+                @keyframes floatNode1 {
+                    0%, 100% { 
+                        left: ${pos1.x}; 
+                        top: ${pos1.y};
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    50% { 
+                        left: calc(${parseFloat(pos1.x)} - 2vw); 
+                        top: calc(${parseFloat(pos1.y)} - 2vh);
+                        transform: translate(-50%, -50%) rotate(2deg);
+                    }
+                }
+                @keyframes floatNode2 {
+                    0%, 100% { 
+                        left: ${pos2.x}; 
+                        top: ${pos2.y};
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    50% { 
+                        left: calc(${parseFloat(pos2.x)} + 2vw); 
+                        top: calc(${parseFloat(pos2.y)} - 2vh);
+                        transform: translate(-50%, -50%) rotate(-2deg);
+                    }
+                }
+                @keyframes floatNode3 {
+                    0%, 100% { 
+                        left: ${pos3.x}; 
+                        top: ${pos3.y};
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    50% { 
+                        left: calc(${parseFloat(pos3.x)} - 2vw); 
+                        top: calc(${parseFloat(pos3.y)} + 2vh);
+                        transform: translate(-50%, -50%) rotate(2deg);
+                    }
+                }
+                @keyframes floatNode4 {
+                    0%, 100% { 
+                        left: ${pos4.x}; 
+                        top: ${pos4.y};
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    50% { 
+                        left: calc(${parseFloat(pos4.x)} + 2vw); 
+                        top: calc(${parseFloat(pos4.y)} + 2vh);
+                        transform: translate(-50%, -50%) rotate(-2deg);
+                    }
+                }
+            `;
+            
+            // Remove old style sheet if exists
+            const oldSheet = document.getElementById('animations-sheet');
+            if (oldSheet) oldSheet.remove();
+            
+            styleSheet.id = 'animations-sheet';
+            document.head.appendChild(styleSheet);
+        }
+
+        // Draw connection beams using vw/vh units
+        function drawConnections() {
+            const core = document.querySelector('.central-core');
+            const nodes = document.querySelectorAll('.data-node');
+            
+            // Remove existing connections
+            document.querySelectorAll('.connection-beam').forEach(c => c.remove());
+            
+            if (window.innerWidth <= 768) return;
+            
+            const coreRect = core.getBoundingClientRect();
+            const coreX = coreRect.left + coreRect.width / 2;
+            const coreY = coreRect.top + coreRect.height / 2;
+            
+            nodes.forEach(node => {
+                const rect = node.getBoundingClientRect();
+                const nodeX = rect.left + rect.width / 2;
+                const nodeY = rect.top + rect.height / 2;
+                
+                const dx = nodeX - coreX;
+                const dy = nodeY - coreY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                
+                const beam = document.createElement('div');
+                beam.className = 'connection-beam';
+                beam.style.width = distance + 'px';
+                beam.style.left = coreX + 'px';
+                beam.style.top = coreY + 'px';
+                beam.style.transform = `rotate(${angle}deg)`;
+                beam.style.color = getComputedStyle(node).color;
+                
+                document.querySelector('.cyberpunk-container').appendChild(beam);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createBinaryRain();
+            positionNodes();
+            drawConnections();
+            
+            // Add glitch effect on hover
+            const nodes = document.querySelectorAll('.data-node');
+            nodes.forEach(node => {
+                node.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                    // Add glitch effect
+                    this.style.filter = 'hue-rotate(90deg)';
+                    setTimeout(() => {
+                        this.style.filter = '';
+                    }, 100);
+                });
+                
+                node.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                });
+            });
+            
+            // Recalculate on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    positionNodes();
+                    drawConnections();
+                }, 100);
+            });
+        });
+    </script>
+
+</main>
+
+{% endblock %}

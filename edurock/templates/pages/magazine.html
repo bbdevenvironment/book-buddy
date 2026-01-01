@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}Course List{% endblock %}
+
+{% block content %}
+{% include 'partials/theme-switch.html' %}
+
+<main class="main_wrapper overflow-hidden">
+
+    <!-- topbar__section__stert -->
+    {% include 'partials/top-banner.html' %}
+    <!-- topbar__section__end -->
+
+    <!-- headar section start -->
+    {% include 'partials/navbar.html' %}
+    <!-- header section end -->
+
+    <!-- Mobile Menu Start Here -->
+    {% include 'partials/mobile-menu.html' %}
+    <!-- Mobile Menu end Here -->
+
+    <!-- theme fixed shadow -->
+    <div>
+        <div class="theme__shadow__circle"></div>
+        <div class="theme__shadow__circle shadow__right"></div>
+    </div>
+    <!-- theme fixed shadow -->
+
+
+    <!-- course__section__start   -->
+    <div class="coursearea sp_top_100 sp_bottom_100">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="course__text__wraper" data-aos="fade-up">
+                        <div class="course__text">
+                            <p>Our Magazine</p>
+                        </div>
+                        <div class="course__icon">
+                            <ul class="nav property__team__tap" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a href="#" class="single__tab__link" data-bs-toggle="tab"
+                                        data-bs-target="#projects__one"><i class="icofont-layout"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="#" class="single__tab__link active" data-bs-toggle="tab"
+                                        data-bs-target="#projects__two"><i class="icofont-listine-dots"></i>
+                                    </a>
+                                </li>
+                                <!-- <li class="short__by__new">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected> Short by New</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </li> -->
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xl-12">
+
+                    <div class="tab-content tab__content__wrapper" id="myTabContent">
+
+
+                        <div class="tab-pane fade" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" data-aos="fade-up">
+                                    <div class="gridarea__wraper gridarea__wraper__2">
+                                        <!-- <div class="gridarea__img">
+                                            <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank"><img loading="lazy"
+                                                    src="{% static 'img/grid/grid_1.png' %}" alt="grid"></a>
+                                            <div class="gridarea__small__button">
+                                                <div class="grid__badge">October Edition</div>
+                                            </div>
+                                            <div class="gridarea__small__icon">
+                                                <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank"><i class="icofont-heart-alt"></i></a>
+                                            </div>
+
+                                        </div> -->
+                                        <iframe src="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                            width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
+
+
+                                        <div class="gridarea__content">
+                                            <div class="gridarea__list">
+                                                <ul>
+                                                    <li>
+                                                        <i class="icofont-book-alt"></i> Monday
+                                                    </li>
+                                                    <li>
+                                                        <i class="icofont-clock-time"></i> 01/11/2025
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="gridarea__heading">
+                                                <h3><a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                                        target="_blank">The October Edition: <br>Growing Together
+                                                        through Great Stories.</a></h3>
+                                            </div>
+
+                                            <div class="gridarea__bottom">
+
+                                                <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                                    target="_blank">
+                                                    <div class="gridarea__small__img">
+                                                        <img loading="lazy"
+                                                            src="{% static 'img/grid/grid_small_1.jpg' %}" alt="grid">
+                                                        <div class="gridarea__small__content">
+                                                            <h6>Book Buddy</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="tab-pane fade active show" id="projects__two" role="tabpanel"
+                            aria-labelledby="projects__two">
+
+                            <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up">
+                                <!-- <div class="gridarea__img">
+                                    <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                        target="_blank"><img loading="lazy" src="{% static 'img/grid/grid_1.png' %}"
+                                            alt="grid"></a>
+                                    <div class="gridarea__small__button">
+                                        <div class="grid__badge">October Edition</div>
+                                    </div>
+                                    <div class="gridarea__small__icon">
+                                        <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                            target="_blank"><i class="icofont-heart-alt"></i></a>
+                                    </div>
+
+                                </div> -->
+                                <iframe src="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                    width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
+                                <div class="gridarea__content">
+                                    <div class="gridarea__list">
+                                        <ul>
+                                            <li>
+                                                <i class="icofont-book-alt"></i> Moday
+                                            </li>
+                                            <li>
+                                                <i class="icofont-clock-time"></i> 1/11/2025
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="gridarea__heading">
+                                        <h3><a href="">The October Edition: <br>Growing Together through Great Stories.
+                                            </a></h3>
+                                    </div>
+<p>As the season turns and the days grow shorter, there is a natural pull toward
+                                        reflection and gathering. In this month’s issue of Book Buddy, we lean into that
+                                        rhythm, focusing on our core theme: Growing Together through Great Stories. <br>
+
+                                        We believe that a story is more than just words on a page—it is a bridge. It
+                                        connects the curious mind of a child to the wisdom of an elder, and links
+                                        individual critical thinking to collective understanding. This edition is
+                                        dedicated to those moments of "genuine connection" that happen when we dive deep
+                                        into immersive narratives together.</p>
+                                    <div class="gridarea__bottom">
+                                        <div class="gridarea__bottom__left">
+                                            <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                                target="_blank">
+                                                <div class="gridarea__small__img">
+                                                    <img loading="lazy" src="{% static 'img/grid/grid_small_1.jpg' %}"
+                                                        alt="grid">
+                                                    <div class="gridarea__small__content">
+                                                        <h6>Book Buddy</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+
+                                        </div>
+
+                                        <div class="gridarea__details">
+                                            <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
+                                                target="_blank">Know Details
+                                                <i class="icofont-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+                <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
+                    <ul class="main__page__pagination">
+                        <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="icofont-double-right"></i></a></li>
+                    </ul>
+                </div> -->
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <!-- course__section__end   -->
+
+
+
+
+    {% include 'partials/footer.html' %}
+
+</main>
+
+{% endblock %}
