@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}Comming Soon{% endblock %}
+
+{% block content %}
+<!-- {% include 'partials/theme-switch.html' %} -->
+
+<main class="main_wrapper overflow-hidden">
+
+  <!-- topbar__section__stert -->
+  {% include 'partials/top-banner.html' %}
+  <!-- topbar__section__end -->
+
+  <!-- headar section start -->
+  {% include 'partials/navbar.html' %}
+  <!-- header section end -->
+
+  <!-- Mobile Menu Start Here -->
+  {% include 'partials/mobile-menu.html' %}
+  <!-- Mobile Menu end Here -->
+
+  <!-- theme fixed shadow -->
+  <div>
+    <div class="theme__shadow__circle"></div>
+    <div class="theme__shadow__circle shadow__right"></div>
+  </div>
+  <!-- theme fixed shadow -->
+
+
+<style>
+        :root {
+            --brand-main: #740f28;
+            --brand-light: #a3163a;
+            --soft-bg: #fdfdfd;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #fdfdfd, #f8f1f3, #fff5f7, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .coming-soon-wrapper {
+            min-height: 100vh; /* Ensures it takes full height but can grow */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px; /* Space for mobile */
+        }
+
+        .main-card {
+            background: #ffffff;
+            padding: 60px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.07);
+            border: 1px solid #f0f0f0;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .brand-tag {
+            color: var(--brand-main);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Dynamic sizing */
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .lead-p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Countdown Grid */
+        .countdown-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .timer-box {
+            background: #fcfcfc;
+            padding: 25px 10px;
+            border-radius: 16px;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-main);
+        }
+
+        .timer-num {
+            display: block;
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--brand-main);
+            line-height: 1;
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #999;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Action Button */
+        .btn-home {
+            background: var(--brand-main);
+            color: #fff;
+            padding: 16px 45px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(116, 15, 40, 0.15);
+        }
+
+        .btn-home:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .main-card { padding: 40px 20px; }
+            .countdown-container { gap: 10px; }
+            .timer-box { padding: 15px 5px; }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-container {
+                grid-template-columns: repeat(2, 1fr); /* 2x2 grid on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="coming-soon-wrapper">
+    <div class="main-card">
+        <span class="brand-tag">Book Buddy</span>
+        <h1>New Experience <br><span style="color:var(--brand-main)">Launching Soon</span></h1>
+        <p class="lead-p">We're building a joyful space for learning and stories. Join us on our journey starting February 2026.</p>
+
+        <div class="countdown-container">
+            <div class="timer-box">
+                <span class="timer-num" id="days">00</span>
+                <span class="timer-label">Days</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-num" id="hours">00</span>
+                <span class="timer-label">Hours</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-num" id="minutes">00</span>
+                <span class="timer-label">Minutes</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-num" id="seconds">00</span>
+                <span class="timer-label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="/" class="btn-home">Return to Homepage</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const targetDate = new Date("February 1, 2026 00:00:00").getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff > 0) {
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+        } else {
+            document.querySelector(".countdown-container").innerHTML = "<h3 class='fw-bold'>We are Live!</h3>";
+        }
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer(); // Initial call
+</script>
+
+
+
+
+
+</main>
+
+{% endblock %}

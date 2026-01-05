@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}News Paper{% endblock %}
+
+{% block content %}
+<!-- {% include 'partials/theme-switch.html' %} -->
+
+<main class="main_wrapper overflow-hidden">
+
+    <!-- topbar__section__stert -->
+    {% include 'partials/top-banner.html' %}
+    <!-- topbar__section__end -->
+
+    <!-- headar section start -->
+    {% include 'partials/navbar.html' %}
+    <!-- header section end -->
+
+    <!-- Mobile Menu Start Here -->
+    {% include 'partials/mobile-menu.html' %}
+    <!-- Mobile Menu end Here -->
+
+    <!-- theme fixed shadow -->
+    <div>
+        <div class="theme__shadow__circle"></div>
+        <div class="theme__shadow__circle shadow__right"></div>
+    </div>
+    <!-- theme fixed shadow -->
+
+
+
+
+
+
+
+<div class="newspaper-premium-section sp_top_100 sp_bottom_100">
+    <div class="container">
+        
+        <div class="row mb-5 pb-3 align-items-end">
+            <div class="col-md-6">
+                 <div class="aboutarea__button">
+                    <div class="default__small__button">Press & Media</div>
+                </div>
+                <h2 class="display-5 fw-bold mt-2">The <span class="text-maroon">Chronicle</span> Archive</h2>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="text-muted mb-2">Exploring the intersection of stories and learning.</p>
+            </div>
+        </div>
+
+        <div class="row g-5">
+            
+            <div class="col-xl-6" data-aos="fade-up">
+                <div class="chronicle-card">
+                    <div class="row g-0">
+                       <div class="col-sm-5">
+                            <div class="chronicle-cover">
+                                <img src="{% static 'img/newspaper/newspaper.jpg' %}" 
+                                     alt="December Edition" 
+                                     class="cover-img-element">
+                                <div class="edition-label">JAN 2026</div>
+                                <div class="read-overlay">
+                                    <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank" class="btn-open-direct">Open to Read Flip</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-7">
+                            <div class="chronicle-body">
+                                <div class="issue-header mb-4">
+                                    <span class="vol-tag">Volume 01</span>
+                                    <h3 class="issue-title">The Future of Literacy</h3>
+                                </div>
+
+                                <div class="highlights-simple">
+                                    <div class="hl-item">
+                                        <span class="hl-label">Cover Story</span>
+                                        <p class="hl-info">Community Reading Habits in 2026</p>
+                                    </div>
+                                    <div class="hl-item">
+                                        <span class="hl-label">Feature</span>
+                                        <p class="hl-info">Interview with local librarians</p>
+                                    </div>
+                                    <div class="hl-item">
+                                        <span class="hl-label">Learning</span>
+                                        <p class="hl-info">Critical thinking through storytelling</p>
+                                    </div>
+                                </div>
+
+                                <div class="chronicle-actions mt-auto">
+                                    <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank" class="btn-read-flip">Open Flip</a>
+                                    <a href="your-file-path.pdf" download class="btn-action-outline">PDF</a>
+                                    <button class="btn-action-outline" onclick="sharePaper('The Future of Literacy', 'https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf')">Share</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="chronicle-card">
+                    <div class="row g-0">
+                        <div class="col-sm-5">
+                            <div class="chronicle-cover">
+                                <img src="{% static 'img/newspaper/newspaper.jpg' %}" 
+                                     alt="December Edition" 
+                                     class="cover-img-element">
+                                <div class="edition-label">DEC 2025</div>
+                                <div class="read-overlay">
+                                    <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank" class="btn-open-direct">Open to Read Flip</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-7">
+                            <div class="chronicle-body">
+                                <div class="issue-header mb-4">
+                                    <span class="vol-tag">Volume 02</span>
+                                    <h3 class="issue-title">Winter Reading Gala</h3>
+                                </div>
+
+                                <div class="highlights-simple">
+                                    <div class="hl-item">
+                                        <span class="hl-label">Report</span>
+                                        <p class="hl-info">New Digital Library Launch Highlights</p>
+                                    </div>
+                                    <div class="hl-item">
+                                        <span class="hl-label">Events</span>
+                                        <p class="hl-info">The February 1st Launch Countdown</p>
+                                    </div>
+                                    <div class="hl-item">
+                                        <span class="hl-label">Feature</span>
+                                        <p class="hl-info">Community engagement workshop</p>
+                                    </div>
+                                </div>
+
+                                <div class="chronicle-actions mt-auto">
+                                    <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank" class="btn-read-flip">Open Flip</a>
+                                    <a href="your-file-path-2.pdf" download class="btn-action-outline">PDF</a>
+                                    <button class="btn-action-outline" onclick="sharePaper('Winter Reading Gala', 'https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf')">Share</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+<style>
+    .newspaper-premium-section { background-color: #fdfdfd; }
+    .text-maroon { color: #740f28; }
+    
+    .chronicle-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #eee;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+        height: 100%;
+        transition: 0.3s ease;
+    }
+
+    .chronicle-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+
+    .chronicle-cover {
+        position: relative;
+        height: 100%;
+        min-height: 400px;
+        background: #f8f8f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .cover-img-element { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+
+    .read-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        z-index: 5;
+    }
+
+    .chronicle-card:hover .read-overlay { opacity: 1; visibility: visible; }
+
+    .btn-open-direct {
+        background: #740f28; 
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        text-decoration: none;
+    }
+
+    .edition-label {
+        position: absolute;
+        top: 15px; left: 15px;
+        background: #000; color: #fff;
+        padding: 3px 10px; font-size: 9px;
+        font-weight: 800; border-radius: 2px;
+        z-index: 10;
+    }
+
+    /* Simple Content Styling */
+    .chronicle-body { padding: 30px; display: flex; flex-direction: column; height: 100%; }
+    .vol-tag { font-size: 11px; color: #740f28; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    .issue-title { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin: 5px 0 20px 0; }
+
+    .highlights-simple { display: flex; flex-direction: column; gap: 15px; }
+    .hl-label { font-size: 10px; text-transform: uppercase; color: #999; font-weight: 700; display: block; }
+    .hl-info { font-size: 1rem; color: #444; margin: 0; line-height: 1.4; }
+
+    /* Action Buttons */
+    .chronicle-actions { display: flex; gap: 10px; padding-top: 25px; }
+    
+    .btn-read-flip {
+        flex: 2;
+        background: #740f28;
+        color: #fff !important;
+        text-align: center;
+        padding: 12px 5px;
+        border-radius: 4px;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    .btn-action-outline {
+        flex: 1;
+        background: #fff;
+        color: #666;
+        text-align: center;
+        padding: 12px 5px;
+        border-radius: 4px;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 0.75rem;
+        border: 1px solid #ddd;
+        transition: 0.3s;
+    }
+
+    .btn-action-outline:hover { border-color: #740f28; color: #740f28; }
+    .btn-read-flip:hover { background: #000; }
+
+    @media (max-width: 575px) { .chronicle-cover { min-height: 350px; } }
+</style>
+
+<script>
+    function sharePaper(title, url) {
+        if (navigator.share) {
+            navigator.share({ title: title, url: url }).catch(console.error);
+        } else {
+            navigator.clipboard.writeText(url);
+            alert('Link copied to clipboard!');
+        }
+    }
+</script>
+
+
+    {% include 'partials/footer.html' %}
+
+</main>
+
+{% endblock %}

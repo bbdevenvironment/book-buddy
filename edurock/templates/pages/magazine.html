@@ -2,10 +2,10 @@
 
 {% load static i18n %}
 
-{% block title %}Course List{% endblock %}
+{% block title %}Magazine{% endblock %}
 
 {% block content %}
-{% include 'partials/theme-switch.html' %}
+<!-- {% include 'partials/theme-switch.html' %} -->
 
 <main class="main_wrapper overflow-hidden">
 
@@ -29,214 +29,154 @@
     <!-- theme fixed shadow -->
 
 
-    <!-- course__section__start   -->
-    <div class="coursearea sp_top_100 sp_bottom_100">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="course__text__wraper" data-aos="fade-up">
-                        <div class="course__text">
-                            <p>Our Magazine</p>
-                        </div>
-                        <div class="course__icon">
-                            <ul class="nav property__team__tap" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a href="#" class="single__tab__link" data-bs-toggle="tab"
-                                        data-bs-target="#projects__one"><i class="icofont-layout"></i>
-                                    </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a href="#" class="single__tab__link active" data-bs-toggle="tab"
-                                        data-bs-target="#projects__two"><i class="icofont-listine-dots"></i>
-                                    </a>
-                                </li>
-                                <!-- <li class="short__by__new">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected> Short by New</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </li> -->
-
-                            </ul>
-                        </div>
-                    </div>
-
+ <div class="magazine-section-premium coursearea sp_top_100 sp_bottom_100">
+    <div class="container">
+        
+        <div class="row mb-5 pb-3 align-items-end">
+            <div class="col-md-6">
+                <div class="aboutarea__button">
+                    <div class="default__small__button">Publication & Media</div>
                 </div>
-
-                <div class="col-xl-12">
-
-                    <div class="tab-content tab__content__wrapper" id="myTabContent">
-
-
-                        <div class="tab-pane fade" id="projects__one" role="tabpanel" aria-labelledby="projects__one">
-
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" data-aos="fade-up">
-                                    <div class="gridarea__wraper gridarea__wraper__2">
-                                        <!-- <div class="gridarea__img">
-                                            <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank"><img loading="lazy"
-                                                    src="{% static 'img/grid/grid_1.png' %}" alt="grid"></a>
-                                            <div class="gridarea__small__button">
-                                                <div class="grid__badge">October Edition</div>
-                                            </div>
-                                            <div class="gridarea__small__icon">
-                                                <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" target="_blank"><i class="icofont-heart-alt"></i></a>
-                                            </div>
-
-                                        </div> -->
-                                        <iframe src="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                            width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
-
-
-                                        <div class="gridarea__content">
-                                            <div class="gridarea__list">
-                                                <ul>
-                                                    <li>
-                                                        <i class="icofont-book-alt"></i> Monday
-                                                    </li>
-                                                    <li>
-                                                        <i class="icofont-clock-time"></i> 01/11/2025
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="gridarea__heading">
-                                                <h3><a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                                        target="_blank">The October Edition: <br>Growing Together
-                                                        through Great Stories.</a></h3>
-                                            </div>
-
-                                            <div class="gridarea__bottom">
-
-                                                <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                                    target="_blank">
-                                                    <div class="gridarea__small__img">
-                                                        <img loading="lazy"
-                                                            src="{% static 'img/grid/grid_small_1.jpg' %}" alt="grid">
-                                                        <div class="gridarea__small__content">
-                                                            <h6>Book Buddy</h6>
-                                                        </div>
-                                                    </div>
-                                                </a>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="tab-pane fade active show" id="projects__two" role="tabpanel"
-                            aria-labelledby="projects__two">
-
-                            <div class="gridarea__wraper gridarea__wraper__2 gridarea__course__list" data-aos="fade-up">
-                                <!-- <div class="gridarea__img">
-                                    <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                        target="_blank"><img loading="lazy" src="{% static 'img/grid/grid_1.png' %}"
-                                            alt="grid"></a>
-                                    <div class="gridarea__small__button">
-                                        <div class="grid__badge">October Edition</div>
-                                    </div>
-                                    <div class="gridarea__small__icon">
-                                        <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                            target="_blank"><i class="icofont-heart-alt"></i></a>
-                                    </div>
-
-                                </div> -->
-                                <iframe src="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                    width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
-                                <div class="gridarea__content">
-                                    <div class="gridarea__list">
-                                        <ul>
-                                            <li>
-                                                <i class="icofont-book-alt"></i> Moday
-                                            </li>
-                                            <li>
-                                                <i class="icofont-clock-time"></i> 1/11/2025
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="gridarea__heading">
-                                        <h3><a href="">The October Edition: <br>Growing Together through Great Stories.
-                                            </a></h3>
-                                    </div>
-<p>As the season turns and the days grow shorter, there is a natural pull toward
-                                        reflection and gathering. In this month’s issue of Book Buddy, we lean into that
-                                        rhythm, focusing on our core theme: Growing Together through Great Stories. <br>
-
-                                        We believe that a story is more than just words on a page—it is a bridge. It
-                                        connects the curious mind of a child to the wisdom of an elder, and links
-                                        individual critical thinking to collective understanding. This edition is
-                                        dedicated to those moments of "genuine connection" that happen when we dive deep
-                                        into immersive narratives together.</p>
-                                    <div class="gridarea__bottom">
-                                        <div class="gridarea__bottom__left">
-                                            <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                                target="_blank">
-                                                <div class="gridarea__small__img">
-                                                    <img loading="lazy" src="{% static 'img/grid/grid_small_1.jpg' %}"
-                                                        alt="grid">
-                                                    <div class="gridarea__small__content">
-                                                        <h6>Book Buddy</h6>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-
-                                        <div class="gridarea__details">
-                                            <a href="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf"
-                                                target="_blank">Know Details
-                                                <i class="icofont-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-
-
-                <!-- <div class="main__pagination__wrapper" data-aos="fade-up">
-                    <ul class="main__page__pagination">
-                        <li><a class="disable" href="#"><i class="icofont-double-left"></i></a></li>
-                        <li><a class="active" href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="icofont-double-right"></i></a></li>
-                    </ul>
-                </div> -->
-
+                <h2 class="display-5 fw-bold mt-2">The <span class="text-maroon">Magazine</span> Archive</h2>
             </div>
+            <div class="col-md-6 text-md-end">
+                <p class="text-muted mb-2">Celebrating creativity and community through every page.</p>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="tab-content tab__content__wrapper" id="myTabContent">
+                    <div class="tab-pane fade active show" id="projects__two" role="tabpanel">
+                        
+                        <div class="row g-4"> 
+                            
+                            <div class="col-md-6" data-aos="fade-up">
+                                <div class="magazine-grid-item">
+                                    <div class="magazine-footer">
+                                        <div class="d-flex align-items-center">
+                                            <h4 class="h6 fw-bold mb-0 me-2">Edition - Oct 2025</h4>
+                                            <span class="badge bg-maroon">Interactive</span>
+                                        </div>
+                                        <button class="btn-share-icon" onclick="shareMagazine('Book Buddy Magazine - Oct 2025', 'https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf')" title="Share">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                                        </button>
+                                    </div>
+                                    <div class="magazine-wrapper">
+                                        <iframe 
+                                            src="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" 
+                                            class="magazine-iframe"
+                                            allowfullscreen 
+                                            frameborder="0">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="col-md-6" data-aos="fade-up">
+                                <div class="magazine-grid-item">
+                                    <div class="magazine-footer">
+                                        <div class="d-flex align-items-center">
+                                            <h4 class="h6 fw-bold mb-0 me-2">Edition - Nov 2025</h4>
+                                            <span class="badge bg-maroon">Interactive</span>
+                                        </div>
+                                        <button class="btn-share-icon" onclick="shareMagazine('Book Buddy Magazine - Nov 2025', 'https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf')" title="Share">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                                        </button>
+                                    </div>
+                                    <div class="magazine-wrapper">
+                                        <iframe 
+                                            src="https://flip-book-frontend.vercel.app/?file=book-buddy-0ct2025.pdf" 
+                                            class="magazine-iframe"
+                                            allowfullscreen 
+                                            frameborder="0">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
 
-
-
-
-
+                        </div> 
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- course__section__end   -->
+</div>
+
+<style>
+    .text-maroon { color: #740f28; }
+    
+    .magazine-grid-item {
+        background: #ffffff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .magazine-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 75%; 
+        background: #f8f8f8;
+    }
+
+    .magazine-iframe {
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        width: 100%; height: 100%;
+        border: none;
+    }
+
+    .magazine-footer {
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .btn-share-icon {
+        background: transparent;
+        border: none;
+        color: #ccc;
+        cursor: pointer;
+        padding: 5px;
+        transition: 0.3s ease;
+        line-height: 0;
+    }
+
+    .btn-share-icon:hover {
+        color: #740f28;
+        transform: scale(1.1);
+    }
+
+    .bg-maroon {
+        background-color: #740f28;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+</style>
+
+<script>
+    function shareMagazine(title, url) {
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                text: 'Check out this edition of ' + title,
+                url: url,
+            }).catch(console.error);
+        } else {
+            navigator.clipboard.writeText(url);
+            alert('Link copied to clipboard!');
+        }
+    }
+</script>
 
 
 
