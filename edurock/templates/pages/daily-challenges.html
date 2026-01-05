@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}Daily Challenges{% endblock %}
+
+{% block content %}
+<!-- {% include 'partials/theme-switch.html' %} -->
+
+<main class="main_wrapper overflow-hidden">
+
+    <!-- topbar__section__stert -->
+    {% include 'partials/top-banner.html' %}
+    <!-- topbar__section__end -->
+
+    <!-- headar section start -->
+    {% include 'partials/navbar.html' %}
+    <!-- header section end -->
+
+    <!-- Mobile Menu Start Here -->
+    {% include 'partials/mobile-menu.html' %}
+    <!-- Mobile Menu end Here -->
+
+    <!-- theme fixed shadow -->
+    <div>
+        <div class="theme__shadow__circle"></div>
+        <div class="theme__shadow__circle shadow__right"></div>
+    </div>
+    <!-- theme fixed shadow -->
+
+
+
+
+
+<div class="activity-section sp_top_100 sp_bottom_100" style="background-color: #fdfdfd;">
+    <div class="container">
+        
+        <div class="row mb-5 pb-3 align-items-end">
+            <div class="col-md-6">
+                 <div class="aboutarea__button">
+                    <div class="default__small__button">Interactive Learning</div>
+                </div>
+                <h2 class="display-5 fw-bold mt-2">Classroom <span class="text-maroon">Games</span></h2>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="activity-stats-bar">
+                    <span class="stat-box">Timer: <b id="activity-timer">00:00</b></span>
+                    <span class="stat-box">Progress: <b id="progress-text">0/0</b></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="selection-menu">
+            <div class="row g-4">
+                <div class="col-12 mb-2">
+                    <h4 class="fw-bold mb-3"><span class="text-maroon">Anagram</span> (Word Scramble)</h4>
+                </div>
+                <div class="col-md-4">
+                    <div class="game-card-kid" onclick="initActivity('anagram', 'SCIENCE')">
+                        <div class="category-img-container">
+                            <img src="https://images.unsplash.com/photo-1532009324734-20a7a5813719?w=400" alt="Science">
+                        </div>
+                        <h5>Science Activity</h5>
+                        <p>Master States of Matter</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="game-card-kid" onclick="initActivity('anagram', 'SCHOOL')">
+                        <div class="category-img-container">
+                            <img src="https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=400" alt="School">
+                        </div>
+                        <h5>School Items</h5>
+                        <p>Identify Classroom Tools</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="game-card-kid" onclick="initActivity('anagram', 'FEELINGS')">
+                        <div class="category-img-container">
+                            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400" alt="Feelings">
+                        </div>
+                        <h5>Feelings</h5>
+                        <p>Express Your Emotions</p>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-4 mb-2">
+                    <h4 class="fw-bold mb-3"><span class="text-maroon">Unjumble</span> (Sentence Order)</h4>
+                </div>
+                <div class="col-md-4">
+                    <div class="game-card-kid" onclick="initActivity('unjumble', 'GREETINGS')">
+                        <div class="category-img-container">
+                            <img src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?w=400" alt="Greetings">
+                        </div>
+                        <h5>Greetings</h5>
+                        <p>Learn Polite Phrases</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="game-card-kid" onclick="initActivity('unjumble', 'LIBRARY')">
+                        <div class="category-img-container">
+                            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400" alt="Library">
+                        </div>
+                        <h5>Library Rules</h5>
+                        <p>Proper Library Behavior</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="game-card-kid" onclick="initActivity('unjumble', 'NATURE')">
+                        <div class="category-img-container">
+                            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400" alt="Nature">
+                        </div>
+                        <h5>Nature Facts</h5>
+                        <p>Discover the World</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="game-play-zone" class="d-none">
+            <div class="game-board-container">
+                <div id="game-image-clue" class="mb-4"></div>
+                <h4 id="game-instruction" class="mb-4 text-muted small fw-bold text-uppercase"></h4>
+                
+                <div id="target-slots" class="game-row mb-5"></div>
+
+                <div id="source-items" class="game-row"></div>
+
+                <div class="mt-5 d-flex flex-wrap justify-content-center gap-3">
+                    <button class="btn-nav" onclick="exitToMenu()">← Back</button>
+                    <button class="btn-nav" id="hint-btn" onclick="showHint()">Hint 💡</button>
+                    <button id="next-btn" class="btn-next d-none" onclick="loadNextChallenge()">Next Challenge →</button>
+                    <div id="game-msg" class="win-text"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .text-maroon { color: #740f28; }
+    .activity-stats-bar { background: #fff; padding: 10px 25px; border-radius: 50px; border: 1px solid #eee; display: inline-flex; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+    .stat-box { font-weight: 800; color: #555; font-size: 0.85rem; }
+
+    /* Category Cards */
+    .game-card-kid { background: #fff; border: 1px solid #eee; border-radius: 20px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s; height: 100%; }
+    .game-card-kid:hover { transform: translateY(-8px); border-color: #740f28; box-shadow: 0 15px 30px rgba(116, 15, 40, 0.08); }
+    .category-img-container { width: 100%; height: 140px; border-radius: 15px; overflow: hidden; margin-bottom: 15px; }
+    .category-img-container img { width: 100%; height: 100%; object-fit: cover; }
+    .game-card-kid h5 { font-weight: 800; font-size: 1.1rem; margin-bottom: 5px; }
+    .game-card-kid p { font-size: 0.8rem; color: #999; margin: 0; }
+
+    /* Game UI */
+    .game-board-container { background: #fff; padding: 50px 20px; border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f0f0f0; }
+    .game-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; min-height: 90px; }
+    .target-box { width: 75px; height: 85px; background: #f0f1f3; border-radius: 12px; border: 2px dashed #d1d5db; position: relative; }
+    .unjumble-slot { width: 140px; height: 60px; } 
+
+    /* Maroon Draggable Items */
+    .drag-item { background: #740f28; color: #fff; border-radius: 10px; cursor: grab; display: flex; align-items: center; justify-content: center; font-weight: 900; box-shadow: 0 5px 0 #4d0a1b; transition: 0.1s; user-select: none; }
+    .letter-item { width: 75px; height: 85px; font-size: 2rem; }
+    .word-item { padding: 10px 20px; height: 60px; font-size: 1rem; }
+
+    .win-text { font-size: 1.8rem; font-weight: 800; color: #28a745; margin-left: 15px; }
+    .btn-nav { background: #f8f9fa; border: 1px solid #ddd; padding: 10px 25px; border-radius: 50px; font-weight: 700; color: #666; transition: 0.3s; }
+    .btn-next { background: #740f28; color: #fff; border: none; padding: 10px 30px; border-radius: 50px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 15px rgba(116, 15, 40, 0.3); }
+    .btn-nav:hover, .btn-next:hover { opacity: 0.9; transform: scale(1.05); }
+
+    @media (max-width: 768px) {
+        .target-box, .letter-item { width: 48px; height: 58px; font-size: 1.3rem; }
+        .unjumble-slot, .word-item { width: 100px; font-size: 0.8rem; }
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script>
+    const gameData = {
+        anagram: {
+            SCIENCE: ["LIQUID", "GAS", "SOLID", "OXYGEN", "ATOM", "STEAM"],
+            SCHOOL: ["PENCIL", "ERASER", "BOOKS", "BOARD", "RULER", "PAPER"],
+            FEELINGS: ["HAPPY", "SMILE", "BRAVE", "KIND", "PROUD", "CALM"]
+        },
+        unjumble: {
+            GREETINGS: ["HELLO HOW ARE YOU", "GOOD MORNING TO ALL", "HAVE A NICE DAY"],
+            LIBRARY: ["PLEASE KEEP QUIET HERE", "READ BOOKS EVERY DAY", "RETURN BOOKS ON TIME"],
+            NATURE: ["TREES GIVE US OXYGEN", "WATER IS VERY IMPORTANT", "SUN RISES IN EAST"]
+        }
+    };
+
+    let currentType, currentKey, currentIndex = 0, solution, timer, seconds = 0;
+
+    function initActivity(type, key) {
+        currentType = type; currentKey = key; currentIndex = 0;
+        loadChallenge();
+    }
+
+    function loadChallenge() {
+        const pool = gameData[currentType][currentKey];
+        if (currentIndex >= pool.length) {
+            alert("All challenges completed! Returning to menu.");
+            exitToMenu();
+            return;
+        }
+
+        const raw = pool[currentIndex];
+        solution = currentType === 'anagram' ? raw.split('') : raw.split(' ');
+        
+        document.getElementById('selection-menu').classList.add('d-none');
+        document.getElementById('game-play-zone').classList.remove('d-none');
+        document.getElementById('progress-text').innerText = `${currentIndex + 1}/${pool.length}`;
+        document.getElementById('game-msg').innerText = "";
+        document.getElementById('next-btn').classList.add('d-none');
+        
+        const target = document.getElementById('target-slots');
+        const source = document.getElementById('source-items');
+        target.innerHTML = ""; source.innerHTML = "";
+
+        solution.forEach(() => {
+            const slot = document.createElement('div');
+            slot.className = `target-box ${currentType === 'unjumble' ? 'unjumble-slot' : ''}`;
+            target.appendChild(slot);
+            new Sortable(slot, { group: 'game', animation: 150, onAdd: (e) => {
+                if (e.to.children.length > 1) source.appendChild(e.item);
+                checkVictory();
+            }});
+        });
+
+        let items = [...solution].sort(() => Math.random() - 0.5);
+        items.forEach(val => {
+            const div = document.createElement('div');
+            div.className = `drag-item ${currentType === 'anagram' ? 'letter-item' : 'word-item'}`;
+            div.innerText = val;
+            source.appendChild(div);
+        });
+
+        new Sortable(source, { group: 'game', animation: 150 });
+        if (currentIndex === 0) startTimer();
+    }
+
+    function checkVictory() {
+        const slots = document.querySelectorAll('#target-slots .target-box');
+        let attempt = [];
+        slots.forEach(s => { if(s.children.length) attempt.push(s.children[0].innerText); });
+
+        if (attempt.join(currentType === 'anagram' ? '' : ' ') === solution.join(currentType === 'anagram' ? '' : ' ')) {
+            document.getElementById('game-msg').innerText = "WELL DONE! 🎉";
+            document.getElementById('next-btn').classList.remove('d-none');
+        }
+    }
+
+    function loadNextChallenge() {
+        currentIndex++;
+        loadChallenge();
+    }
+
+    function startTimer() {
+        seconds = 0; clearInterval(timer);
+        timer = setInterval(() => {
+            seconds++;
+            let m = Math.floor(seconds/60).toString().padStart(2,'0');
+            let s = (seconds%60).toString().padStart(2,'0');
+            document.getElementById('activity-timer').innerText = `${m}:${s}`;
+        }, 1000);
+    }
+
+    function showHint() { alert("Hint: Starts with '" + solution[0] + "'"); }
+
+    function exitToMenu() {
+        clearInterval(timer);
+        document.getElementById('selection-menu').classList.remove('d-none');
+        document.getElementById('game-play-zone').classList.add('d-none');
+    }
+</script>
+
+
+    {% include 'partials/footer.html' %}
+
+</main>
+
+{% endblock %}

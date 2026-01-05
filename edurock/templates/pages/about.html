@@ -31,205 +31,191 @@
 
 
 
-  <section class="ikigai-modern-asymmetric">
-    <div class="container">
-
-      <div class="row mb-5 pb-5 align-items-center">
-        <div class="col-lg-7">
-          <span class="philosophy-tag">The Book Buddy Philosophy</span>
-          <h2 class="display-3 fw-bold mt-3 mb-4">Our <span class="text-accent">Ikigai</span></h2>
-          <p class="lead-text">
-            "At the centre of Book Buddy is meaningful learning through stories and community.
-            When reading is joyful and learning is supported, confidence grows—and learners thrive for life."
-          </p>
-        </div>
-        <div class="col-lg-5 text-center">
-          <div class="ikigai-logo-container">
-            <img loading="lazy" src="{% static 'img/logo/ikigai-logo.png' %}" alt="Ikigai Logo"
-              class="img-fluid ikigai-logo">
-          </div>
-        </div>
+ <section class="ikigai-modern-v2">
+  <div class="container">
+    <div class="row mb-5 align-items-center position-relative">
+      <div class="col-lg-7">
+        <div class="philosophy-badge">The Book Buddy Philosophy</div>
+        <h2 class="modern-title mt-3">Our <span>Ikigai</span></h2>
+       <div class="quote-container">
+                    <p class="quote-text">
+                        "At the centre of Book Buddy is meaningful learning through stories and community. 
+                        When reading is joyful and learning is supported, learners thrive for life."
+                    </p>
+                </div>
       </div>
-
-      <div class="philosophy-grid">
-
-        <div class="box-card item-primary">
-          <div class="card-inner">
-            <h3 class="box-title">Why Book Buddy Exists</h3>
-            <p class="box-desc">We believe learning should feel joyful, curious, and connected—not rushed or stressful.
-              This is where reading begins and skills grow through the power of stories.</p>
-          </div>
+      <div class="col-lg-5 text-center">
+        <div class="logo-morph-container">
+          <div class="blob-bg"></div>
+          <img loading="lazy" src="{% static 'img/logo/ikigai-logo.png' %}" alt="Ikigai Logo" class="ikigai-logo-v2">
         </div>
-
-        <div class="box-card item-secondary">
-          <div class="card-inner">
-            <h3 class="box-title">Why Families Choose Us</h3>
-            <ul class="clean-list">
-              <li><span class="num">01</span> Less pressure, more understanding</li>
-              <li><span class="num">02</span> Strong critical thinking skills</li>
-              <li><span class="num">03</span> Learning that goes beyond textbooks</li>
-              <li><span class="num">04</span> A balance of academics and creativity</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="box-card item-tertiary">
-          <div class="card-inner">
-            <h3 class="box-title">What Makes Us Different</h3>
-            <ul class="clean-list">
-              <li><span class="num">01</span> Building strong reading habits</li>
-              <li><span class="num">02</span> Story-based conceptual learning</li>
-              <li><span class="num">03</span> Balancing school & life skills</li>
-              <li><span class="num">04</span> Safe, supportive community</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="box-card item-quaternary">
-          <div class="card-inner">
-            <h3 class="box-title">How We Grow Together</h3>
-            <p class="box-desc">We offer a community library, classroom-complementary support, and beyond-school
-              learning for both kids and adults through online resources and live events.</p>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
 
-  <style>
-    :root {
-      --brand-main: #740f28;
+    <div class="philosophy-2x2-grid">
+      
+      <div class="concept-card">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <div class="card-number">01</div>
+          <h3 class="card-h">Why Book Buddy Exists</h3>
+          <p class="card-p">We believe learning should feel joyful, curious, and connected—not rushed or stressful. This is where reading begins and skills grow through stories.</p>
+        </div>
+      </div>
 
-      --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+      <div class="concept-card">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <div class="card-number">02</div>
+          <h3 class="card-h">Why Families Choose Us</h3>
+          <ul class="card-list">
+            <li>Less pressure, more understanding</li>
+            <li>Strong critical thinking skills</li>
+           
+            <li>Academics & creativity balanced</li>
+             
+          </ul>
+        </div>
+      </div>
+
+      <div class="concept-card">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <div class="card-number">03</div>
+          <h3 class="card-h">What Makes Us Different</h3>
+          <ul class="card-list">
+            <li>Building strong reading habits</li>
+            <li>Story-based conceptual learning</li>
+            <li>Safe, supportive community</li>
+           
+          </ul>
+        </div>
+      </div>
+
+      <div class="concept-card">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <div class="card-number">04</div>
+          <h3 class="card-h">How We Grow Together</h3>
+          <p class="card-p">We offer community libraries, classroom-complementary support, and beyond-school learning for kids and adults through live events.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --accent: #740f28;
+    --accent-light: rgba(116, 15, 40, 0.08);
+    --m-maroon: #740f28;
+        --m-maroon-soft: rgba(116, 15, 40, 0.05);
+  }
+
+  .ikigai-modern-v2 {
+    padding: 100px 0;
+    background: #fdfdfd;
+    overflow: hidden;
+  }
+
+  /* Header Styles */
+  .philosophy-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .modern-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -1.5px; }
+  .modern-title span { color: var(--accent); }
+  .modern-lead { font-size: 1.25rem; line-height: 1.7; color: #555; border-left: 4px solid var(--accent); padding-left: 20px; margin-top: 1.5rem; font-weight: 300; }
+
+  /* Logo Area */
+  .logo-morph-container { position: relative; }
+  .blob-bg {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 250px; height: 250px; background: var(--accent-light);
+    filter: blur(40px); border-radius: 50%; z-index: 1;
+  }
+  .ikigai-logo-v2 { max-width: 280px; position: relative; z-index: 2; }
+
+  /* 2x2 Grid Logic */
+  .philosophy-2x2-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+  }
+  .quote-container {
+        margin-top: 30px;
+        padding: 20px 30px;
+        border-left: 5px solid var(--m-maroon);
+        background: var(--m-maroon-soft);
+        border-radius: 0 20px 20px 0;
     }
 
-    .ikigai-modern-asymmetric {
-      padding: 80px 0;
-      background-color: var(--soft-bg);
-      color: #1a1a1a;
-    }
+    .quote-text { font-size: 1.25rem; color: #444; line-height: 1.7; font-weight: 300; margin: 0; }
 
-    .philosophy-tag {
-      color: var(--brand-main);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.8rem;
-    }
+  .concept-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 25px;
+    padding: 40px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  }
 
-    .text-accent {
-      color: var(--brand-main);
-    }
+  .concept-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(116, 15, 40, 0.1);
+  }
 
-    .lead-text {
-      font-size: 1.4rem;
-      line-height: 1.6;
-      color: #444;
-      max-width: 800px;
-      font-weight: 300;
-    }
+  /* Subtle background glow on hover */
+  .card-glow {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+    opacity: 0; transition: 0.5s ease; pointer-events: none;
+  }
+  .concept-card:hover .card-glow { opacity: 1; }
 
-    .ikigai-logo {
-      max-width: 320px;
-      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
-    }
+  .card-content { position: relative; z-index: 2; }
 
-    /* GRID LOGIC FIXED HERE */
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 25px;
-    }
+  .card-number {
+    font-size: 0.8rem; font-weight: 900; color: #fff;
+    background: var(--accent); width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; margin-bottom: 20px;
+  }
 
-    .box-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 35px;
-      border: 1px solid #f0f0f0;
-      box-shadow: var(--card-shadow);
-      height: 100%;
-    }
+  .card-h { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: #1a1a1a; }
+  .card-p { color: #666; line-height: 1.6; margin: 0; }
 
-    /* Asymmetric Spans: Creates the 'Zig-Zag' feel */
-    .item-primary {
-      grid-column: span 7;
-    }
+  .card-list { list-style: none; padding: 0; margin: 0; }
+  .card-list li {
+    padding: 8px 0; padding-left: 25px; position: relative;
+    font-size: 0.95rem; color: #555; border-bottom: 1px solid #f8f8f8;
+  }
+  .card-list li::before {
+    content: "•"; position: absolute; left: 0;
+    color: var(--accent); font-weight: bold; font-size: 1.2rem;
+  }
 
-    .item-secondary {
-      grid-column: span 5;
-    }
-
-    .item-tertiary {
-      grid-column: span 5;
-    }
-
-    .item-quaternary {
-      grid-column: span 7;
-    }
-
-    .box-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    .box-desc {
-      font-size: 1rem;
-      color: #666;
-      line-height: 1.6;
-    }
-
-    .clean-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .clean-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 0;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    .num {
-      font-weight: 800;
-      color: #fff;
-      background: var(--brand-main);
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 5px;
-      font-size: 0.65rem;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 991px) {
-
-      .item-primary,
-      .item-secondary,
-      .item-tertiary,
-      .item-quaternary {
-        grid-column: span 12;
-      }
-
-      .ikigai-logo {
-        margin-top: 40px;
-        max-width: 250px;
-      }
-
-      .lead-text {
-        font-size: 1.1rem;
-      }
-    }
-  </style>
-
-
+  /* Mobile */
+  @media (max-width: 991px) {
+    .philosophy-2x2-grid { grid-template-columns: 1fr; }
+    .modern-title { font-size: 2.8rem; }
+    .ikigai-logo-v2 { max-width: 200px; margin-top: 30px; }
+  }
+</style>
 
 
 

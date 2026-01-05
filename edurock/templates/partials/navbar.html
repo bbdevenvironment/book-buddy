@@ -108,7 +108,7 @@
 
 
 
-                <li><a class="headerarea__has__dropdown" href="">Beyond School
+                <li><a class="headerarea__has__dropdown" href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Beyond School
                     <i class="icofont-rounded-down"></i>
                   </a>
                   <ul class="headerarea__submenu headerarea__submenu--third--wrap">
@@ -137,11 +137,11 @@
 
                       </ul>
                     </li>
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Podcasts <i
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='podcasts' %}">Podcasts <i
                           class="icofont-rounded-right"></i></a>
                       <ul class="headerarea__submenu--third">
-                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Kids</a></li>
-                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Adults</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='podcasts' %}">Kids</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='podcasts' %}">Adults</a></li>
 
 
                       </ul>
@@ -152,7 +152,7 @@
                       <ul class="headerarea__submenu--third">
                         <li><a href="{% url 'pages:dynamic_pages' template_name='magazine' %}">Monthly Magazine</a></li>
                         <li><a href="{% url 'pages:dynamic_pages' template_name='news-paper' %}">Newspaper</a></li>
-                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Daily Challenges</a>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='daily-challenges' %}">Daily Challenges</a>
                         </li>
 
 

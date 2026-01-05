@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}Podcasts{% endblock %}
+
+{% block content %}
+<!-- {% include 'partials/theme-switch.html' %} -->
+
+<main class="main_wrapper overflow-hidden">
+
+    <!-- topbar__section__stert -->
+    {% include 'partials/top-banner.html' %}
+    <!-- topbar__section__end -->
+
+    <!-- headar section start -->
+    {% include 'partials/navbar.html' %}
+    <!-- header section end -->
+
+    <!-- Mobile Menu Start Here -->
+    {% include 'partials/mobile-menu.html' %}
+    <!-- Mobile Menu end Here -->
+
+    <!-- theme fixed shadow -->
+    <div>
+        <div class="theme__shadow__circle"></div>
+        <div class="theme__shadow__circle shadow__right"></div>
+    </div>
+    <!-- theme fixed shadow -->
+
+
+
+
+
+
+<div class="podcast-premium-section sp_top_100 sp_bottom_100">
+    <div class="container">
+        
+        <div class="row mb-5 pb-3 align-items-end">
+            <div class="col-md-6">
+                <div class="aboutarea__button">
+                    <div class="default__small__button">Media & Audio</div>
+                </div>
+                <h2 class="display-5 fw-bold mt-2">The <span class="text-maroon">Podcast</span> Archive</h2>
+            </div>
+            <div class="col-md-6 text-md-end d-none d-md-block">
+                <p class="text-muted mb-2">Exploring the intersection of stories and learning.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="podcast-card-white">
+                    <div class="podcast-header-simple">
+                        <span class="podcast-label">Episode 01</span>
+                        <button class="share-minimal" onclick="shareAudio('Episode 1', 'https://open.spotify.com/embed/episode/0yBONXZsTreacXEAq0Kfm2?utm_source=generator')">
+                            Share <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                        </button>
+                    </div>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0yBONXZsTreacXEAq0Kfm2?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="podcast-card-white">
+                    <div class="podcast-header-simple">
+                        <span class="podcast-label">Episode 02</span>
+                        <button class="share-minimal" onclick="shareAudio('Episode 2', 'https://open.spotify.com/embed/episode/0czevIB52AUz0DRTDLRKfB?utm_source=generator')">
+                            Share <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                        </button>
+                    </div>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0czevIB52AUz0DRTDLRKfB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="podcast-card-white">
+                    <div class="podcast-header-simple">
+                        <span class="podcast-label">Episode 03</span>
+                        <button class="share-minimal" onclick="shareAudio('Episode 3', 'https://open.spotify.com/embed/episode/2GwFb93qHhwXI8USEIngE0?utm_source=generator')">
+                            Share <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                        </button>
+                    </div>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/2GwFb93qHhwXI8USEIngE0?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="podcast-card-white">
+                    <div class="podcast-header-simple">
+                        <span class="podcast-label">Episode 04</span>
+                        <button class="share-minimal" onclick="shareAudio('Episode 4', 'https://open.spotify.com/embed/episode/5vrplTcPsyqNEXajHWtTTA?utm_source=generator')">
+                            Share <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                        </button>
+                    </div>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5vrplTcPsyqNEXajHWtTTA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .podcast-premium-section { background-color: #ffffff; }
+    .text-maroon { color: #740f28; }
+
+    .podcast-card-white {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid #f0f0f0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .podcast-card-white:hover {
+        transform: translateY(-5px);
+        border-color: #740f28;
+        box-shadow: 0 15px 40px rgba(116, 15, 40, 0.1);
+    }
+
+    .podcast-header-simple {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .podcast-label {
+        font-size: 11px;
+        font-weight: 800;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .share-minimal {
+        background: transparent;
+        border: none;
+        color: #740f28;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: 0.2s;
+    }
+
+    .share-minimal:hover { opacity: 0.7; }
+
+    /* Layout fixes */
+    @media (max-width: 767px) {
+        .podcast-card-white { margin-bottom: 10px; padding: 15px; }
+    }
+</style>
+
+<script>
+    function shareAudio(title, url) {
+        if (navigator.share) {
+            navigator.share({ title: title, url: url }).catch(console.error);
+        } else {
+            navigator.clipboard.writeText(url);
+            alert('Link copied to clipboard!');
+        }
+    }
+</script>
+
+
+    {% include 'partials/footer.html' %}
+
+</main>
+
+{% endblock %}
