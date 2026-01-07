@@ -31,18 +31,17 @@
 
 
 
- <section class="ikigai-modern-v2">
+<section class="ikigai-modern-v2">
   <div class="container">
     <div class="row mb-5 align-items-center position-relative">
       <div class="col-lg-7">
         <div class="philosophy-badge">The Book Buddy Philosophy</div>
         <h2 class="modern-title mt-3">Our <span>Ikigai</span></h2>
-       <div class="quote-container">
-                    <p class="quote-text">
-                        "At the centre of Book Buddy is meaningful learning through stories and community. 
-                        When reading is joyful and learning is supported, learners thrive for life."
-                    </p>
-                </div>
+        <div class="quote-container">
+          <p class="quote-text">
+            {{ about.quote_text|default:"At the centre of Book Buddy is meaningful learning through stories and community." }}
+          </p>
+        </div>
       </div>
       <div class="col-lg-5 text-center">
         <div class="logo-morph-container">
@@ -58,52 +57,54 @@
         <div class="card-glow"></div>
         <div class="card-content">
           <div class="card-number">01</div>
-          <h3 class="card-h">Why Book Buddy Exists</h3>
-          <p class="card-p">We believe learning should feel joyful, curious, and connected—not rushed or stressful. This is where reading begins and skills grow through stories.</p>
+          <h3 class="card-h">{{ about.card_01_title }}</h3>
+          <p class="card-p">{{ about.card_01_text }}</p>
         </div>
       </div>
 
-      <div class="concept-card">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-number">02</div>
-          <h3 class="card-h">Why Families Choose Us</h3>
-          <ul class="card-list">
-            <li>Less pressure, more understanding</li>
-            <li>Strong critical thinking skills</li>
-           
-            <li>Academics & creativity balanced</li>
-             
-          </ul>
-        </div>
-      </div>
+    <div class="concept-card">
+  <div class="card-glow"></div>
+  <div class="card-content">
+    <div class="card-number">02</div>
+    <h3 class="card-h">{{ about.card_02_title }}</h3>
+    <ul class="card-list">
+      {% for item in about.card_02_list.splitlines %}
+        {% if item.strip %}
+          <li>{{ item }}</li><br> {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
-      <div class="concept-card">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-number">03</div>
-          <h3 class="card-h">What Makes Us Different</h3>
-          <ul class="card-list">
-            <li>Building strong reading habits</li>
-            <li>Story-based conceptual learning</li>
-            <li>Safe, supportive community</li>
-           
-          </ul>
-        </div>
-      </div>
+<div class="concept-card">
+  <div class="card-glow"></div>
+  <div class="card-content">
+    <div class="card-number">03</div>
+    <h3 class="card-h">{{ about.card_03_title }}</h3>
+    <ul class="card-list">
+      {% for item in about.card_03_list.splitlines %}
+        {% if item.strip %}
+          <li>{{ item }}</li><br> {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
       <div class="concept-card">
         <div class="card-glow"></div>
         <div class="card-content">
           <div class="card-number">04</div>
-          <h3 class="card-h">How We Grow Together</h3>
-          <p class="card-p">We offer community libraries, classroom-complementary support, and beyond-school learning for kids and adults through live events.</p>
+          <h3 class="card-h">{{ about.card_04_title }}</h3>
+          <p class="card-p">{{ about.card_04_text }}</p>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+
+
 
 <style>
   :root {
@@ -216,6 +217,12 @@
     .ikigai-logo-v2 { max-width: 200px; margin-top: 30px; }
   }
 </style>
+
+
+
+
+
+
 
 
 

@@ -8,6 +8,8 @@ from django.views.generic import UpdateView
 
 from edurock.users.models import User
 
+from .models import AboutUs
+from django.shortcuts import render
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
@@ -43,3 +45,14 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+
+
+
+
+def about_view(request):
+    # Try to get the dynamic content from Admin
+    about_data = AboutUs.objects.first()
+    
+    # 'about' will be the dynamic data, your static HTML will stay as the wrapper
+    return render(request, "pages/about.html", {"about": about_data})
