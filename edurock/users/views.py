@@ -2,57 +2,47 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView
-from django.views.generic import RedirectView
-from django.views.generic import UpdateView
+from django.views.generic import DetailView, RedirectView, UpdateView
+from django.shortcuts import render, redirect
 
-from edurock.users.models import User
-
-from .models import AboutUs
-from django.shortcuts import render
+from .models import User, AboutUs, StudentActivity
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
-    slug_field = "id"
-    slug_url_kwarg = "id"
-
+    slug_field = "pk"
+    template_name = "users/user_detail.html"
 
 user_detail_view = UserDetailView.as_view()
 
-
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = User
-    fields = ["name"]
+    fields = ["name", "image"] # Feature: Profile Image Update
+    template_name = "users/user_form.html"
     success_message = _("Information successfully updated")
 
     def get_success_url(self):
-        # for mypy to know that the user is authenticated
-        assert self.request.user.is_authenticated
         return self.request.user.get_absolute_url()
 
     def get_object(self):
         return self.request.user
 
-
 user_update_view = UserUpdateView.as_view()
-
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
-
     def get_redirect_url(self):
         return reverse("users:detail", kwargs={"pk": self.request.user.pk})
 
-
 user_redirect_view = UserRedirectView.as_view()
 
-
-
-
-
 def about_view(request):
-    # Try to get the dynamic content from Admin
+    if request.user.is_authenticated:
+        StudentActivity.objects.create(user=request.user, page_visited="About Us Page")
     about_data = AboutUs.objects.first()
-    
-    # 'about' will be the dynamic data, your static HTML will stay as the wrapper
     return render(request, "pages/about.html", {"about": about_data})
+
+def magazine_view(request):
+    if not request.user.is_authenticated:
+        return redirect('account_login')
+    StudentActivity.objects.create(user=request.user, page_visited="Magazine Page")
+    return render(request, "pages/magazine.html")

@@ -1,14 +1,8 @@
-{% extends 'base.html' %}
-
-{% load static i18n %}
-
-{% block title %}About{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static i18n %} {% block title %}About{%
+endblock %} {% block content %}
 <!-- {% include 'partials/theme-switch.html' %} -->
 
 <main class="main_wrapper overflow-hidden">
-
   <!-- topbar__section__stert -->
   {% include 'partials/top-banner.html' %}
   <!-- topbar__section__end -->
@@ -28,211 +22,278 @@
   </div>
   <!-- theme fixed shadow -->
 
-
-
-
-<section class="ikigai-modern-v2">
-  <div class="container">
-    <div class="row mb-5 align-items-center position-relative">
-      <div class="col-lg-7">
-        <div class="philosophy-badge">The Book Buddy Philosophy</div>
-        <h2 class="modern-title mt-3">Our <span>Ikigai</span></h2>
-        <div class="quote-container">
-          <p class="quote-text">
-            {{ about.quote_text|default:"At the centre of Book Buddy is meaningful learning through stories and community." }}
-          </p>
+  <section class="ikigai-modern-v2">
+    <div class="container">
+      <div class="row mb-5 align-items-center position-relative">
+        <div class="col-lg-7">
+          <div class="philosophy-badge">The Book Buddy Philosophy</div>
+          <h2 class="modern-title mt-3">Our <span>Ikigai</span></h2>
+          <div class="quote-container">
+            <p class="quote-text">
+              {{ about.quote_text|default:"At the centre of Book Buddy is
+              meaningful learning through stories and community." }}
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center">
+          <div class="logo-morph-container">
+            <div class="blob-bg"></div>
+            <img
+              loading="lazy"
+              src="{% static 'img/logo/ikigai-logo.png' %}"
+              alt="Ikigai Logo"
+              class="ikigai-logo-v2"
+            />
+          </div>
         </div>
       </div>
-      <div class="col-lg-5 text-center">
-        <div class="logo-morph-container">
-          <div class="blob-bg"></div>
-          <img loading="lazy" src="{% static 'img/logo/ikigai-logo.png' %}" alt="Ikigai Logo" class="ikigai-logo-v2">
+
+      <div class="philosophy-2x2-grid">
+        <div class="concept-card">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-number">01</div>
+            <h3 class="card-h">{{ about.card_01_title }}</h3>
+            <p class="card-p">{{ about.card_01_text }}</p>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-number">02</div>
+            <h3 class="card-h">{{ about.card_02_title }}</h3>
+            <ul class="card-list">
+              {% for item in about.card_02_list.splitlines %} {% if item.strip
+              %}
+              <li>{{ item }}</li>
+              <br />
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-number">03</div>
+            <h3 class="card-h">{{ about.card_03_title }}</h3>
+            <ul class="card-list">
+              {% for item in about.card_03_list.splitlines %} {% if item.strip
+              %}
+              <li>{{ item }}</li>
+              <br />
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-number">04</div>
+            <h3 class="card-h">{{ about.card_04_title }}</h3>
+            <p class="card-p">{{ about.card_04_text }}</p>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="philosophy-2x2-grid">
-      
-      <div class="concept-card">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-number">01</div>
-          <h3 class="card-h">{{ about.card_01_title }}</h3>
-          <p class="card-p">{{ about.card_01_text }}</p>
-        </div>
-      </div>
-
-    <div class="concept-card">
-  <div class="card-glow"></div>
-  <div class="card-content">
-    <div class="card-number">02</div>
-    <h3 class="card-h">{{ about.card_02_title }}</h3>
-    <ul class="card-list">
-      {% for item in about.card_02_list.splitlines %}
-        {% if item.strip %}
-          <li>{{ item }}</li><br> {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-
-<div class="concept-card">
-  <div class="card-glow"></div>
-  <div class="card-content">
-    <div class="card-number">03</div>
-    <h3 class="card-h">{{ about.card_03_title }}</h3>
-    <ul class="card-list">
-      {% for item in about.card_03_list.splitlines %}
-        {% if item.strip %}
-          <li>{{ item }}</li><br> {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-
-      <div class="concept-card">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-number">04</div>
-          <h3 class="card-h">{{ about.card_04_title }}</h3>
-          <p class="card-p">{{ about.card_04_text }}</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-<style>
-  :root {
-    --accent: #740f28;
-    --accent-light: rgba(116, 15, 40, 0.08);
-    --m-maroon: #740f28;
-        --m-maroon-soft: rgba(116, 15, 40, 0.05);
-  }
-
-  .ikigai-modern-v2 {
-    padding: 100px 0;
-    background: #fdfdfd;
-    overflow: hidden;
-  }
-
-  /* Header Styles */
-  .philosophy-badge {
-    display: inline-block;
-    padding: 5px 15px;
-    background: var(--accent-light);
-    color: var(--accent);
-    border-radius: 50px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  .modern-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -1.5px; }
-  .modern-title span { color: var(--accent); }
-  .modern-lead { font-size: 1.25rem; line-height: 1.7; color: #555; border-left: 4px solid var(--accent); padding-left: 20px; margin-top: 1.5rem; font-weight: 300; }
-
-  /* Logo Area */
-  .logo-morph-container { position: relative; }
-  .blob-bg {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 250px; height: 250px; background: var(--accent-light);
-    filter: blur(40px); border-radius: 50%; z-index: 1;
-  }
-  .ikigai-logo-v2 { max-width: 280px; position: relative; z-index: 2; }
-
-  /* 2x2 Grid Logic */
-  .philosophy-2x2-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 50px;
-  }
-  .quote-container {
-        margin-top: 30px;
-        padding: 20px 30px;
-        border-left: 5px solid var(--m-maroon);
-        background: var(--m-maroon-soft);
-        border-radius: 0 20px 20px 0;
+  <style>
+    :root {
+      --accent: #740f28;
+      --accent-light: rgba(116, 15, 40, 0.08);
+      --m-maroon: #740f28;
+      --m-maroon-soft: rgba(116, 15, 40, 0.05);
     }
 
-    .quote-text { font-size: 1.25rem; color: #444; line-height: 1.7; font-weight: 300; margin: 0; }
+    .ikigai-modern-v2 {
+      padding: 100px 0;
+      background: #fdfdfd;
+      overflow: hidden;
+    }
 
-  .concept-card {
-    position: relative;
-    background: #ffffff;
-    border: 1px solid #f0f0f0;
-    border-radius: 25px;
-    padding: 40px;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-  }
+    /* Header Styles */
+    .philosophy-badge {
+      display: inline-block;
+      padding: 5px 15px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-  .concept-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
-    box-shadow: 0 20px 40px rgba(116, 15, 40, 0.1);
-  }
+    .modern-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+    .modern-title span {
+      color: var(--accent);
+    }
+    .modern-lead {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #555;
+      border-left: 4px solid var(--accent);
+      padding-left: 20px;
+      margin-top: 1.5rem;
+      font-weight: 300;
+    }
 
-  /* Subtle background glow on hover */
-  .card-glow {
-    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-    opacity: 0; transition: 0.5s ease; pointer-events: none;
-  }
-  .concept-card:hover .card-glow { opacity: 1; }
+    /* Logo Area */
+    .logo-morph-container {
+      position: relative;
+    }
+    .blob-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 250px;
+      background: var(--accent-light);
+      filter: blur(40px);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .ikigai-logo-v2 {
+      max-width: 280px;
+      position: relative;
+      z-index: 2;
+    }
 
-  .card-content { position: relative; z-index: 2; }
+    /* 2x2 Grid Logic */
+    .philosophy-2x2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .quote-container {
+      margin-top: 30px;
+      padding: 20px 30px;
+      border-left: 5px solid var(--m-maroon);
+      background: var(--m-maroon-soft);
+      border-radius: 0 20px 20px 0;
+    }
 
-  .card-number {
-    font-size: 0.8rem; font-weight: 900; color: #fff;
-    background: var(--accent); width: 30px; height: 30px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 8px; margin-bottom: 20px;
-  }
+    .quote-text {
+      font-size: 1.25rem;
+      color: #444;
+      line-height: 1.7;
+      font-weight: 300;
+      margin: 0;
+    }
 
-  .card-h { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: #1a1a1a; }
-  .card-p { color: #666; line-height: 1.6; margin: 0; }
+    .concept-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 25px;
+      padding: 40px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
 
-  .card-list { list-style: none; padding: 0; margin: 0; }
-  .card-list li {
-    padding: 8px 0; padding-left: 25px; position: relative;
-    font-size: 0.95rem; color: #555; border-bottom: 1px solid #f8f8f8;
-  }
-  .card-list li::before {
-    content: "•"; position: absolute; left: 0;
-    color: var(--accent); font-weight: bold; font-size: 1.2rem;
-  }
+    .concept-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(116, 15, 40, 0.1);
+    }
 
-  /* Mobile */
-  @media (max-width: 991px) {
-    .philosophy-2x2-grid { grid-template-columns: 1fr; }
-    .modern-title { font-size: 2.8rem; }
-    .ikigai-logo-v2 { max-width: 200px; margin-top: 30px; }
-  }
-</style>
+    /* Subtle background glow on hover */
+    .card-glow {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle,
+        var(--accent-light) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: 0.5s ease;
+      pointer-events: none;
+    }
+    .concept-card:hover .card-glow {
+      opacity: 1;
+    }
 
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
 
+    .card-number {
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: #fff;
+      background: var(--accent);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 
+    .card-h {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+    }
+    .card-p {
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
 
+    .card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .card-list li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+      font-size: 0.95rem;
+      color: #555;
+      border-bottom: 1px solid #f8f8f8;
+    }
+    .card-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    /* Mobile */
+    @media (max-width: 991px) {
+      .philosophy-2x2-grid {
+        grid-template-columns: 1fr;
+      }
+      .modern-title {
+        font-size: 2.8rem;
+      }
+      .ikigai-logo-v2 {
+        max-width: 200px;
+        margin-top: 30px;
+      }
+    }
+  </style>
 
   <!-- intructor__teacher__start -->
   <div class="instructor sp_top_100 sp_bottom_100">
@@ -243,19 +304,24 @@
             <div class="default__small__button">
               <span>Meet Our Experts</span>
             </div>
-            <div class="section__title__heading__2 section__title__heading__3 heading__fontsize__2">
+            <div
+              class="section__title__heading__2 section__title__heading__3 heading__fontsize__2"
+            >
               <h2>Dedicated to innovation and growth</h2>
             </div>
           </div>
         </div>
       </div>
 
-
       <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
           <div class="instructor__sidebar" data-tilt>
             <div class="instructor__sidebar__img" data-aos="fade-up">
-              <img loading="lazy" src="{% static 'img/team/team__4.png' %}" alt="team">
+              <img
+                loading="lazy"
+                src="{% static 'img/team/team__4.png' %}"
+                alt="team"
+              />
               <div class="instructor__sidebar__small__img">
                 <!-- <img loading="lazy" src="{% static 'img/about/about_4.png' %}" alt="img"> -->
               </div>
@@ -273,34 +339,28 @@
                   </div>
                 </li>
 
-
-
-
                 <li data-aos="fade-up">
-
-
                   <div class="instructor__button">
                     <a class="default__button" href="#">Follow</a>
                   </div>
-
                 </li>
               </ul>
             </div>
             <div class="instructor__content__wraper" data-aos="fade-up">
               <h6>Short Bio</h6>
-              <p>Hi! I’m Arun G, the Technical Lead for our library. I’m a React Developer with over 4 years of
-                experience building fun, safe, and easy-to-use websites.
-
-                I love creating digital spaces where learning feels exciting and exploring new ideas is simple and
-                enjoyable. Behind the scenes, I make sure our website runs smoothly, loads quickly, and works well for
-                everyone—from curious kids to helpful parents and librarians.
-
-                I’m always happy to take on new challenges and use technology to support learning, creativity, and
-                imagination.</p>
+              <p>
+                Hi! I’m Arun G, the Technical Lead for our library. I’m a React
+                Developer with over 4 years of experience building fun, safe,
+                and easy-to-use websites. I love creating digital spaces where
+                learning feels exciting and exploring new ideas is simple and
+                enjoyable. Behind the scenes, I make sure our website runs
+                smoothly, loads quickly, and works well for everyone—from
+                curious kids to helpful parents and librarians. I’m always happy
+                to take on new challenges and use technology to support
+                learning, creativity, and imagination.
+              </p>
             </div>
-
           </div>
-
         </div>
       </div>
 
@@ -308,7 +368,11 @@
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
           <div class="instructor__sidebar" data-tilt>
             <div class="instructor__sidebar__img" data-aos="fade-up">
-              <img loading="lazy" src="{% static 'img/team/team__4.png' %}" alt="team">
+              <img
+                loading="lazy"
+                src="{% static 'img/team/team__4.png' %}"
+                alt="team"
+              />
               <div class="instructor__sidebar__small__img">
                 <!-- <img loading="lazy" src="{% static 'img/about/about_4.png' %}" alt="img"> -->
               </div>
@@ -326,34 +390,28 @@
                   </div>
                 </li>
 
-
-
-
                 <li data-aos="fade-up">
-
-
                   <div class="instructor__button">
                     <a class="default__button" href="#">Follow</a>
                   </div>
-
                 </li>
               </ul>
             </div>
             <div class="instructor__content__wraper" data-aos="fade-up">
               <h6>Short Bio</h6>
-              <p>Hi! I’m Arun G, the Technical Lead for our library. I’m a React Developer with over 4 years of
-                experience building fun, safe, and easy-to-use websites.
-
-                I love creating digital spaces where learning feels exciting and exploring new ideas is simple and
-                enjoyable. Behind the scenes, I make sure our website runs smoothly, loads quickly, and works well for
-                everyone—from curious kids to helpful parents and librarians.
-
-                I’m always happy to take on new challenges and use technology to support learning, creativity, and
-                imagination.</p>
+              <p>
+                Hi! I’m Arun G, the Technical Lead for our library. I’m a React
+                Developer with over 4 years of experience building fun, safe,
+                and easy-to-use websites. I love creating digital spaces where
+                learning feels exciting and exploring new ideas is simple and
+                enjoyable. Behind the scenes, I make sure our website runs
+                smoothly, loads quickly, and works well for everyone—from
+                curious kids to helpful parents and librarians. I’m always happy
+                to take on new challenges and use technology to support
+                learning, creativity, and imagination.
+              </p>
             </div>
-
           </div>
-
         </div>
       </div>
 
@@ -361,7 +419,11 @@
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
           <div class="instructor__sidebar" data-tilt>
             <div class="instructor__sidebar__img" data-aos="fade-up">
-              <img loading="lazy" src="{% static 'img/team/arun.png' %}" alt="team">
+              <img
+                loading="lazy"
+                src="{% static 'img/team/arun.png' %}"
+                alt="team"
+              />
               <div class="instructor__sidebar__small__img">
                 <!-- <img loading="lazy" src="{% static 'img/about/about_4.png' %}" alt="img"> -->
               </div>
@@ -379,56 +441,34 @@
                   </div>
                 </li>
 
-
-
-
                 <li data-aos="fade-up">
-
-
                   <div class="instructor__button">
                     <a class="default__button" href="#">Follow</a>
                   </div>
-
                 </li>
               </ul>
             </div>
             <div class="instructor__content__wraper" data-aos="fade-up">
               <h6>Short Bio</h6>
-              <p>Hi! I’m Arun G, the Technical Lead for our library. I’m a React Developer with over 4 years of
-                experience building fun, safe, and easy-to-use websites.
-
-                I love creating digital spaces where learning feels exciting and exploring new ideas is simple and
-                enjoyable. Behind the scenes, I make sure our website runs smoothly, loads quickly, and works well for
-                everyone—from curious kids to helpful parents and librarians.
-
-                I’m always happy to take on new challenges and use technology to support learning, creativity, and
-                imagination.</p>
+              <p>
+                Hi! I’m Arun G, the Technical Lead for our library. I’m a React
+                Developer with over 4 years of experience building fun, safe,
+                and easy-to-use websites. I love creating digital spaces where
+                learning feels exciting and exploring new ideas is simple and
+                enjoyable. Behind the scenes, I make sure our website runs
+                smoothly, loads quickly, and works well for everyone—from
+                curious kids to helpful parents and librarians. I’m always happy
+                to take on new challenges and use technology to support
+                learning, creativity, and imagination.
+              </p>
             </div>
-
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
   <!-- intructor__teacher__end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- testmonialarea__section__atart -->
   <div class="testmonialarea sp_top_100 sp_bottom_110">
@@ -443,12 +483,19 @@
           </div>
         </div>
       </div>
-      <div class="row row__custom__class testimonial__slider__active default__arrow" data-aos="fade-up">
+      <div
+        class="row row__custom__class testimonial__slider__active default__arrow"
+        data-aos="fade-up"
+      >
         <div class="col-xl-6 column__custom__class">
           <div class="single__testimonial__wraper">
             <div class="single__testimonial__inner">
               <div class="testimonial__img">
-                <img loading="lazy" src="{% static 'img/testimonial/testi_1.png' %}" alt="testi">
+                <img
+                  loading="lazy"
+                  src="{% static 'img/testimonial/testi_1.png' %}"
+                  alt="testi"
+                />
                 <div class="testimonial__name">
                   <h6>Kiruthika Srinivasan</h6>
                   <span>Library Membe</span>
@@ -464,14 +511,13 @@
             </div>
 
             <div class="testimonial__content">
-              <p>"Good collection of books. Lots of activities planned
-                for kids, which keeps them engaged and sharpen their skills.
-                Librarian is a passionate reader, tutor whose prime motive is to
-                encourage kids and people to cultivate the wonderful habit of
-                reading." </p>
+              <p>
+                "Good collection of books. Lots of activities planned for kids,
+                which keeps them engaged and sharpen their skills. Librarian is
+                a passionate reader, tutor whose prime motive is to encourage
+                kids and people to cultivate the wonderful habit of reading."
+              </p>
             </div>
-
-
           </div>
         </div>
 
@@ -479,7 +525,11 @@
           <div class="single__testimonial__wraper">
             <div class="single__testimonial__inner">
               <div class="testimonial__img">
-                <img loading="lazy" src="{% static 'img/testimonial/testi_1.png' %}" alt="testi">
+                <img
+                  loading="lazy"
+                  src="{% static 'img/testimonial/testi_1.png' %}"
+                  alt="testi"
+                />
                 <div class="testimonial__name">
                   <h6>Lakshmi</h6>
                   <span>Parent of 6 year old</span>
@@ -495,19 +545,24 @@
             </div>
 
             <div class="testimonial__content">
-              <p>"My 6 year old son enjoys the activities. The place has
-                good collection of books to keep the children engaged. Looking
-                forward to more such weekly activities from the Book Buddy team 😀" </p>
+              <p>
+                "My 6 year old son enjoys the activities. The place has good
+                collection of books to keep the children engaged. Looking
+                forward to more such weekly activities from the Book Buddy team
+                😀"
+              </p>
             </div>
-
-
           </div>
         </div>
         <div class="col-xl-6 column__custom__class">
           <div class="single__testimonial__wraper">
             <div class="single__testimonial__inner">
               <div class="testimonial__img">
-                <img loading="lazy" src="{% static 'img/testimonial/testi_1.png' %}" alt="testi">
+                <img
+                  loading="lazy"
+                  src="{% static 'img/testimonial/testi_1.png' %}"
+                  alt="testi"
+                />
                 <div class="testimonial__name">
                   <h6>Ramya</h6>
                   <span>Parent and Member</span>
@@ -523,12 +578,11 @@
             </div>
 
             <div class="testimonial__content">
-              <p>"Very good collection of books with cleanliness all
-                around the library. It's a good place for students to gain
-                knowledge" </p>
+              <p>
+                "Very good collection of books with cleanliness all around the
+                library. It's a good place for students to gain knowledge"
+              </p>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -536,84 +590,145 @@
   </div>
   <!-- testmonialarea__section__end-->
 
-
-
-
-
-
-
   <!-- Gallery -->
 
   <div class="gallery">
     <div class="container-fluid full__width__padding">
       <div class="blogsidebar__content__wraper__2">
-
         <div class="photo__gallery__img">
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_1.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_1.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_2.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_2.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_3.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_3.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_4.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_4.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_5.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_5.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_6.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_6.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
 
           <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_1.jpg' %}" alt="photo">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_7.jpg' %}"
+              alt="photo"
+            />
             <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_1.jpg' %}"> <i class="icofont-eye-alt"></i></a>
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_7.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
             </div>
           </div>
           <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_2.jpg' %}" alt="photo">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_8.jpg' %}"
+              alt="photo"
+            />
             <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_2.jpg' %}"> <i class="icofont-eye-alt"></i></a>
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_8.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
             </div>
           </div>
-          <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_3.jpg' %}" alt="photo">
-            <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_3.jpg' %}"> <i class="icofont-eye-alt"></i></a>
-            </div>
-          </div>
-          <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_4.jpg' %}" alt="photo">
-            <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_4.jpg' %}"> <i class="icofont-eye-alt"></i></a>
-            </div>
-          </div>
-          <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_5.jpg' %}" alt="photo">
-            <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_5.jpg' %}"> <i class="icofont-eye-alt"></i></a>
-            </div>
-          </div>
-          <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_6.jpg' %}" alt="photo">
-            <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_6.jpg' %}"> <i class="icofont-eye-alt"></i></a>
-            </div>
-          </div>
-
-          <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_7.jpg' %}" alt="photo">
-            <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_7.jpg' %}"> <i class="icofont-eye-alt"></i></a>
-            </div>
-          </div>
-          <div class="single__gallery__img">
-            <img loading="lazy" src="{% static 'img/gallery/kids_8.jpg' %}" alt="photo">
-            <div class="gallery__icon">
-              <a class="popup__img" href="{% static 'img/gallery/kids_8.jpg' %}"> <i class="icofont-eye-alt"></i></a>
-            </div>
-          </div>
-
         </div>
-
       </div>
     </div>
   </div>
 
   <!-- Gallery -->
 
-
-
-
-
   <!-- testimonial__section__start -->
-  <div class="testimonialarea__3" style="background: url(/static/img/testimonial/testi_bg.png);">
+  <div
+    class="testimonialarea__3"
+    style="background: url(/static/img/testimonial/testi_bg.png)"
+  >
     <div class="container">
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -621,54 +736,51 @@
             <div class="section__small__title">
               <span>Book Buddy</span>
             </div>
-            <div class="section__title__heading__2 section__title__heading__3 heading__fontsize__2">
+            <div
+              class="section__title__heading__2 section__title__heading__3 heading__fontsize__2"
+            >
               <h2>Connect with Book Buddy</h2>
             </div>
           </div>
 
           <div class="testimonial__slider__active__3" data-aos="fade-up">
-            <div class="testimonialarea__paragraph__3 ">
-              <p class="testimonial__quote"><i class="icofont-quote-left quote__left"></i>Help us build a strong and
-                meaningful reading culture together. Join the Book Buddy community as a Volunteer, Writer, Sponsor, or
-                Collaborator and contribute your time, skills, or resources to inspire young minds. By working together,
-                we can create engaging learning spaces, support literacy initiatives, and make quality reading
-                experiences accessible to every child.<i class="icofont-quote-right quote__right"></i></p>
+            <div class="testimonialarea__paragraph__3">
+              <p class="testimonial__quote">
+                <i class="icofont-quote-left quote__left"></i>Help us build a
+                strong and meaningful reading culture together. Join the Book
+                Buddy community as a Volunteer, Writer, Sponsor, or Collaborator
+                and contribute your time, skills, or resources to inspire young
+                minds. By working together, we can create engaging learning
+                spaces, support literacy initiatives, and make quality reading
+                experiences accessible to every child.<i
+                  class="icofont-quote-right quote__right"
+                ></i>
+              </p>
 
               <div class="testimonialarea__person__3">
                 <a class="default__button" href="#">Contact Us</a>
-
-
-
               </div>
-
             </div>
-
-
           </div>
         </div>
-        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" data-aos="fade-up">
+        <div
+          class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12"
+          data-aos="fade-up"
+        >
           <div class="testimonial__group__img" data-tilt>
-            <img loading="lazy" src="{% static 'img/testimonial/testi__group__1.png' %}" alt="">
+            <img
+              loading="lazy"
+              src="{% static 'img/testimonial/testi__group__1.png' %}"
+              alt=""
+            />
           </div>
         </div>
       </div>
     </div>
-
   </div>
   <!-- testimonial__section__start -->
 
-
-
-
-
-
-
-
-
-
   {% include 'partials/footer.html' %}
-
-
 </main>
 
 {% endblock %}

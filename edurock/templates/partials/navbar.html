@@ -27,7 +27,7 @@
 
 
                 <li><a class="headerarea__has__dropdown"
-                    href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Books & Membership
+                    href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Books & Plans
                     <i class="icofont-rounded-down"></i>
                   </a>
                   <ul class="headerarea__submenu headerarea__submenu--third--wrap">
@@ -191,20 +191,85 @@
             </nav>
           </div>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-6">
-          <div class="headerarea__right">
+      
 
 
-            <div class="headerarea__login">
-              <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Get Involved</a></li>
-
-
-            </div>
-            <div class="headerarea__button">
-              <a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Login</a>
-            </div>
-          </div>
+   <div class="col-xl-2 col-lg-2 col-md-6">
+   
+ <div class="headerarea__right">
+    <div class="d-flex align-items-center" style="gap: 12px;">
+        
+        <div class="headerarea__login">
+            <ul style="margin: 0; padding: 0; list-style: none;">
+                <li>
+                    <a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}" 
+                       style="white-space: nowrap; font-size: 14px; font-weight: 500;">
+                        Get Involved
+                    </a>
+                </li>
+            </ul>
         </div>
+
+        {% if user.is_authenticated %}
+            <div class="headerarea__main__menu">
+                <nav>
+                    <ul style="margin: 0;">
+                        <li>
+                            <a class="headerarea__has__dropdown d-flex align-items-center" href="#" 
+                               style="gap: 6px; display: flex !important; text-decoration: none; padding: 0;">
+                                
+                                <div class="user-avatar-wrap">
+                                    {% if user.image %}
+                                        <img src="{{ user.image.url }}" alt="user" 
+                                             style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle;">
+                                    {% else %}
+                                        <i class="icofont-user-alt-3" style="font-size: 18px; line-height: 1;"></i> 
+                                    {% endif %}
+                                </div>
+
+                                <span class="user-name" style="white-space: nowrap; font-size: 14px;">
+                                    {{ user.name|default:"Student" }}
+                                </span>
+
+                                <i class="icofont-rounded-down" style="font-size: 12px;"></i>
+                            </a>
+
+                            <ul class="headerarea__submenu">
+                                <li><a href="{% url 'users:detail' user.pk %}">My Profile</a></li>
+                                <li>
+                                    <form method="post" action="{% url 'account_logout' %}" id="logout-form" style="display:none;">
+                                        {% csrf_token %}
+                                    </form>
+                                    <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        {% else %}
+            <div class="d-flex align-items-center" style="gap: 10px;">
+                <div class="headerarea__login d-none d-xl-block">
+                    <span class="badge bg-secondary" style="font-size: 10px;">Guest</span>
+                </div>
+                <div class="headerarea__button">
+                    <a href="{% url 'pages:dynamic_pages' template_name='login' %}" 
+                       style="padding: 8px 15px; font-size: 14px; line-height: 1;">
+                        Login
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+
+</div>
+
+          
+      
 
       </div>
 
