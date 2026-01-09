@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static i18n %} {% block title %}About{%
-endblock %} {% block content %}
+{% extends 'base.html' %} {% load static i18n %} 
+{% block title %}About{%endblock %} {% block content %}
 <!-- {% include 'partials/theme-switch.html' %} -->
 
 <main class="main_wrapper overflow-hidden">
@@ -30,20 +30,14 @@ endblock %} {% block content %}
           <h2 class="modern-title mt-3">Our <span>Ikigai</span></h2>
           <div class="quote-container">
             <p class="quote-text">
-              {{ about.quote_text|default:"At the centre of Book Buddy is
-              meaningful learning through stories and community." }}
+              {{ about.quote_text|default:"At the centre of Book Buddy is meaningful learning through stories and community." }}
             </p>
           </div>
         </div>
         <div class="col-lg-5 text-center">
           <div class="logo-morph-container">
             <div class="blob-bg"></div>
-            <img
-              loading="lazy"
-              src="{% static 'img/logo/ikigai-logo.png' %}"
-              alt="Ikigai Logo"
-              class="ikigai-logo-v2"
-            />
+            <img loading="lazy" src="{% static 'img/logo/ikigai-logo.png' %}" alt="Ikigai Logo" class="ikigai-logo-v2" />
           </div>
         </div>
       </div>
@@ -64,11 +58,11 @@ endblock %} {% block content %}
             <div class="card-number">02</div>
             <h3 class="card-h">{{ about.card_02_title }}</h3>
             <ul class="card-list">
-              {% for item in about.card_02_list.splitlines %} {% if item.strip
-              %}
-              <li>{{ item }}</li>
-              <br />
-              {% endif %} {% endfor %}
+              {% for item in about.card_02_list.splitlines %}
+                {% if item.strip %}
+                  <li>{{ item.strip }}</li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </div>
         </div>
@@ -79,11 +73,11 @@ endblock %} {% block content %}
             <div class="card-number">03</div>
             <h3 class="card-h">{{ about.card_03_title }}</h3>
             <ul class="card-list">
-              {% for item in about.card_03_list.splitlines %} {% if item.strip
-              %}
-              <li>{{ item }}</li>
-              <br />
-              {% endif %} {% endfor %}
+              {% for item in about.card_03_list.splitlines %}
+                {% if item.strip %}
+                  <li>{{ item.strip }}</li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </div>
         </div>

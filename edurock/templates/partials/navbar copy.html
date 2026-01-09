@@ -1,0 +1,296 @@
+{% load static %}
+<header>
+  <div class="headerarea headerarea__2 header__sticky header__area">
+    <div class="container desktop__menu__wrapper">
+      <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-6">
+          <div class="headerarea__left">
+            <div class="headerarea__left__logo">
+
+              <a href="{% url 'pages:dynamic_pages' template_name='index' %}"><img loading="lazy"
+                  src="{% static 'img/logo/logo_1.png' %}" alt="logo"></a>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-8 main_menu_wrap">
+          <div class="headerarea__main__menu">
+            <nav>
+              <ul>
+
+
+                <li><a href="{% url 'pages:dynamic_pages' template_name='index' %}">Home</a> </li>
+
+
+
+                <li><a href="{% url 'pages:dynamic_pages' template_name='about' %}">About Us</a> </li>
+
+
+                <li><a class="headerarea__has__dropdown"
+                    href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Books & Plans
+                    <i class="icofont-rounded-down"></i>
+                  </a>
+                  <ul class="headerarea__submenu headerarea__submenu--third--wrap">
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Library Catalogue</a>
+                    </li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Membership &
+                        Plans</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">New Arrivals</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Recommend a Book</a>
+                    </li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">How to Borrow</a>
+                    </li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">FAQS</a></li>
+
+                  </ul>
+                </li>
+
+
+
+
+
+
+
+
+
+                <li><a class="headerarea__has__dropdown" href="">School Support
+                    <i class="icofont-rounded-down"></i>
+                  </a>
+                  <ul class="headerarea__submenu headerarea__submenu--third--wrap">
+
+
+
+
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Higher Secondary Level<i
+                          class="icofont-rounded-right"></i></a>
+                      <ul class="headerarea__submenu--third">
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 12</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 11</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 10</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 9</a></li>
+
+                      </ul>
+                    </li>
+
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Middle School Level <i
+                          class="icofont-rounded-right"></i></a>
+                      <ul class="headerarea__submenu--third">
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 8</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 7</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 6</a></li>
+
+
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Primary Level <i
+                          class="icofont-rounded-right"></i></a>
+                      <ul class="headerarea__submenu--third">
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 5</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 4</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 3</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 2</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Grade 1</a></li>
+
+
+
+                      </ul>
+                    </li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Kindergarten </i></a>
+
+
+
+                    </li>
+                  </ul>
+                </li>
+
+
+
+
+
+                <li><a class="headerarea__has__dropdown" href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Beyond School
+                    <i class="icofont-rounded-down"></i>
+                  </a>
+                  <ul class="headerarea__submenu headerarea__submenu--third--wrap">
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Kids <i
+                          class="icofont-rounded-right"></i></a>
+
+                      <ul class="headerarea__submenu--third">
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Coding</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">AI Stories</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">English</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Maths</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Logical</a></li>
+
+                      </ul>
+
+                    </li>
+                    <li>
+                      <a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Adults <i
+                          class="icofont-rounded-right"></i></a>
+                      <ul class="headerarea__submenu--third">
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">BA</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Banking</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Coding</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Soft Skills</a></li>
+
+
+                      </ul>
+                    </li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='podcasts' %}">Podcasts <i
+                          class="icofont-rounded-right"></i></a>
+                      <ul class="headerarea__submenu--third">
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='podcasts' %}">Kids</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='podcasts' %}">Adults</a></li>
+
+
+                      </ul>
+                    </li>
+
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='magazine' %}">Magazine <i
+                          class="icofont-rounded-right"></i></a>
+                      <ul class="headerarea__submenu--third">
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='magazine' %}">Monthly Magazine</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='news-paper' %}">Newspaper</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='daily-challenges' %}">Daily Challenges</a>
+                        </li>
+
+
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+
+
+
+
+
+
+
+                <li><a class="headerarea__has__dropdown"
+                    href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Events
+                    <i class="icofont-rounded-down"></i>
+                  </a>
+                  <ul class="headerarea__submenu headerarea__submenu--third--wrap">
+
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Workshop</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}">Calendar</a></li>
+
+                  </ul>
+                </li>
+
+
+
+
+
+
+
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+      
+
+
+   <div class="col-xl-2 col-lg-2 col-md-6">
+   
+ <div class="headerarea__right">
+    <div class="d-flex align-items-center" style="gap: 12px;">
+        
+        <div class="headerarea__login">
+            <ul style="margin: 0; padding: 0; list-style: none;">
+                <li>
+                    <a href="{% url 'pages:dynamic_pages' template_name='comming-soon' %}" 
+                       style="white-space: nowrap; font-size: 14px; font-weight: 500;">
+                        Get Involved
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="headerarea__main__menu">
+                <nav>
+                    <ul style="margin: 0;">
+                        <li>
+                            <a class="headerarea__has__dropdown d-flex align-items-center" href="#" 
+                               style="gap: 6px; display: flex !important; text-decoration: none; padding: 0;">
+                                
+                                <div class="user-avatar-wrap">
+                                    {% if user.image %}
+                                        <img src="{{ user.image.url }}" alt="user" 
+                                             style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle;">
+                                    {% else %}
+                                        <i class="icofont-user-alt-3" style="font-size: 18px; line-height: 1;"></i> 
+                                    {% endif %}
+                                </div>
+
+                                <span class="user-name" style="white-space: nowrap; font-size: 14px;">
+                                    {{ user.name|default:"Student" }}
+                                </span>
+
+                                <i class="icofont-rounded-down" style="font-size: 12px;"></i>
+                            </a>
+
+                            <ul class="headerarea__submenu">
+                                <li><a href="{% url 'users:detail' user.pk %}">My Profile</a></li>
+                                <li>
+                                    <form method="post" action="{% url 'account_logout' %}" id="logout-form" style="display:none;">
+                                        {% csrf_token %}
+                                    </form>
+                                    <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        {% else %}
+            <div class="d-flex align-items-center" style="gap: 10px;">
+                <div class="headerarea__login d-none d-xl-block">
+                    <span class="badge bg-secondary" style="font-size: 10px;">Guest</span>
+                </div>
+                <div class="headerarea__button">
+                    <a href="{% url 'pages:dynamic_pages' template_name='login' %}" 
+                       style="padding: 8px 15px; font-size: 14px; line-height: 1;">
+                        Login
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+
+</div>
+
+          
+      
+
+      </div>
+
+    </div>
+
+
+    <div class="container-fluid mob_menu_wrapper">
+      <div class="row align-items-center">
+        <div class="col-6">
+          <div class="mobile-logo">
+            <a class="logo__dark" href="#"><img loading="lazy" src="{% static 'img/logo/logo_1.png' %}" alt="logo"></a>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="header-right-wrap">
+            <div class="mobile-off-canvas">
+              <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,193 +1,194 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static i18n %} 
+{% block title %}About{%endblock %} {% block content %}
+<!-- {% include 'partials/theme-switch.html' %} -->
 
-{% load static i18n %}
+<main class="main_wrapper overflow-hidden">
+  <!-- topbar__section__stert -->
+  {% include 'partials/top-banner.html' %}
+  <!-- topbar__section__end -->
 
-{% block title %}About{% endblock %}
+  <!-- headar section start -->
+  {% include 'partials/navbar-2.html' %}
+  <!-- header section end -->
 
-{% block content %}
-{% include 'partials/theme-switch.html' %}
+  <!-- Mobile Menu Start Here -->
+  {% include 'partials/mobile-menu.html' %}
+  <!-- Mobile Menu end Here -->
 
-<main class="main_wrapper" style="overflow: visible !important;">
-
-    <!-- topbar__section__stert -->
-    {% include 'partials/top-banner-2.html' %}
-    <!-- topbar__section__end -->
-
-    <!-- headar section start -->
-    {% include 'partials/navbar-2.html' %}
-    <!-- header section end -->
-
-    <!-- Mobile Menu Start Here -->
-    {% include 'partials/mobile-menu.html' %}
-    <!-- Mobile Menu end Here -->
-
-    <!-- theme fixed shadow -->
-    <div>
-        <div class="theme__shadow__circle"></div>
-        <div class="theme__shadow__circle shadow__right"></div>
-    </div>
-    <!-- theme fixed shadow -->
-
-    <!-- breadcrumbarea__section__start -->
-    <div class="breadcrumbarea" data-aos="fade-up">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="breadcrumb__content__wraper">
-                        <div class="breadcrumb__title">
-                            <h2 class="heading">About Page</h2>
-                        </div>
-                        <div class="breadcrumb__inner">
-                            <ul>
-                                <li><a href="{% url 'pages:dynamic_pages' template_name='index' %}">Home</a></li>
-                                <li> About Page</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="shape__icon__2">
-            <img loading="lazy" class=" shape__icon__img shape__icon__img__1" src="{% static 'img/herobanner/herobanner__1.png' %}"
-                alt="photo">
-            <img loading="lazy" class=" shape__icon__img shape__icon__img__2" src="{% static 'img/herobanner/herobanner__2.png' %}"
-                alt="photo">
-            <img loading="lazy" class=" shape__icon__img shape__icon__img__3" src="{% static 'img/herobanner/herobanner__3.png' %}"
-                alt="photo">
-            <img loading="lazy" class=" shape__icon__img shape__icon__img__4" src="{% static 'img/herobanner/herobanner__5.png' %}"
-                alt="photo">
-        </div>
-    </div>
-    <!-- breadcrumbarea__section__end-->
+  <!-- theme fixed shadow -->
+  <div>
+    <div class="theme__shadow__circle"></div>
+    <div class="theme__shadow__circle shadow__right"></div>
+  </div>
+  <!-- theme fixed shadow -->
 
 
-
-
- <!-- Modern About Section -->
-  <div class="sp_top_60">
+  <!-- intructor__teacher__start -->
+  <div class="instructor sp_top_100 sp_bottom_100">
     <div class="container">
-
-      <div class="row" data-aos="fade-up">
-        <div class="section__title text-center">
-          <div class="section__title__button">
-            <div class="default__small__button">Book Buddy’s Ikigai</div>
-          </div>
-          <div class="card-content testimonial__conten">
-            <h4>"At the centre of Book Buddy is meaningful learning through stories and community. <br> When reading is joyful and learning is supported, confidence grows—and learners thrive for life."</h4>
+      <div class="row sp_bottom_40">
+        <div class="col-xl-12" data-aos="fade-up">
+          <div class="section__title__2 text-center">
+            <div class="default__small__button">
+              <span>Meet Our Experts</span>
+            </div>
+            <div
+              class="section__title__heading__2 section__title__heading__3 heading__fontsize__2"
+            >
+              <h2>Dedicated to innovation and growth</h2>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Main Grid -->
-      <div class="about-grid">
-        <!-- Column 1 -->
-        <div class="about-column column-1">
-          <div class="about-card floating-card">
-            <div class="testimonial__name">
 
-              <h3>Why Book Buddy Exists</h3>
-
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+          <div class="instructor__sidebar" data-tilt>
+            <div class="instructor__sidebar__img" data-aos="fade-up">
+              <img
+                loading="lazy"
+                src="{% static 'img/team/team__4.png' %}"
+                alt="team"
+              />
+              <div class="instructor__sidebar__small__img">
+                <!-- <img loading="lazy" src="{% static 'img/about/about_4.png' %}" alt="img"> -->
+              </div>
             </div>
-
-              <div class="card-content testimonial__content">
-              <p>We love reading, stories, and meaningful learning. We believe learning should feel joyful, curious, and connected—not rushed or stressful. This is where reading begins and skills grow.</p>
-             
-            </div>
-
-
           </div>
         </div>
-
-        <!-- Column 2 -->
-        <div class="about-column column-2">
-          <div class="about-card floating-card delay-1">
-            <div class="testimonial__name">
-
-              <h3>What Makes Us Different</h3>
-            </div>
-
-
-            <div class="aboutarea__list__2">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+          <div class="instructor__inner__wraper">
+            <div class="instructor__list">
               <ul>
-                <li>
-
-                  <div class="aboutarea__para aboutarea__para__2">
-                    <ul>
-                      <li>
-                        <i class="icofont-check"></i> Building strong reading habits
-                      </li>
-
-                      <li>
-                        <i class="icofont-check"></i> Story-based conceptual learning
-                      </li>
-
-                      <li>
-                        <i class="icofont-check"></i> Balancing school & life skills
-                      </li>
-                      <li>
-                        <i class="icofont-check"></i> Safe, supportive community
-                      </li>
-                    </ul>
+                <li data-aos="fade-up">
+                  <div class="instructor__heading">
+                    <h3>Name</h3>
+                    <p>Position</p>
                   </div>
                 </li>
 
-
+                <li data-aos="fade-up">
+                  <div class="instructor__button">
+                    <a class="default__button" href="#">Follow</a>
+                  </div>
+                </li>
               </ul>
             </div>
-
+            <div class="instructor__content__wraper" data-aos="fade-up">
+              <h6>Short Bio</h6>
+              <p>
+                Hi! I’m Arun G, the Technical Lead for our library. I’m a React
+                Developer with over 4 years of experience building fun, safe,
+                and easy-to-use websites. I love creating digital spaces where
+                learning feels exciting and exploring new ideas is simple and
+                enjoyable. Behind the scenes, I make sure our website runs
+                smoothly, loads quickly, and works well for everyone—from
+                curious kids to helpful parents and librarians. I’m always happy
+                to take on new challenges and use technology to support
+                learning, creativity, and imagination.
+              </p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Column 3 -->
-        <div class="about-column column-3">
-          <div class="about-card floating-card delay-2">
-            <div class="testimonial__name">
-
-              <h3>Why Families Choose Us</h3>
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+          <div class="instructor__sidebar" data-tilt>
+            <div class="instructor__sidebar__img" data-aos="fade-up">
+              <img
+                loading="lazy"
+                src="{% static 'img/team/team__4.png' %}"
+                alt="team"
+              />
+              <div class="instructor__sidebar__small__img">
+                <!-- <img loading="lazy" src="{% static 'img/about/about_4.png' %}" alt="img"> -->
+              </div>
             </div>
-
-            <div class="aboutarea__list__2">
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+          <div class="instructor__inner__wraper">
+            <div class="instructor__list">
               <ul>
-                <li>
-
-                  <div class="aboutarea__para aboutarea__para__2">
-                    <ul>
-                      <li>
-                        <i class="icofont-check"></i> Less pressure, more understanding
-                      </li>
-
-                      <li>
-                        <i class="icofont-check"></i> Strong critical thinking skills
-                      </li>
-
-                      <li>
-                        <i class="icofont-check"></i> Learning that goes beyond textbooks
-                      </li>
-                      <li>
-                        <i class="icofont-check"></i> A balance of academics and creativity
-                      </li>
-                    </ul>
+                <li data-aos="fade-up">
+                  <div class="instructor__heading">
+                    <h3>Name</h3>
+                    <p>Position</p>
                   </div>
                 </li>
 
-
+                <li data-aos="fade-up">
+                  <div class="instructor__button">
+                    <a class="default__button" href="#">Follow</a>
+                  </div>
+                </li>
               </ul>
             </div>
-
-
+            <div class="instructor__content__wraper" data-aos="fade-up">
+              <h6>Short Bio</h6>
+              <p>
+                Hi! I’m Arun G, the Technical Lead for our library. I’m a React
+                Developer with over 4 years of experience building fun, safe,
+                and easy-to-use websites. I love creating digital spaces where
+                learning feels exciting and exploring new ideas is simple and
+                enjoyable. Behind the scenes, I make sure our website runs
+                smoothly, loads quickly, and works well for everyone—from
+                curious kids to helpful parents and librarians. I’m always happy
+                to take on new challenges and use technology to support
+                learning, creativity, and imagination.
+              </p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Column 4 -->
-        <div class="about-column column-4">
-          <div class="about-card floating-card delay-3">
-            <div class="testimonial__name">
-
-              <h3>How We Grow Together</h3>
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+          <div class="instructor__sidebar" data-tilt>
+            <div class="instructor__sidebar__img" data-aos="fade-up">
+              <img
+                loading="lazy"
+                src="{% static 'img/team/arun.png' %}"
+                alt="team"
+              />
+              <div class="instructor__sidebar__small__img">
+                <!-- <img loading="lazy" src="{% static 'img/about/about_4.png' %}" alt="img"> -->
+              </div>
             </div>
-            <div class="card-content testimonial__content">
-              <p>We offer a community library, classroom-complementary support, and beyond-school learning for both kids and adults through online resources and live events.</p>
-             
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+          <div class="instructor__inner__wraper">
+            <div class="instructor__list">
+              <ul>
+                <li data-aos="fade-up">
+                  <div class="instructor__heading">
+                    <h3>Arun G</h3>
+                    <p>Technical Lead</p>
+                  </div>
+                </li>
+
+                <li data-aos="fade-up">
+                  <div class="instructor__button">
+                    <a class="default__button" href="#">Follow</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="instructor__content__wraper" data-aos="fade-up">
+              <h6>Short Bio</h6>
+              <p>
+                Hi! I’m Arun G, the Technical Lead for our library. I’m a React
+                Developer with over 4 years of experience building fun, safe,
+                and easy-to-use websites. I love creating digital spaces where
+                learning feels exciting and exploring new ideas is simple and
+                enjoyable. Behind the scenes, I make sure our website runs
+                smoothly, loads quickly, and works well for everyone—from
+                curious kids to helpful parents and librarians. I’m always happy
+                to take on new challenges and use technology to support
+                learning, creativity, and imagination.
+              </p>
             </div>
           </div>
         </div>
@@ -195,1036 +196,319 @@
     </div>
   </div>
 
-  <style>
-    .modern-about-section {
-      padding: 100px 0;
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Background Effects */
-    .modern-about-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #667eea, transparent);
-    }
-
-    .modern-about-section::after {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-
-      border-radius: 50%;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .about-column {
-      position: relative;
-    }
-
-    .about-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 25px;
-      padding: 40px 30px;
-      height: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    }
-
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg,
-          rgba(102, 126, 234, 0.03) 0%,
-          rgba(118, 75, 162, 0.03) 100%);
-      z-index: -1;
-    }
-
-    .floating-card {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .delay-1 {
-      animation-delay: 1s;
-    }
-
-    .delay-2 {
-      animation-delay: 2s;
-    }
-
-    .delay-3 {
-      animation-delay: 3s;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-15px) rotate(0.5deg);
-      }
-    }
-
-    .about-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    }
-
-    .card-header {
-      text-align: center;
-      margin-bottom: 30px;
-      position: relative;
-    }
-
-    .icon-wrapper {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .icon-wrapper::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-
-      border-radius: 50%;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    .icon-wrapper::after {
-      content: '';
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      border: 2px dashed rgba(102, 126, 234, 0.3);
-      border-radius: 50%;
-      animation: rotate 20s linear infinite;
-    }
-
-    .icon-wrapper i {
-      font-size: 36px;
-      color: white;
-      position: relative;
-      z-index: 2;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      50% {
-        transform: scale(0.95);
-        opacity: 0.9;
-      }
-    }
-
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .card-header h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #2c3e50;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 6px 16px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .card-content {
-      position: relative;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-    }
-
-    .feature-item:last-child {
-      border-bottom: none;
-    }
-
-    .feature-item:hover {
-      padding-left: 10px;
-      background: rgba(102, 126, 234, 0.03);
-      border-radius: 10px;
-      margin: 0 -10px;
-      padding-right: 10px;
-    }
-
-    .feature-item i {
-      color: #48bb78;
-      font-size: 1.2rem;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .feature-item span {
-      color: #4a5568;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-
-
-
-    .column-4 .card-content p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Column Specific Colors */
-    .column-1 .icon-wrapper::before {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-    }
-
-    .column-2 .icon-wrapper::before {
-      background: linear-gradient(135deg, #ed8936, #dd6b20);
-    }
-
-    .column-3 .icon-wrapper::before {
-      background: linear-gradient(135deg, #48bb78, #38a169);
-    }
-
-    .column-4 .icon-wrapper::before {
-      background: linear-gradient(135deg, #9f7aea, #805ad5);
-    }
-
-    .column-1 .tag {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-    }
-
-    .column-2 .tag {
-      background: linear-gradient(135deg, #ed8936, #dd6b20);
-    }
-
-    .column-3 .tag {
-      background: linear-gradient(135deg, #48bb78, #38a169);
-    }
-
-    .column-4 .tag {
-      background: linear-gradient(135deg, #9f7aea, #805ad5);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1200px) {
-      .about-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .modern-about-section {
-        padding: 60px 0;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .about-card {
-        padding: 30px 25px;
-      }
-
-      .icon-wrapper {
-        width: 70px;
-        height: 70px;
-      }
-
-      .icon-wrapper i {
-        font-size: 30px;
-      }
-
-      .card-header h3 {
-        font-size: 1.3rem;
-      }
-    }
-  </style>
-
-
-
-
-
-    <!-- Add custom styles for cyberpunk theme -->
-    <style>
-        :root {
-            --primaryColor: #740f28;
-            --secondaryColor: #17776f;
-            --accentColor: #00ffea;
-            --darkBg: #0a0a0a;
-            --textColor: #ffffff;
-        }
-
-        /* Cyberpunk Container - Full Viewport */
-        .cyberpunk-container {
-            position: relative;
-            width: 100vw;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background: 
-                radial-gradient(circle at 20vw 50vh, rgba(116, 15, 40, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80vw 20vh, rgba(23, 119, 111, 0.2) 0%, transparent 50%),
-                linear-gradient(45deg, #0a0a0a 0%, #111 100%);
-            padding: 10vh 0;
-        }
-
-        /* Grid Background */
-        .grid-bg {
-            position: absolute;
-            width: 200vw;
-            height: 200vh;
-            background-image: 
-                linear-gradient(rgba(23, 119, 111, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(23, 119, 111, 0.1) 1px, transparent 1px);
-            background-size: 5vw 5vh;
-            animation: gridMove 20s linear infinite;
-            transform: perspective(500px) rotateX(60deg);
-            z-index: 0;
-            top: 0;
-            left: 0;
-        }
-
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(5vh); }
-        }
-
-        /* Central Core */
-        .central-core {
-            position: absolute;
-            width: 15vw;
-            height: 15vw;
-            min-width: 150px;
-            min-height: 150px;
-            max-width: 200px;
-            max-height: 200px;
-            background: rgba(0, 0, 0, 0.9);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 20;
-            border: 0.3vw solid var(--secondaryColor);
-            box-shadow: 
-                0 0 3vw var(--secondaryColor),
-                inset 0 0 3vw var(--secondaryColor);
-            padding: 2vw;
-            color: var(--secondaryColor);
-            animation: corePulse 2s ease-in-out infinite;
-            top: 50vh;
-            left: 50vw;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes corePulse {
-            0%, 100% { 
-                box-shadow: 0 0 3vw var(--secondaryColor), inset 0 0 3vw var(--secondaryColor);
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 6vw var(--secondaryColor), inset 0 0 6vw var(--secondaryColor);
-                transform: translate(-50%, -50%) scale(1.05);
-            }
-        }
-
-        .core-title {
-            font-size: calc(1vw + 1.2rem);
-            font-weight: bold;
-            margin-bottom: 1vh;
-            text-transform: uppercase;
-            letter-spacing: 0.2vw;
-            text-shadow: 0 0 1vw var(--secondaryColor);
-            line-height: 1.2;
-        }
-
-        .core-subtitle {
-            font-size: calc(0.5vw + 0.5rem);
-            color: var(--secondaryColor);
-            line-height: 1.3;
-            opacity: 0.9;
-            max-width: 80%;
-        }
-
-        /* Data Nodes */
-        .data-node {
-            position: absolute;
-            width: 25vw;
-            min-width: 250px;
-            max-width: 300px;
-            min-height: 25vw;
-            background: rgba(0, 0, 0, 0.95);
-            border: 0.2vw solid;
-            z-index: 15;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-radius: 0.5vw;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 
-                0 0 2vw currentColor,
-                inset 0 0 2vw rgba(255, 255, 255, 0.1);
-        }
-
-        .data-node:hover {
-            transform: scale(1.1);
-            z-index: 100;
-            box-shadow: 0 0 4vw currentColor;
-        }
-
-        /* Node Header */
-        .node-header {
-            height: 8vh;
-            display: flex;
-            align-items: center;
-            padding: 0 2vw;
-            background: rgba(0, 0, 0, 0.9);
-            border-bottom: 0.1vw solid currentColor;
-            position: relative;
-        }
-
-        .node-header:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, currentColor, transparent);
-            opacity: 0.1;
-            animation: scanLine 3s linear infinite;
-        }
-
-        @keyframes scanLine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .node-id {
-            width: 3.5vw;
-            height: 3.5vw;
-            min-width: 35px;
-            min-height: 35px;
-            background: black;
-            border: 0.2vw solid currentColor;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: calc(0.8vw + 0.5rem);
-            color: currentColor;
-            margin-right: 1.5vw;
-            position: relative;
-            z-index: 2;
-        }
-
-        .node-title-container {
-            flex: 1;
-            position: relative;
-            z-index: 2;
-        }
-
-        .node-title {
-            font-size: calc(0.8vw + 0.7rem);
-            font-weight: bold;
-            color: currentColor;
-            text-transform: uppercase;
-            letter-spacing: 0.1vw;
-            margin-bottom: 0.5vh;
-        }
-
-        .node-subtitle {
-            font-size: calc(0.5vw + 0.4rem);
-            color: currentColor;
-            opacity: 0.8;
-        }
-
-        /* Node Body */
-        .node-body {
-            flex: 1;
-            padding: 2vw;
-            overflow-y: auto;
-            background: rgba(10, 10, 10, 0.95);
-        }
-
-        .node-content {
-            font-size: calc(0.6vw + 0.5rem);
-            line-height: 1.6;
-            color: var(--secondaryColor);
-            margin-bottom: 2vh;
-        }
-
-        .data-list {
-            list-style: none;
-            margin-top: 2vh;
-        }
-
-        .data-list li {
-            padding: 1vh 0;
-            padding-left: 2.5vw;
-            position: relative;
-            font-size: calc(0.5vw + 0.5rem);
-            color: var(--secondaryColor);
-            line-height: 1.4;
-            border-bottom: 0.1vh dashed rgba(23, 119, 111, 0.3);
-        }
-
-        .data-list li:before {
-            content: "◈";
-            position: absolute;
-            left: 0;
-            color: currentColor;
-            font-size: calc(0.8vw + 0.2rem);
-        }
-
-        /* Node Colors & Positioning */
-        .node-1 {
-            color: var(--primaryColor);
-            border-color: var(--primaryColor);
-            animation: floatNode1 8s ease-in-out infinite;
-        }
-
-        .node-2 {
-            color: var(--secondaryColor);
-            border-color: var(--secondaryColor);
-            animation: floatNode2 9s ease-in-out infinite;
-        }
-
-        .node-3 {
-            color: #ff6b35;
-            border-color: #ff6b35;
-            animation: floatNode3 10s ease-in-out infinite;
-        }
-
-        .node-4 {
-            color: #9d4edd;
-            border-color: #9d4edd;
-            animation: floatNode4 11s ease-in-out infinite;
-        }
-
-        /* Connection Beams */
-        .connection-beam {
-            position: absolute;
-            height: 0.2vh;
-            background: linear-gradient(90deg, transparent, currentColor, transparent);
-            transform-origin: 0 0;
-            z-index: 10;
-            filter: blur(0.1vh);
-        }
-
-        /* Binary Rain Effect */
-        .binary-rain {
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .binary-digit {
-            position: absolute;
-            color: rgba(23, 119, 111, 0.4);
-            font-size: calc(0.8vw + 0.2rem);
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(100vh); }
-        }
-
-        /* Terminal Lines */
-        .terminal-line {
-            position: absolute;
-            width: 100vw;
-            height: 0.1vh;
-            background: linear-gradient(90deg, transparent, var(--secondaryColor), transparent);
-            animation: terminalScan 4s linear infinite;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        @keyframes terminalScan {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100vh; opacity: 0; }
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .cyberpunk-container {
-                position: relative;
-                height: auto;
-                min-height: auto;
-                padding: 5vh 5vw;
-                overflow: visible;
-                display: block;
-            }
-
-            .grid-bg {
-                display: none;
-            }
-
-            .central-core {
-                position: relative;
-                animation: mobileCorePulse 2s ease-in-out infinite;
-                margin: 0 auto 5vh auto;
-                top: auto;
-                left: auto;
-                transform: none;
-                width: 30vw;
-                height: 30vw;
-                min-width: 150px;
-                min-height: 150px;
-                border-width: 0.5vw;
-            }
-
-            @keyframes mobileCorePulse {
-                0%, 100% { 
-                    box-shadow: 0 0 4vw var(--secondaryColor), inset 0 0 4vw var(--secondaryColor);
-                    transform: scale(1);
-                }
-                50% { 
-                    box-shadow: 0 0 8vw var(--secondaryColor), inset 0 0 8vw var(--secondaryColor);
-                    transform: scale(1.05);
-                }
-            }
-
-            .connection-beam {
-                display: none;
-            }
-
-            .data-node {
-                position: relative !important;
-                width: 90vw;
-                max-width: 90vw;
-                min-height: auto;
-                height: auto;
-                margin: 3vh auto;
-                animation: none !important;
-                transform: none !important;
-                left: auto !important;
-                top: auto !important;
-                border-width: 0.5vw;
-                border-radius: 2vw;
-            }
-
-            .node-header {
-                height: 10vh;
-                padding: 0 4vw;
-            }
-
-            .node-id {
-                width: 8vw;
-                height: 8vw;
-                min-width: 40px;
-                min-height: 40px;
-                border-width: 0.5vw;
-                margin-right: 4vw;
-            }
-
-            .node-body {
-                padding: 4vw;
-            }
-
-            .terminal-line {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .central-core {
-                width: 40vw;
-                height: 40vw;
-            }
-
-            .core-title {
-                font-size: calc(2vw + 0.8rem);
-            }
-
-            .data-node {
-                width: 95vw;
-            }
-        }
-
-        /* Custom Scrollbar */
-        .node-body::-webkit-scrollbar {
-            width: 0.5vw;
-        }
-
-        .node-body::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 0.25vw;
-        }
-
-        .node-body::-webkit-scrollbar-thumb {
-            background: var(--primaryColor);
-            border-radius: 0.25vw;
-        }
-
-        .node-body::-webkit-scrollbar-thumb:hover {
-            background: var(--secondaryColor);
-        }
-    </style>
-
-    <!-- Cyberpunk Section -->
-    <section class="cyberpunk-container">
-        <!-- Binary Rain Effect -->
-        <div class="binary-rain" id="binaryRain"></div>
-        
-        <!-- Terminal Scan Line -->
-        <div class="terminal-line"></div>
-        
-        <!-- Grid Background -->
-        <div class="grid-bg"></div>
-
-        <!-- Central Core -->
-        <div class="central-core">
-            <div class="core-title">BOOK BUDDY</div>
-            <div class="core-subtitle">[SYSTEM: ACTIVE] CONCEPT NETWORK ONLINE</div>
+  <!-- intructor__teacher__end -->
+
+  <!-- testmonialarea__section__atart -->
+  <div class="testmonialarea sp_top_100 sp_bottom_110">
+    <div class="container">
+      <div class="row" data-aos="fade-up">
+        <div class="section__title text-center">
+          <div class="section__title__button">
+            <div class="default__small__button">Client Testimonial</div>
+          </div>
+          <div class="section__title__heading heading__underline">
+            <h2>What members <span> Say About Us</span></h2>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row row__custom__class testimonial__slider__active default__arrow"
+        data-aos="fade-up"
+      >
+        <div class="col-xl-6 column__custom__class">
+          <div class="single__testimonial__wraper">
+            <div class="single__testimonial__inner">
+              <div class="testimonial__img">
+                <img
+                  loading="lazy"
+                  src="{% static 'img/testimonial/testi_1.png' %}"
+                  alt="testi"
+                />
+                <div class="testimonial__name">
+                  <h6>Kiruthika Srinivasan</h6>
+                  <span>Library Membe</span>
+                </div>
+              </div>
+              <div class="testimonial__icon">
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star dark__color"></i>
+              </div>
+            </div>
+
+            <div class="testimonial__content">
+              <p>
+                "Good collection of books. Lots of activities planned for kids,
+                which keeps them engaged and sharpen their skills. Librarian is
+                a passionate reader, tutor whose prime motive is to encourage
+                kids and people to cultivate the wonderful habit of reading."
+              </p>
+            </div>
+          </div>
         </div>
 
-        <!-- Data Node 1: Why Book Buddy Exists -->
-        <div class="data-node node-1" id="node1">
-            <div class="node-header">
-                <div class="node-id">01</div>
-                <div class="node-title-container">
-                    <div class="node-title">SYSTEM PURPOSE</div>
-                    <div class="node-subtitle">WHAT WE LOVE</div>
+        <div class="col-xl-6 column__custom__class">
+          <div class="single__testimonial__wraper">
+            <div class="single__testimonial__inner">
+              <div class="testimonial__img">
+                <img
+                  loading="lazy"
+                  src="{% static 'img/testimonial/testi_1.png' %}"
+                  alt="testi"
+                />
+                <div class="testimonial__name">
+                  <h6>Lakshmi</h6>
+                  <span>Parent of 6 year old</span>
                 </div>
+              </div>
+              <div class="testimonial__icon">
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star dark__color"></i>
+              </div>
             </div>
-            <div class="node-body">
-                <div class="node-content">
-                    > We love reading, stories, and meaningful learning.<br>
-                    > We believe learning should feel joyful, curious, and connected.<br>
-                    > Not rushed or stressful. This is where reading begins and skills grow.
-                </div>
+
+            <div class="testimonial__content">
+              <p>
+                "My 6 year old son enjoys the activities. The place has good
+                collection of books to keep the children engaged. Looking
+                forward to more such weekly activities from the Book Buddy team
+                😀"
+              </p>
             </div>
+          </div>
         </div>
-
-        <!-- Data Node 2: What Makes Us Different -->
-        <div class="data-node node-2" id="node2">
-            <div class="node-header">
-                <div class="node-id">02</div>
-                <div class="node-title-container">
-                    <div class="node-title">CORE COMPETENCIES</div>
-                    <div class="node-subtitle">WHAT WE EXCEL AT</div>
+        <div class="col-xl-6 column__custom__class">
+          <div class="single__testimonial__wraper">
+            <div class="single__testimonial__inner">
+              <div class="testimonial__img">
+                <img
+                  loading="lazy"
+                  src="{% static 'img/testimonial/testi_1.png' %}"
+                  alt="testi"
+                />
+                <div class="testimonial__name">
+                  <h6>Ramya</h6>
+                  <span>Parent and Member</span>
                 </div>
+              </div>
+              <div class="testimonial__icon">
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star"></i>
+                <i class="icofont-star dark__color"></i>
+              </div>
             </div>
-            <div class="node-body">
-                <ul class="data-list">
-                    <li>Building strong reading habits</li>
-                    <li>Story-based conceptual learning</li>
-                    <li>Balancing school & life skills</li>
-                    <li>Safe, supportive community</li>
-                </ul>
+
+            <div class="testimonial__content">
+              <p>
+                "Very good collection of books with cleanliness all around the
+                library. It's a good place for students to gain knowledge"
+              </p>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- testmonialarea__section__end-->
 
-        <!-- Data Node 3: Why Families Choose Us -->
-        <div class="data-node node-3" id="node3">
-            <div class="node-header">
-                <div class="node-id">03</div>
-                <div class="node-title-container">
-                    <div class="node-title">USER BENEFITS</div>
-                    <div class="node-subtitle">WHAT THE WORLD NEEDS</div>
-                </div>
+  <!-- Gallery -->
+
+  <div class="gallery">
+    <div class="container-fluid full__width__padding">
+      <div class="blogsidebar__content__wraper__2">
+        <div class="photo__gallery__img">
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_1.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_1.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
             </div>
-            <div class="node-body">
-                <ul class="data-list">
-                    <li>Less pressure, more understanding</li>
-                    <li>Strong critical thinking skills</li>
-                    <li>Learning that goes beyond textbooks</li>
-                    <li>Balance of academics and creativity</li>
-                </ul>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_2.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_2.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
             </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_3.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_3.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_4.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_4.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_5.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_5.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_6.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_6.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_7.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_7.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
+          <div class="single__gallery__img">
+            <img
+              loading="lazy"
+              src="{% static 'img/gallery/kids_8.jpg' %}"
+              alt="photo"
+            />
+            <div class="gallery__icon">
+              <a
+                class="popup__img"
+                href="{% static 'img/gallery/kids_8.jpg' %}"
+              >
+                <i class="icofont-eye-alt"></i
+              ></a>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- Data Node 4: What Sustains Us -->
-        <div class="data-node node-4" id="node4">
-            <div class="node-header">
-                <div class="node-id">04</div>
-                <div class="node-title-container">
-                    <div class="node-title">SUSTAINABILITY MATRIX</div>
-                    <div class="node-subtitle">HOW WE GROW TOGETHER</div>
-                </div>
+  <!-- Gallery -->
+
+  <!-- testimonial__section__start -->
+  <div
+    class="testimonialarea__3"
+    style="background: url(/static/img/testimonial/testi_bg.png)"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+          <div class="section__title__2" data-aos="fade-up">
+            <div class="section__small__title">
+              <span>Book Buddy</span>
             </div>
-            <div class="node-body">
-                <div class="node-content">
-                    > We offer a community library, classroom-complementary support,<br>
-                    > and beyond-school learning for both kids and adults<br>
-                    > through online resources and live events.
-                </div>
+            <div
+              class="section__title__heading__2 section__title__heading__3 heading__fontsize__2"
+            >
+              <h2>Connect with Book Buddy</h2>
             </div>
+          </div>
+
+          <div class="testimonial__slider__active__3" data-aos="fade-up">
+            <div class="testimonialarea__paragraph__3">
+              <p class="testimonial__quote">
+                <i class="icofont-quote-left quote__left"></i>Help us build a
+                strong and meaningful reading culture together. Join the Book
+                Buddy community as a Volunteer, Writer, Sponsor, or Collaborator
+                and contribute your time, skills, or resources to inspire young
+                minds. By working together, we can create engaging learning
+                spaces, support literacy initiatives, and make quality reading
+                experiences accessible to every child.<i
+                  class="icofont-quote-right quote__right"
+                ></i>
+              </p>
+
+              <div class="testimonialarea__person__3">
+                <a class="default__button" href="#">Contact Us</a>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+        <div
+          class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12"
+          data-aos="fade-up"
+        >
+          <div class="testimonial__group__img" data-tilt>
+            <img
+              loading="lazy"
+              src="{% static 'img/testimonial/testi__group__1.png' %}"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- testimonial__section__start -->
 
-    <!-- JavaScript for Effects -->
-    <script>
-        // Create binary rain effect
-        function createBinaryRain() {
-            const rainContainer = document.getElementById('binaryRain');
-            const digits = ['0', '1'];
-            
-            for (let i = 0; i < 60; i++) {
-                const digit = document.createElement('div');
-                digit.className = 'binary-digit';
-                digit.textContent = digits[Math.floor(Math.random() * digits.length)];
-                digit.style.left = `${Math.random() * 100}vw`;
-                digit.style.animationDuration = `${Math.random() * 5 + 3}s`;
-                digit.style.animationDelay = `${Math.random() * 2}s`;
-                digit.style.opacity = Math.random() * 0.4 + 0.1;
-                digit.style.color = Math.random() > 0.7 ? 'rgba(116, 15, 40, 0.3)' : 'rgba(23, 119, 111, 0.3)';
-                rainContainer.appendChild(digit);
-            }
-        }
-
-        // Position nodes around center using vw/vh units
-        function positionNodes() {
-            const nodes = document.querySelectorAll('.data-node');
-            
-            if (window.innerWidth <= 768) {
-                // Mobile layout - remove positioning
-                nodes.forEach(node => {
-                    node.style.position = 'relative';
-                    node.style.left = 'auto';
-                    node.style.top = 'auto';
-                    node.style.transform = 'none';
-                });
-                return;
-            }
-            
-            // Get viewport dimensions
-            const vw = window.innerWidth;
-            const vh = window.innerHeight;
-            
-            // Node positions based on viewport percentages
-            const positions = [
-                { x: '30vw', y: '30vh' },  // Top-left
-                { x: '70vw', y: '30vh' },  // Top-right
-                { x: '30vw', y: '70vh' },  // Bottom-left
-                { x: '70vw', y: '70vh' }   // Bottom-right
-            ];
-            
-            // Apply positions
-            nodes.forEach((node, index) => {
-                node.style.position = 'absolute';
-                node.style.left = positions[index].x;
-                node.style.top = positions[index].y;
-                node.style.transform = 'translate(-50%, -50%)';
-            });
-            
-            // Update animation keyframes for positioned nodes
-            updateAnimations(positions);
-        }
-
-        // Update animation keyframes based on vw/vh positions
-        function updateAnimations(positions) {
-            const styleSheet = document.createElement('style');
-            
-            // Parse vw/vh values for animation
-            const pos1 = positions[0];
-            const pos2 = positions[1];
-            const pos3 = positions[2];
-            const pos4 = positions[3];
-            
-            styleSheet.textContent = `
-                @keyframes floatNode1 {
-                    0%, 100% { 
-                        left: ${pos1.x}; 
-                        top: ${pos1.y};
-                        transform: translate(-50%, -50%) rotate(0deg);
-                    }
-                    50% { 
-                        left: calc(${parseFloat(pos1.x)} - 2vw); 
-                        top: calc(${parseFloat(pos1.y)} - 2vh);
-                        transform: translate(-50%, -50%) rotate(2deg);
-                    }
-                }
-                @keyframes floatNode2 {
-                    0%, 100% { 
-                        left: ${pos2.x}; 
-                        top: ${pos2.y};
-                        transform: translate(-50%, -50%) rotate(0deg);
-                    }
-                    50% { 
-                        left: calc(${parseFloat(pos2.x)} + 2vw); 
-                        top: calc(${parseFloat(pos2.y)} - 2vh);
-                        transform: translate(-50%, -50%) rotate(-2deg);
-                    }
-                }
-                @keyframes floatNode3 {
-                    0%, 100% { 
-                        left: ${pos3.x}; 
-                        top: ${pos3.y};
-                        transform: translate(-50%, -50%) rotate(0deg);
-                    }
-                    50% { 
-                        left: calc(${parseFloat(pos3.x)} - 2vw); 
-                        top: calc(${parseFloat(pos3.y)} + 2vh);
-                        transform: translate(-50%, -50%) rotate(2deg);
-                    }
-                }
-                @keyframes floatNode4 {
-                    0%, 100% { 
-                        left: ${pos4.x}; 
-                        top: ${pos4.y};
-                        transform: translate(-50%, -50%) rotate(0deg);
-                    }
-                    50% { 
-                        left: calc(${parseFloat(pos4.x)} + 2vw); 
-                        top: calc(${parseFloat(pos4.y)} + 2vh);
-                        transform: translate(-50%, -50%) rotate(-2deg);
-                    }
-                }
-            `;
-            
-            // Remove old style sheet if exists
-            const oldSheet = document.getElementById('animations-sheet');
-            if (oldSheet) oldSheet.remove();
-            
-            styleSheet.id = 'animations-sheet';
-            document.head.appendChild(styleSheet);
-        }
-
-        // Draw connection beams using vw/vh units
-        function drawConnections() {
-            const core = document.querySelector('.central-core');
-            const nodes = document.querySelectorAll('.data-node');
-            
-            // Remove existing connections
-            document.querySelectorAll('.connection-beam').forEach(c => c.remove());
-            
-            if (window.innerWidth <= 768) return;
-            
-            const coreRect = core.getBoundingClientRect();
-            const coreX = coreRect.left + coreRect.width / 2;
-            const coreY = coreRect.top + coreRect.height / 2;
-            
-            nodes.forEach(node => {
-                const rect = node.getBoundingClientRect();
-                const nodeX = rect.left + rect.width / 2;
-                const nodeY = rect.top + rect.height / 2;
-                
-                const dx = nodeX - coreX;
-                const dy = nodeY - coreY;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                
-                const beam = document.createElement('div');
-                beam.className = 'connection-beam';
-                beam.style.width = distance + 'px';
-                beam.style.left = coreX + 'px';
-                beam.style.top = coreY + 'px';
-                beam.style.transform = `rotate(${angle}deg)`;
-                beam.style.color = getComputedStyle(node).color;
-                
-                document.querySelector('.cyberpunk-container').appendChild(beam);
-            });
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            createBinaryRain();
-            positionNodes();
-            drawConnections();
-            
-            // Add glitch effect on hover
-            const nodes = document.querySelectorAll('.data-node');
-            nodes.forEach(node => {
-                node.addEventListener('mouseenter', function() {
-                    this.style.animationPlayState = 'paused';
-                    // Add glitch effect
-                    this.style.filter = 'hue-rotate(90deg)';
-                    setTimeout(() => {
-                        this.style.filter = '';
-                    }, 100);
-                });
-                
-                node.addEventListener('mouseleave', function() {
-                    this.style.animationPlayState = 'running';
-                });
-            });
-            
-            // Recalculate on window resize
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    positionNodes();
-                    drawConnections();
-                }, 100);
-            });
-        });
-    </script>
-
+  {% include 'partials/footer.html' %}
 </main>
 
 {% endblock %}
