@@ -1,0 +1,183 @@
+{% extends 'layouts/ecommerce.html' %}
+{% load static i18n %}
+
+{% block title %}Library Events & Activities{% endblock %}
+
+{% block page_content %}
+
+<div class="eventlistarea sp_top_50 sp_bottom_100">
+    <div class="container">
+        <div class="eventlistarea__bg">
+            <svg width="938" height="919" viewBox="0 0 938 919" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M926.588 668.954C845.79 881.299 578.082 976.498 328.645 881.587C79.2083 786.675 -57.5003 537.594 23.2975 325.25C104.095 112.905 842.659 -201.917 722.687 181.03C612.239 533.576 1007.39 456.609 926.588 668.954Z" fill="url(#paint0_linear_141_3)" />
+                <defs>
+                    <linearGradient id="paint0_linear_141_3" x1="621.24" y1="112.617" x2="328.645" y2="881.586" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.9999" stop-color="#FBAED8" stop-opacity="0.08" />
+                        <stop offset="1" stop-color="#B64AA4" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="row eventarea__wraper" data-aos="fade-up">
+            <div class="col-xl-7 col-lg-7 col-md-7">
+                <div class="section__title eventarea__section__title">
+                    <div class="section__title__button">
+                        <div class="default__small__button">Event List</div>
+                    </div>
+                    <div class="section__title__heading heading__underline">
+                        <h2>Join Our Learning Community Events</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-5 col-md-5">
+                <div class="eventarea__content">
+                    <p class="fw-bold" style="color: #0A2472;">Empowering Minds Every Day</p>
+                    <p>Discover a world of knowledge through our curated workshops and academic support programs designed for every age group.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4" data-aos="fade-up">
+            <div class="col-xl-12">
+                <ul class="nav tab__button__wrap" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <button class="single__tab__link active" data-bs-toggle="tab" data-bs-target="#beyond_school" type="button">Beyond School</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#coding_skills" type="button">Coding & Tech</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#exam_prep" type="button">BA & Banking</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#creative_arts" type="button">Creative Arts</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#daily_challenges" type="button">Daily Challenges</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-content tab__content__wrapper" id="myTabContent">
+            
+            <div class="tab-pane fade active show" id="beyond_school">
+                <div class="social__wrapper">
+                    <div class="single__event__wraper" data-aos="fade-up">
+                        <div class="eventarea__img"><img src="{% static 'img/event/event__1.png' %}" alt="event"></div>
+                        <div class="eventarea__content__wraper">
+                            <div class="eventarea__list">
+                                <ul>
+                                    <li><i class="icofont-ui-check"></i> Available Daily</li>
+                                    <li><span class="fw-bold" style="color: #0A2472;">English Fluency</span></li>
+                                </ul>
+                            </div>
+                            <div class="single__event__heading">
+                                <h4>Spoken English & Grammar: Interactive sessions to improve student communication and confidence.</h4>
+                            </div>
+                            <div class="single__event__button"><a href="#">Read More <i class="icofont-simple-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="single__event__wraper single__event__wraper__2" data-aos="fade-up">
+                        <div class="eventarea__content__wraper">
+                            <div class="eventarea__list">
+                                <ul>
+                                    <li><i class="icofont-ui-check"></i> Weekly Sessions</li>
+                                    <li><span class="fw-bold" style="color: #0A2472;">Maths Mastery</span></li>
+                                </ul>
+                            </div>
+                            <div class="single__event__heading">
+                                <h4>Vedic Maths & Logic: Unique techniques to solve complex problems and boost academic performance.</h4>
+                            </div>
+                            <div class="single__event__button"><a href="#">Read More <i class="icofont-simple-right"></i></a></div>
+                        </div>
+                        <div class="eventarea__img"><img src="{% static 'img/event/event__1.png' %}" alt="event"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="coding_skills">
+                <div class="social__wrapper">
+                    <div class="single__event__wraper" data-aos="fade-up">
+                        <div class="eventarea__img"><img src="{% static 'img/event/event__1.png' %}" alt="event"></div>
+                        <div class="eventarea__content__wraper">
+                            <div class="eventarea__list">
+                                <ul>
+                                    <li><i class="icofont-ui-check"></i> Evening Batches</li>
+                                    <li><span class="fw-bold" style="color: #0A2472;">Coding for Kids</span></li>
+                                </ul>
+                            </div>
+                            <div class="single__event__heading">
+                                <h4>Tech Foundation: Practical workshops on Scratch, Web Design, and basic Python programming.</h4>
+                            </div>
+                            <div class="single__event__button"><a href="#">Read More <i class="icofont-simple-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="exam_prep">
+                <div class="social__wrapper">
+                    <div class="single__event__wraper" data-aos="fade-up">
+                        <div class="eventarea__img"><img src="{% static 'img/event/event__1.png' %}" alt="event"></div>
+                        <div class="eventarea__content__wraper">
+                            <div class="eventarea__list">
+                                <ul>
+                                    <li><i class="icofont-ui-check"></i> Competitive Track</li>
+                                    <li><span class="fw-bold" style="color: #0A2472;">Banking Exams</span></li>
+                                </ul>
+                            </div>
+                            <div class="single__event__heading">
+                                <h4>Aspirants Hub: Expert guidance and study materials for IBPS, SBI, and other banking exams.</h4>
+                            </div>
+                            <div class="single__event__button"><a href="#">Read More <i class="icofont-simple-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="creative_arts">
+                <div class="social__wrapper">
+                    <div class="single__event__wraper" data-aos="fade-up">
+                        <div class="eventarea__img"><img src="{% static 'img/event/event__1.png' %}" alt="event"></div>
+                        <div class="eventarea__content__wraper">
+                            <div class="eventarea__list">
+                                <ul>
+                                    <li><i class="icofont-ui-check"></i> Monthly Special</li>
+                                    <li><span class="fw-bold" style="color: #0A2472;">Art & Design</span></li>
+                                </ul>
+                            </div>
+                            <div class="single__event__heading">
+                                <h4>Creative Workspace: Guided sketching, painting, and digital art workshops for all skill levels.</h4>
+                            </div>
+                            <div class="single__event__button"><a href="#">Read More <i class="icofont-simple-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="daily_challenges">
+                <div class="social__wrapper">
+                    <div class="single__event__wraper" data-aos="fade-up">
+                        <div class="eventarea__img"><img src="{% static 'img/event/event__1.png' %}" alt="event"></div>
+                        <div class="eventarea__content__wraper">
+                            <div class="eventarea__list">
+                                <ul>
+                                    <li><i class="icofont-ui-check"></i> Interactive</li>
+                                    <li><span class="fw-bold" style="color: #0A2472;">Knowledge Quest</span></li>
+                                </ul>
+                            </div>
+                            <div class="single__event__heading">
+                                <h4>Daily Challenges: Participate in book reviews, newspaper quizzes, and community discussions.</h4>
+                            </div>
+                            <div class="single__event__button"><a href="#">Read More <i class="icofont-simple-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

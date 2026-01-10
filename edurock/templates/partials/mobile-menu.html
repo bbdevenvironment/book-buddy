@@ -10,15 +10,12 @@
             <li><a href="{% url 'pages:dynamic_pages' template_name='about' %}">About Us</a></li>
 
             <li class="menu-item-has-children">
-              <a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Books & Membership</a>
+              <a href="{% url 'pages:dynamic_pages' template_name='library-catalogue' %}">Books & Membership</a>
               <ul class="dropdown">
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Library Catalogue</a></li>
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Membership & Plans</a></li>
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">New Arrivals</a></li>
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Recommend a Book</a></li>
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">How to Borrow</a></li>
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">FAQS</a></li>
-              </ul>
+               <li><a href="{% url 'pages:dynamic_pages' template_name='library-catalogue' %}">Library Catalogue</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='membership' %}">Membership & Plans</a></li>
+                     <li><a href="{% url 'pages:dynamic_pages' template_name='how-to-borrow' %}">How to Borrow</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='faq' %}">FAQS</a></li>  </ul>
             </li>
 
             <li class="menu-item-has-children">
@@ -98,14 +95,14 @@
             </li>
 
             <li class="menu-item-has-children">
-              <a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Events</a>
+              <a href="{% url 'pages:dynamic_pages' template_name='calendar' %}">Events</a>
               <ul class="dropdown">
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Workshop</a></li>
-                <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Calendar</a></li>
-              </ul>
+               <li><a href="{% url 'pages:dynamic_pages' template_name='workshop' %}">Workshop</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='calendar' %}">Calendar</a></li>
+                   </ul>
             </li>
 
-            <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Get Involved</a></li>
+            <li><a href="{% url 'pages:dynamic_pages' template_name='get-involved' %}">Get Involved</a></li>
           </ul>
         </nav>
       </div>
@@ -127,14 +124,14 @@
           </ul>
         </div>
       {% else %}
-        <a class="mobile-account-active" href="#">
+        <!-- <a class="mobile-account-active" href="#">
           <span style="color: #ff0000; font-size: 9px; font-weight: bold; display: block; line-height: 1;">GUEST MODE</span>
           My Account <i class="icofont-thin-down"></i>
-        </a>
+        </a> -->
         <div class="lang-curr-dropdown account-dropdown-active">
           <ul>
             <li><a href="{% url 'pages:dynamic_pages' template_name='login' %}">Login</a></li>
-            <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Create Account</a></li>
+            <!-- <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Create Account</a></li> -->
           </ul>
         </div>
       {% endif %}
@@ -142,9 +139,16 @@
 
     <div style="padding: 20px 25px; border-top: 1px solid #eee;">
       <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 10px;"><i class="icofont-ui-call"></i> +91 9080759312</li>
-        <li><i class="icofont-envelope"></i> bookbuddy.edu@gmail.com</li>
-      </ul>
+      <li style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+  <i class="icofont-ui-call"></i>
+  <span>+91 9080759312</span>
+</li>
+
+<li style="display: flex; align-items: center; gap: 8px;">
+  <i class="icofont-envelope"></i>
+  <span>bookbuddy.edu@gmail.com</span>
+</li>
+  </ul>
     </div>
 
     <div class="mobile-social-wrap">

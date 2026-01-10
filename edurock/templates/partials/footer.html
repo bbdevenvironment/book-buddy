@@ -8,20 +8,27 @@
       <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" data-aos="fade-up">
           <div class="footerarea__inner footerarea__about__us">
-            <div class="footerarea__heading">
+            <!-- <div class="footerarea__heading">
               <h3>About us</h3>
             </div>
             <div class="footerarea__content">
               <p>Empowering learners of all ages to think critically through story-driven resources and a supportive community.</p>
-            </div>
+            </div> -->
             <div class="foter__bottom__text">
-              <!-- <div class="footer__bottom__icon">
-                <i class="icofont-clock-time"></i>
-              </div> -->
+             
+
+
+
+
+              
               <div class="footer__bottom__content">
-                <h6>Opening Hours</h6>
-                <span>Tuesday - Sunday <br>(10.00Am - 1.00Pm & <br> 04:30Pm - 08:30Pm)</span>
-                <span>Monday - Closed</span>
+                 <div class="footerarea__heading">
+              <h3>Working Hours</h3>
+            </div>
+               
+                <span style="color: white;">Tuesday - Sunday</span>
+                 <span style="color: white;">10.00Am - 1.00Pm &  04:30Pm - 08:30Pm</span>
+                <span style="color: white;">Monday - Closed</span>
               </div>
             </div>
 
@@ -34,21 +41,12 @@
             </div>
             <div class="footerarea__list">
               <ul>
-                <li>
-                  <a href="#">About Us</a>
-                </li>
-                <li>
-                  <a href="#">Beyond School</a>
-                </li>
-                <li>
-                  <a href="#">School Work</a>
-                </li>
-                <li>
-                  <a href="#">Library</a>
-                </li>
-                <li>
-                  <a href="#">Magazine</a>
-                </li>
+               <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Library Catalogue</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Membership & Plans</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='magazine' %}">Monthly Magazine</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='news-paper' %}">Newspaper</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='daily-challenges' %}">Daily Challenges</a></li>
+                   
               </ul>
             </div>
 
@@ -58,25 +56,16 @@
         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
           <div class="footerarea__inner footerarea__padding__left">
             <div class="footerarea__heading">
-              <h3>Course</h3>
+              <h3>Beyond School</h3>
             </div>
             <div class="footerarea__list">
               <ul>
-                <li>
-                  <a href="#">Podcasts</a>
-                </li>
-                <li>
-                  <a href="#">English</a>
-                </li>
-                <li>
-                  <a href="#">Math</a>
-                </li>
-                <li>
-                  <a href="#">Coding</a>
-                </li>
-                <li>
-                  <a href="#">Professional Courses</a>
-                </li>
+               <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Coding</a></li>
+                               <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">English</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Maths</a></li>
+                              <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">BA</a></li>
+                        <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Banking</a></li>
+                              
               </ul>
             </div>
 

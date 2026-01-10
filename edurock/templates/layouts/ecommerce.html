@@ -13,13 +13,13 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'partials/theme-switch.html' %}
+  <!-- {% include 'partials/theme-switch.html' %} -->
 
   <main class="main_wrapper overflow-hidden">
 
-    {% include 'partials/top-banner-2.html' %}
+    {% include 'partials/top-banner.html' %}
 
-    {% include 'partials/navbar-2.html' %}
+    {% include 'partials/navbar.html' %}
 
     {% include 'partials/mobile-menu.html' %}
 
@@ -30,7 +30,7 @@
 
     {% block page_content %}{% endblock %}
 
-    {% include 'partials/footer-2.html' %}
+    {% include 'partials/footer.html' %}
 
     {% block modal %}{% endblock %}
 

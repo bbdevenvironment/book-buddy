@@ -1,0 +1,98 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0" style="background: transparent;">
+            <div class="text-end mb-2">
+                <button type="button" class="btn-close bg-white p-2 shadow-sm" data-bs-dismiss="modal" aria-label="Close" style="border-radius: 50%;"></button>
+            </div>
+            
+            <div class="loginarea__wraper mt-0" style="background: #fff; border-radius: 10px; padding: 40px;">
+                <div class="tab__button__wrap mb-4">
+                    <ul class="nav nav-pills justify-content-center border-0" id="authTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="single__tab__link active border-0" id="login-tab" data-bs-toggle="pill" data-bs-target="#login-pane" type="button" role="tab">Login</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="single__tab__link border-0" id="signup-tab" data-bs-toggle="pill" data-bs-target="#signup-pane" type="button" role="tab">Sign up</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content tab__content__wrapper p-0 border-0">
+                    <div class="tab-pane fade show active" id="login-pane" role="tabpanel">
+                        <div class="login__heading">
+                            <h5 class="login__title">Login</h5>
+                        </div>
+                        <form method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
+                            <div class="login__form mb-3">
+                                <label class="form__label">Email address</label>
+                                <input class="common__login__input" type="email" name="login" placeholder="Email Address" required>
+                            </div>
+                            <div class="login__form mb-4">
+                                <label class="form__label">Password</label>
+                                <input class="common__login__input" type="password" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="login__button">
+                                <button type="submit" class="default__button w-100">Log In</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="signup-pane" role="tabpanel">
+                        <div class="login__heading">
+                            <h5 class="login__title">Sign Up</h5>
+                        </div>
+                        <form method="POST" action="{% url 'account_signup' %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="login__form mb-3">
+                                        <label class="form__label">Full Name</label>
+                                        <input class="common__login__input" type="text" name="name" placeholder="Full Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="login__form mb-3">
+                                        <label class="form__label">Email</label>
+                                        <input class="common__login__input" type="email" name="email" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="login__form mb-3">
+                                        <label class="form__label">Password</label>
+                                        <input class="common__login__input" type="password" name="password1" placeholder="Password" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="login__form mb-4">
+                                        <label class="form__label">Confirm Password</label>
+                                        <input class="common__login__input" type="password" name="password2" placeholder="Re-Enter" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="login__button">
+                                <button type="submit" class="default__button w-100">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Ensure theme tab buttons work inside modal */
+    #authTab .single__tab__link {
+        background: transparent;
+        margin: 0 10px;
+    }
+    #authTab .single__tab__link.active {
+        color: var(--primary-color); /* adjust to your theme's purple */
+        border-bottom: 2px solid var(--primary-color);
+    }
+    .modal-backdrop.show {
+        opacity: 0.7;
+        backdrop-filter: blur(5px);
+    }
+</style>

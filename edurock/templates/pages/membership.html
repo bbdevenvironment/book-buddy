@@ -1,0 +1,124 @@
+{% extends 'base.html' %} 
+{% load static i18n %} 
+{% block title %}Library Membership Plans{% endblock %} 
+
+{% block content %}
+<main class="main_wrapper overflow-hidden">
+    {% include 'partials/top-banner.html' %}
+    {% include 'partials/navbar.html' %}
+    {% include 'partials/mobile-menu.html' %}
+
+    <div>
+        <div class="theme__shadow__circle"></div>
+        <div class="theme__shadow__circle shadow__right"></div>
+    </div>
+
+    <div class="pricingarea sp_bottom_70 sp_top_90">
+        <div class="container">
+            <div class="row" data-aos="fade-up">
+                <div class="section__title text-center">
+                    <div class="section__title__button">
+                        <div class="default__small__button">Membership Plans</div>
+                    </div>
+                    <div class="section__title__heading">
+                        <h2>Choose The Best Package<br>For Your Reading Needs</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+                    <div class="pricingarea__content__wraper">
+                        <div class="pricingarea__heading">
+                            <div class="pricingarea__plan__type">
+                                <h6>MONTHLY</h6>
+                                <!-- <img loading="lazy" src="{% static 'img/icon/price__1.png' %}" alt=""> -->
+                            </div>
+                            <div class="pricingarea__number">
+                                <h1><span class="price__currency">Rs.</span>200<span class="price__durition">/ Month</span></h1>
+                            </div>
+                            <p>Flexible short-term reading</p>
+                        </div>
+                        <div class="pricingarea__list">
+                            <ul>
+                                <li><i class="icofont-check"></i> 1 Book - Rs. 200</li>
+                                <li><i class="icofont-check"></i> 2 Books - Rs. 300</li>
+                                <li><i class="icofont-check"></i> 3 Books - Rs. 400</li>
+                                <li><i class="icofont-check"></i> 4 Books - Rs. 500</li>
+                                <li><i class="icofont-check"></i> 5 Books - Rs. 600</li>
+                                <li><i class="icofont-check"></i> 6 Books - Rs. 700</li>
+                                <li><i class="icofont-plus text-success"></i> Includes 2 Magazines</li>
+                            </ul>
+                        </div>
+                        <div class="pricingarea__button">
+                            <a class="default__button" href="#">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+                    <div class="pricingarea__content__wraper">
+                        <div class="pricingarea__heading">
+                            <div class="pricingarea__plan__type">
+                                <h6>HALF YEARLY</h6>
+                                <!-- <img loading="lazy" src="{% static 'img/icon/price__2.png' %}" alt=""> -->
+                            </div>
+                            <div class="pricingarea__number">
+                                <h1><span class="price__currency">Rs.</span>900<span class="price__durition">/ 6 Months</span></h1>
+                            </div>
+                            <p>Great value for avid readers</p>
+                        </div>
+                        <div class="pricingarea__list">
+                            <ul>
+                                <li><i class="icofont-check"></i> 1 Book - Rs. 900</li>
+                                <li><i class="icofont-check"></i> 2 Books - Rs. 1400</li>
+                                <li><i class="icofont-check"></i> 3 Books - Rs. 1900</li>
+                                <li><i class="icofont-check"></i> 4 Books - Rs. 2350</li>
+                                <li><i class="icofont-check"></i> 5 Books - Rs. 3000</li>
+                                <li><i class="icofont-check"></i> 6 Books - Rs. 3500</li>
+                                <li><i class="icofont-plus text-success"></i> Includes 2 Magazines</li>
+                            </ul>
+                        </div>
+                        <div class="pricingarea__button pricingarea__button__2">
+                            <a class="default__button" href="#">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+                    <div class="pricingarea__content__wraper">
+                        <div class="pricingarea__heading">
+                            <div class="pricingarea__plan__type">
+                                <h6>ANNUAL</h6>
+                                <!-- <img loading="lazy" src="{% static 'img/icon/price__3.png' %}" alt=""> -->
+                            </div>
+                            <div class="pricingarea__number">
+                                <h1><span class="price__currency">Rs.</span>1500<span class="price__durition">/ Year</span></h1>
+                            </div>
+                            <p>Best long-term savings</p>
+                        </div>
+                        <div class="pricingarea__list">
+                            <ul>
+                                <li><i class="icofont-check"></i> 1 Book - Rs. 1500</li>
+                                <li><i class="icofont-check"></i> 2 Books - Rs. 2500</li>
+                                <li><i class="icofont-check"></i> 3 Books - Rs. 3300</li>
+                                <li><i class="icofont-check"></i> 4 Books - Rs. 4300</li>
+                                <li><i class="icofont-check"></i> 5 Books - Rs. 5300</li>
+                                <li><i class="icofont-check"></i> 6 Books - Rs. 6300</li>
+                                <li><i class="icofont-plus text-success"></i> Includes 2 Magazines</li>
+                            </ul>
+                        </div>
+                        <div class="pricingarea__button">
+                            <a class="default__button" href="#">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+    {% include 'partials/footer.html' %}
+</main>
+{% endblock %}

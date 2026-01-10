@@ -20,16 +20,14 @@
                 <li><a href="{% url 'pages:dynamic_pages' template_name='index' %}">Home</a></li>
                 <li><a href="{% url 'pages:dynamic_pages' template_name='about' %}">About Us</a></li>
                 <li>
-                  <a class="headerarea__has__dropdown" href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">
+                  <a class="headerarea__has__dropdown" href="{% url 'pages:dynamic_pages' template_name='library-catalogue' %}">
                     Books & Membership <i class="icofont-rounded-down"></i>
                   </a>
                   <ul class="headerarea__submenu headerarea__submenu--third--wrap">
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Library Catalogue</a></li>
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Membership & Plans</a></li>
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">New Arrivals</a></li>
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Recommend a Book</a></li>
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">How to Borrow</a></li>
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">FAQS</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='library-catalogue' %}">Library Catalogue</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='membership' %}">Membership & Plans</a></li>
+                     <li><a href="{% url 'pages:dynamic_pages' template_name='how-to-borrow' %}">How to Borrow</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='faq' %}">FAQS</a></li>
                   </ul>
                 </li>
                 <li>
@@ -107,10 +105,10 @@
                   </ul>
                 </li>
                 <li>
-                  <a class="headerarea__has__dropdown" href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Events <i class="icofont-rounded-down"></i></a>
+                  <a class="headerarea__has__dropdown" href="{% url 'pages:dynamic_pages' template_name='calendar' %}">Events <i class="icofont-rounded-down"></i></a>
                   <ul class="headerarea__submenu headerarea__submenu--third--wrap">
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Workshop</a></li>
-                    <li><a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}">Calendar</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='workshop' %}">Workshop</a></li>
+                    <li><a href="{% url 'pages:dynamic_pages' template_name='calendar' %}">Calendar</a></li>
                   </ul>
                 </li>
               </ul>
@@ -123,7 +121,7 @@
             <div class="d-flex align-items-center justify-content-end" style="gap: 12px;">
               
               <div class="headerarea__login">
-                <a href="{% url 'pages:dynamic_pages' template_name='coming-soon' %}" 
+                <a href="{% url 'pages:dynamic_pages' template_name='get-involved' %}" 
                    style="white-space: nowrap; font-size: 13px; font-weight: 500;">
                    Get Involved
                 </a>
@@ -160,13 +158,14 @@
                   </nav>
                 </div>
               {% else %}
-                <div class="headerarea__button" style="position: relative;">
-                  <span style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 9px; font-weight: bold; color: #ff0000; text-transform: uppercase; white-space: nowrap;">Guest Mode</span>
-                  <a href="{% url 'pages:dynamic_pages' template_name='login' %}" 
-                     style="padding: 6px 15px; font-size: 13px; display: inline-block;">
-                     Login
-                  </a>
-                </div>
+               <div class="headerarea__button">
+    <a href="javascript:void(0);" 
+       data-bs-toggle="modal" 
+       data-bs-target="#loginModal"
+       style="padding: 6px 15px; font-size: 13px; display: inline-block;">
+        Login
+    </a>
+</div>
               {% endif %}
             </div>
           </div>
@@ -192,3 +191,10 @@
     </div>
   </div>
 </header>
+
+
+
+
+
+
+

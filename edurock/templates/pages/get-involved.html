@@ -1,0 +1,166 @@
+{% extends 'layouts/ecommerce.html' %}
+{% load static i18n %}
+
+{% block title %}Get Involved - Book Buddy Library{% endblock %}
+
+{% block page_content %}
+
+<div class="pricingarea sp_bottom_30 sp_top_90">
+    <div class="container"> 
+        <div class="row mb-5 pb-3 align-items-end">
+            <div class="col-md-7">
+                <div class="aboutarea__button">
+                    <div class="default__small__button">Community & Support</div>
+                </div>
+                <h2 class="display-5 fw-bold mt-2">Get <span style="color: #0A2472;">Involved</span> with Us</h2>
+            </div>
+            <div class="col-md-5 text-md-end">
+                <p class="text-muted mb-2">Join our mission to spread the joy of reading. Whether you volunteer, donate, or partner with us, you make a difference.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="contact__from__wraper sp_bottom_50">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="contact__form__inner">
+                    <div class="contact__form__heading" data-aos="fade-up">
+                        <h3 style="color: #0A2472;">Join the Movement</h3>
+                        <p>Have a question about volunteering, book donations, or library events? Send us a message and we'll get back to you shortly.</p>
+                    </div>
+
+                    <form id="contact-form" class="contact-form" action="#" method="post">
+                        <div class="row">
+                            <div class="col-xl-6" data-aos="fade-up">
+                                <div class="contact__input__wraper">
+                                    <input type="text" name="con_name" id="con_name" placeholder="Full Name*">
+                                    <div class="contact__icon">
+                                        <i class="icofont-businessman"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6" data-aos="fade-up">
+                                <div class="contact__input__wraper">
+                                    <input type="text" name="con_email" id="con_email" placeholder="Email Address*">
+                                    <div class="contact__icon">
+                                        <i class="icofont-envelope"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6" data-aos="fade-up">
+                                <div class="contact__input__wraper">
+                                    <select name="interest" style="width: 100%; border: 1px solid #ddd; padding: 15px 50px; border-radius: 5px; appearance: none;">
+                                        <option value="">Select Involvement Type*</option>
+                                        <option value="volunteer">Become a Volunteer</option>
+                                        <option value="donate">Donate Books</option>
+                                        <option value="partner">Corporate Partnership</option>
+                                        <option value="event">Host an Event</option>
+                                    </select>
+                                    <div class="contact__icon">
+                                        <i class="icofont-users-alt-2"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6" data-aos="fade-up">
+                                <div class="contact__input__wraper">
+                                    <input type="text" name="phone" placeholder="Phone Number">
+                                    <div class="contact__icon">
+                                        <i class="icofont-ui-call"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12" data-aos="fade-up">
+                                <div class="contact__input__wraper">
+                                    <textarea name="con_message" id="con_message" cols="30" rows="6" placeholder="How would you like to help? Tell us more..."></textarea>
+                                    <div class="contact__icon">
+                                        <i class="icofont-pen-alt-2"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12" data-aos="fade-up">
+                                <div class="contact__button">
+                                    <button type="submit" class="default__button" style="background-color: #0A2472; border: none;">Send Message</button>
+                                    <p class="form-messege"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contact__section sp_top_100 sp_bottom_50" data-aos="fade-up">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="single__contact">
+                    <div class="contact__icon">
+                        <i class="icofont-envelope" style="font-size: 40px; color: #0A2472;"></i>
+                    </div>
+                    <div class="contact__text">
+                        <h5>Mail Address</h5>
+                        <div class="contact__email">
+                            <p>bookbuddy.edu@gmail.com</p>
+                            <span>Support available 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="single__contact">
+                    <div class="contact__icon">
+                        <i class="icofont-location-pin" style="font-size: 40px; color: #0A2472;"></i>
+                    </div>
+                    <div class="contact__text">
+                        <h5>Office Address</h5>
+                        <div class="contact__email">
+                            <p>Gandhi Nagar, Saligramam</p>
+                            <span>Chennai, Tamil Nadu 600093</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="single__contact">
+                    <div class="contact__icon">
+                        <i class="icofont-ui-call" style="font-size: 40px; color: #0A2472;"></i>
+                    </div>
+                    <div class="contact__text">
+                        <h5>Phone Number</h5>
+                        <div class="contact__email">
+                            <p>+91 9080759312</p>
+                            <span>Mon - Sat (9am - 6pm)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom Styling for the select box icon alignment */
+    select {
+        background: transparent;
+        cursor: pointer;
+    }
+    .contact__input__wraper i {
+        color: #0A2472;
+    }
+</style>
+
+{% endblock %}

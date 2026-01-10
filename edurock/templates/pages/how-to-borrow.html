@@ -1,0 +1,156 @@
+{% extends 'layouts/ecommerce.html' %}
+{% load static i18n %}
+
+{% block title %}Library - How to Borrow{% endblock %}
+
+{% block page_content %}
+
+
+
+<div class="become__instructor sp_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="become__instructor__heading">
+                    <h2 >How to Borrow a Book</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                <div class="become__instructor__text">
+                    <h3 class="become__instructor__small__heading" style="color: #0A2472;">Borrowing Process</h3>
+                    <p>Our library makes it easy for members to access thousands of titles. Simply browse the catalogue, check for availability, and present your Membership ID at the circulation desk for a quick checkout.</p>
+                    
+                    <h3 class="become__instructor__small__heading" style="color: #0A2472;">Borrowing Rules</h3>
+                    <p>To ensure a fair experience for all readers, please keep the following guidelines in mind:</p>
+                    <div class="become__instructor__list">
+                        <ul>
+                            <li>
+                                <div class="become__instructor__img">
+                                    <img loading="lazy" src="{% static 'img/dashbord/check__1.png' %}" alt="check">
+                                </div>
+                                Standard borrowing period is 14 days (2 weeks).
+                            </li>
+                            <li>
+                                <div class="become__instructor__img">
+                                    <img loading="lazy" src="{% static 'img/dashbord/check__1.png' %}" alt="check">
+                                </div>
+                                Books can be renewed once if there are no pending reservations.
+                            </li>
+                            <li>
+                                <div class="become__instructor__img">
+                                    <img loading="lazy" src="{% static 'img/dashbord/check__1.png' %}" alt="check">
+                                </div>
+                                Membership ID card is mandatory for every exchange.
+                            </li>
+                            <li>
+                                <div class="become__instructor__img">
+                                    <img loading="lazy" src="{% static 'img/dashbord/check__1.png' %}" alt="check">
+                                </div>
+                                Please check for any existing damages before leaving the desk.
+                            </li>
+                            <li>
+                                <div class="become__instructor__img">
+                                    <img loading="lazy" src="{% static 'img/dashbord/check__1.png' %}" alt="check">
+                                </div>
+                                Late returns incur a fee as per your membership agreement.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3 class="become__instructor__small__heading" style="color: #0A2472;">Can't Find a Book?</h3>
+                    <p>If a specific title is not available in our current catalogue, you can use the request form to the right. Our procurement team will review your request and notify you once the book is added to our shelves.</p>
+                    <div class="become__instructor__list">
+                        <ul>
+                            <li>
+                                <div class="become__instructor__img">
+                                    <img loading="lazy" src="{% static 'img/dashbord/check__1.png' %}" alt="check">
+                                </div>
+                                Request specific authors or new releases.
+                            </li>
+                            <li>
+                                <div class="become__instructor__img">
+                                    <img loading="lazy" src="{% static 'img/dashbord/check__1.png' %}" alt="check">
+                                </div>
+                                Get notified immediately via email upon arrival.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                <div class="become__instructor__form">
+                    <h4 class="mb-4" style="color: #0A2472;">Book Inquiry & Request Form</h4>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="dashboard__form__wraper">
+                                <div class="dashboard__form__input">
+                                    <label>Membership ID</label>
+                                    <input type="text" placeholder="e.g. LIB-2026-001">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="dashboard__form__wraper">
+                                <div class="dashboard__form__input">
+                                    <label>Book Title / Topic</label>
+                                    <input type="text" placeholder="Enter book name or subject">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="dashboard__form__wraper">
+                                <div class="dashboard__form__input">
+                                    <label>Author Name (If known)</label>
+                                    <input type="text" placeholder="e.g. J.K. Rowling">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="dashboard__form__wraper">
+                                <div class="dashboard__form__input">
+                                    <label>Preferred Language</label>
+                                    <select class="form-control" style="height: 55px; border: 1px solid #ddd;">
+                                        <option>English</option>
+                                        <option>Tamil</option>
+                                        <option>Hindi</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 mt-4">
+                            <div class="dashboard__form__wraper">
+                                <div class="dashboard__form__input">
+                                    <label>Additional Notes / Specific Edition</label>
+                                    <textarea cols="30" rows="5" placeholder="Mention if you need a specific edition or have other queries..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="become__instructor__check">
+                            <input class="become__instructor__check__input" type="checkbox" id="flexCheckDefault">
+                            <label class="become__instructor__check__label" for="flexCheckDefault">
+                                I agree to be notified via email/phone regarding this request.
+                            </label>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="dashboard__form__button">
+                                <button type="submit" class="default__button" style="background-color: #0A2472; border:none; width: 100%;">Submit Inquiry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,304 @@
+{% extends 'layouts/ecommerce.html' %}
+{% load static i18n %}
+
+{% block title %}Book Buddy - Event Calendar{% endblock %}
+
+{% block page_content %}
+
+<style>
+    :root {
+        --primaryColor: #740f28; /* Maroon */
+        --secondaryColor: #0A2472; /* Navy Blue */
+        --bg-light: #f4f7fa;
+    }
+
+    .calendar-section {
+        padding: 40px 0 80px 0;
+        background-color: var(--bg-light);
+    }
+
+    .calendar-intro {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .calendar-intro h2 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--secondaryColor);
+    }
+
+    /* Card Container */
+    .calendar-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin: 0 10px; /* Space for mobile edges */
+    }
+
+    /* Header Nav */
+    .calendar-top-bar {
+        background: var(--secondaryColor);
+        padding: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .calendar-top-bar h2 {
+        color: white;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .month-nav-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    /* Grid Layout */
+    .calendar-body { padding: 15px; }
+    
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px; /* Tighter gap for mobile */
+    }
+
+    .day-header {
+        text-align: center;
+        font-weight: 800;
+        color: var(--secondaryColor);
+        padding-bottom: 10px;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    /* Individual Day Box */
+    .calendar-day {
+        min-height: 80px; /* Smaller height for mobile */
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 5px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .day-number {
+        font-weight: 700;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .today {
+        border: 2px solid var(--primaryColor) !important;
+        background: #fff0f3;
+    }
+
+    /* Event Display - Desktop */
+    .event-pill {
+        background: var(--primaryColor);
+        color: white;
+        font-size: 10px;
+        padding: 2px 4px;
+        border-radius: 3px;
+        margin-top: 3px;
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Event Display - Mobile Dot */
+    .event-dot {
+        display: none;
+        width: 6px;
+        height: 6px;
+        background: var(--primaryColor);
+        border-radius: 50%;
+        margin-top: 5px;
+    }
+
+    /* Tooltip Popup */
+    .event-details-popup {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 105%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        z-index: 100;
+        border-top: 3px solid var(--primaryColor);
+        transition: 0.2s ease;
+    }
+
+    .calendar-day:hover .event-details-popup {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .popup-title { font-weight: 800; color: var(--secondaryColor); font-size: 14px; display: block; margin-bottom: 5px; }
+    .attend-btn { 
+        display: block; 
+        background: var(--primaryColor); 
+        color: #fff !important; 
+        text-align: center; 
+        padding: 5px; 
+        border-radius: 5px; 
+        font-size: 12px; 
+        margin-top: 8px;
+    }
+
+    /* MOBILE FIXES */
+    @media (max-width: 767px) {
+        .calendar-day { 
+            min-height: 55px; /* Very compact for phones */
+            justify-content: center;
+        }
+        .day-number { font-size: 13px; }
+        .event-pill { display: none; } /* Hide text pills on mobile */
+        .event-dot { display: block; } /* Show dots instead */
+        
+        .calendar-top-bar { padding: 15px; }
+        .calendar-top-bar h2 { font-size: 16px; }
+
+        /* On mobile, center the popup or handle click */
+        .event-details-popup {
+            width: 160px;
+            left: auto;
+            right: -20px;
+            transform: none;
+        }
+    }
+</style>
+
+<section class="calendar-section">
+    <div class="container">
+        
+        <div class="calendar-intro" data-aos="fade-up">
+            <div class="default__small__button" style="background: var(--primaryColor); color: white; border:none;">Live Schedule</div>
+            <h2>Book Buddy Calendar</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="calendar-card">
+                    <div class="calendar-top-bar">
+                        <button class="month-nav-btn" onclick="moveMonth(-1)"><i class="icofont-arrow-left"></i></button>
+                        <h2 id="monthDisplay">January 2026</h2>
+                        <button class="month-nav-btn" onclick="moveMonth(1)"><i class="icofont-arrow-right"></i></button>
+                    </div>
+
+                    <div class="calendar-body">
+                        <div class="calendar-grid" id="calendarGrid"></div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 text-center d-block d-md-none">
+                    <p class="small text-muted"><i class="icofont-info-circle"></i> Tap days with dots to see event info.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const libraryEvents = {
+        "2026-01-12": { title: "Vedic Maths", desc: "Speed calculation tricks.", time: "10:30 AM" },
+        "2026-01-15": { title: "Python Coding", desc: "Intro to logical thinking.", time: "4:30 PM" },
+        "2026-01-20": { title: "Storytelling", desc: "Classic folk tales.", time: "5:00 PM" },
+        "2026-01-26": { title: "Republic Day Quiz", desc: "Indian History competition.", time: "9:00 AM" },
+        "2026-02-05": { title: "Banking Seminar", desc: "IBPS Exam guidance.", time: "11:00 AM" }
+    };
+
+    let currentDate = new Date();
+
+    function renderCalendar() {
+        const grid = document.getElementById('calendarGrid');
+        const monthDisplay = document.getElementById('monthDisplay');
+        grid.innerHTML = '';
+
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const today = new Date();
+
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        monthDisplay.innerText = `${monthNames[month]} ${year}`;
+
+        const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        dayLabels.forEach(label => {
+            const div = document.createElement('div');
+            div.className = 'day-header';
+            div.innerText = label;
+            grid.appendChild(div);
+        });
+
+        const firstDayIdx = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        for (let i = 0; i < firstDayIdx; i++) {
+            const div = document.createElement('div');
+            div.className = 'calendar-day empty';
+            div.style.border = "none";
+            grid.appendChild(div);
+        }
+
+        for (let d = 1; d <= daysInMonth; d++) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'calendar-day';
+            
+            if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === d) {
+                dayDiv.classList.add('today');
+            }
+
+            let html = `<span class="day-number">${d}</span>`;
+
+            if (libraryEvents[dateStr]) {
+                const ev = libraryEvents[dateStr];
+                dayDiv.classList.add('has-event');
+                html += `<div class="event-pill">${ev.title}</div>`;
+                html += `<div class="event-dot"></div>`;
+                html += `
+                    <div class="event-details-popup">
+                        <span class="popup-title">${ev.title}</span>
+                        <p class="small text-muted mb-1">${ev.desc}</p>
+                        <small class="fw-bold" style="color:var(--primaryColor);">${ev.time}</small>
+                        <a href="/workshop/" class="attend-btn">Attend Now</a>
+                    </div>
+                `;
+            }
+
+            dayDiv.innerHTML = html;
+            grid.appendChild(dayDiv);
+        }
+    }
+
+    function moveMonth(offset) {
+        currentDate.setMonth(currentDate.getMonth() + offset);
+        renderCalendar();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCalendar);
+</script>
+
+{% endblock %}

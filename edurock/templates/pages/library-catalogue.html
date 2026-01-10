@@ -1,0 +1,280 @@
+{% extends 'layouts/ecommerce.html' %}
+{% load static i18n %}
+
+{% block title %}Library Catalogue{% endblock %}
+
+{% block page_content %}
+
+<div id="mobile-filter-overlay" class="mobile-filter-overlay">
+    <div class="mobile-filter-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 style="color: #0A2472;">Filters</h4>
+            <button class="btn-close" onclick="toggleMobileFilter()"></button>
+        </div>
+        <div id="sidebar-container-mobile"></div>
+    </div>
+</div>
+
+<section class="shop__page__wrap sp_top_100 sp_bottom_100">
+    <div class="container-fluid full__width__padding">
+        
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="shoptab">
+                    <div class="shoptab__inner nav">
+                        <ul class="nav d-none d-md-flex" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <button class="active" data-bs-toggle="tab" data-bs-target="#grid__view" type="button" onclick="currentPage=1; updateDisplay();">
+                                    <i class="icofont-layout"></i> Grid
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button data-bs-toggle="tab" data-bs-target="#list_view" type="button" onclick="currentPage=1; updateDisplay();">
+                                    <i class="icofont-listine-dots"></i> List
+                                </button>
+                            </li>
+                        </ul>
+                        
+                        <div class="ms-md-3">
+                            <button class="default__button small__button" style="background-color: #0A2472;" onclick="alert('Recommend a Book feature coming soon!')">
+                                <i class="icofont-book-alt"></i> Recommend a Book
+                            </button>
+                        </div>
+
+                        <button class="mobile-filter-btn d-lg-none ms-auto" onclick="toggleMobileFilter()">
+                            <i class="icofont-filter"></i> Filters
+                        </button>
+                    </div>
+                    
+                    <div class="shoptab__shoing__wrap">
+                        <p>Total: <span id="visible-count">0</span> books</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 d-none d-lg-block" id="desktop-sidebar">
+                <div class="shopsidebar" id="main-sidebar">
+                    
+                    <div class="shopsidebar__widget">
+                        <div class="shopsidebar__box">
+                            <input type="checkbox" class="filter-check" id="new-arrival-check" value="new">
+                            <label for="new-arrival-check" class="fw-bold" >New Arrivals</label>
+                        </div>
+                    </div>
+
+                    <div class="shopsidebar__widget mt-4">
+                        <details open>
+                            <summary>Collection</summary>
+                            <div class="shopsidebar__list">
+                                <ul class="filter-group" data-filter-type="collection">
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="Story"><label>Story</label></div></li>
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="Comics"><label>Comics</label></div></li>
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="General"><label>General</label></div></li>
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="Phonics"><label>Phonics</label></div></li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="shopsidebar__widget mt-4">
+                        <details open>
+                            <summary>Age Group</summary>
+                            <div class="shopsidebar__list">
+                                <ul class="filter-group" data-filter-type="age">
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="0-5"><label>0-5</label></div></li>
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="6-8"><label>6-8</label></div></li>
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="9-12"><label>9-12</label></div></li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="shopsidebar__widget mt-4">
+                        <details open>
+                            <summary>Author</summary>
+                            <div class="shopsidebar__list" style="max-height: 200px; overflow-y: auto;">
+                                <ul class="filter-group" data-filter-type="author">
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="Jo Ellen Bogart"><label>Jo Ellen Bogart</label></div></li>
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="A.A.Milne"><label>A.A.Milne</label></div></li>
+                                    <li><div class="shopsidebar__box"><input type="checkbox" class="filter-check" value="Josie Metcalfe"><label>Josie Metcalfe</label></div></li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="shopsidebar__button mt-4">
+                        <button class="default__button w-100" style="background-color: #0A2472;" onclick="resetFilters()">Reset All</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-8">
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade show active" id="grid__view">
+                        <div class="row g-4" id="grid-container">
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Story" data-age="0-5" data-author="Jo Ellen Bogart" data-new="true">
+                                <div class="gridarea__wraper product__grid">
+                                    <div class="gridarea__img">
+                                        <img src="{% static 'img/products/3.jpg' %}" alt="book">
+                                        <div class="gridarea__small__button"><div class="grid__badge text-white" style="background-color: #0A2472;">New</div></div>
+                                    </div>
+                                    <div class="gridarea__content text-center"><h3>10 For Dinner</h3><p>Jo Ellen Bogart | Story</p></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Comics" data-age="9-12" data-author="A.A.Milne" data-new="false"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"></div><div class="gridarea__content text-center"><h3>Winnie the Pooh</h3><p>A.A.Milne | Comics</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="General" data-age="6-8" data-author="Josie Metcalfe" data-new="true"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"> <div class="gridarea__small__button"><div class="grid__badge text-white" style="background-color: #0A2472;">New</div></div></div><div class="gridarea__content text-center"><h3>Secret Garden</h3><p>Josie Metcalfe | General</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Phonics" data-age="0-5" data-author="Jo Ellen Bogart" data-new="false"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"></div><div class="gridarea__content text-center"><h3>Letter Sounds</h3><p>Jo Ellen Bogart | Phonics</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Story" data-age="6-8" data-author="A.A.Milne" data-new="true"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"> <div class="gridarea__small__button"><div class="grid__badge text-white" style="background-color: #0A2472;">New</div></div></div><div class="gridarea__content text-center"><h3>Tigger's Tale</h3><p>A.A.Milne | Story</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Comics" data-age="0-5" data-author="Josie Metcalfe" data-new="false"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"></div><div class="gridarea__content text-center"><h3>Baby Heroes</h3><p>Josie Metcalfe | Comics</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="General" data-age="9-12" data-author="Jo Ellen Bogart" data-new="true"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"> <div class="gridarea__small__button"><div class="grid__badge text-white" style="background-color: #0A2472;">New</div></div></div><div class="gridarea__content text-center"><h3>Outer Space</h3><p>Jo Ellen Bogart | General</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Story" data-age="9-12" data-author="A.A.Milne" data-new="false"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"></div><div class="gridarea__content text-center"><h3>Forest Friends</h3><p>A.A.Milne | Story</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Phonics" data-age="6-8" data-author="Josie Metcalfe" data-new="false"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"></div><div class="gridarea__content text-center"><h3>Read Along</h3><p>Josie Metcalfe | Phonics</p></div></div></div>
+                            <div class="col-xl-4 col-md-6 book-item" data-collection="Story" data-age="0-5" data-author="Jo Ellen Bogart" data-new="false"><div class="gridarea__wraper product__grid"><div class="gridarea__img"><img src="{% static 'img/products/3.jpg' %}" alt="book"></div><div class="gridarea__content text-center"><h3>Moon Light</h3><p>Jo Ellen Bogart | Story</p></div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="list_view">
+                        <div class="row" id="list-container"></div>
+                    </div>
+
+                    <div class="main__pagination__wrapper mt-5">
+                        <ul class="main__page__pagination" id="pagination-controls"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .product__grid { border: 1px solid #eee; padding: 15px; border-radius: 8px; margin-bottom: 20px; transition: 0.3s; background: #fff; position: relative;}
+    .gridarea__img img { width: 100%; height: 200px; object-fit: contain; }
+    
+    .list-item-custom { display: flex; align-items: center; background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 15px; margin-bottom: 15px; width: 100%; }
+    .list-item-img { width: 100px; height: 100px; object-fit: contain; margin-right: 20px; }
+    
+    .mobile-filter-overlay { position: fixed; top: 0; left: -100%; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; transition: 0.3s; }
+    .mobile-filter-overlay.active { left: 0; }
+    .mobile-filter-content { width: 80%; height: 100%; background: #fff; padding: 20px; overflow-y: auto; box-shadow: 2px 0 10px rgba(0,0,0,0.2); }
+    
+    .mobile-filter-btn { background: #0A2472; color: #fff; border: none; padding: 8px 15px; border-radius: 5px; font-weight: 600; }
+    .small__button { padding: 8px 15px !important; font-size: 14px !important; border: none !important; }
+
+    .arrival-filter-box { padding: 10px; border: 2px dashed #0A2472; border-radius: 8px; background: #f0f4ff; }
+    .arrival-filter-box label { cursor: pointer; }
+
+    .main__page__pagination a.active-page { background: #0A2472 !important; color: #fff !important; }
+    summary { font-weight: bold; cursor: pointer; padding: 10px 0; border-bottom: 1px solid #eee; list-style: none; }
+    
+    @media (max-width: 991px) {
+        /* Hide List View options and switcher on Mobile */
+        #list_view, button[data-bs-target="#list_view"] { display: none !important; }
+        .list-item-custom { flex-direction: column; text-align: center; }
+        .list-item-img { margin: 0 0 10px 0; }
+    }
+</style>
+
+<script>
+    const itemsPerPage = 6;
+    let currentPage = 1;
+
+    function toggleMobileFilter() {
+        const overlay = document.getElementById('mobile-filter-overlay');
+        const sidebar = document.getElementById('main-sidebar');
+        const mobileContainer = document.getElementById('sidebar-container-mobile');
+        const desktopSidebar = document.getElementById('desktop-sidebar');
+
+        if (!overlay.classList.contains('active')) {
+            mobileContainer.appendChild(sidebar);
+            overlay.classList.add('active');
+        } else {
+            overlay.classList.remove('active');
+            setTimeout(() => { desktopSidebar.appendChild(sidebar); }, 300);
+        }
+    }
+
+    function updateDisplay() {
+        const isNewArrivalOnly = document.getElementById('new-arrival-check').checked;
+        const filters = {
+            collection: getCheckedValues('collection'),
+            age: getCheckedValues('age'),
+            author: getCheckedValues('author')
+        };
+
+        const allItems = Array.from(document.querySelectorAll('.book-item'));
+        
+        const filteredItems = allItems.filter(item => {
+            const matchesNew = !isNewArrivalOnly || item.dataset.new === "true";
+            const matchesColl = filters.collection.length === 0 || filters.collection.includes(item.dataset.collection);
+            const matchesAge = filters.age.length === 0 || filters.age.includes(item.dataset.age);
+            const matchesAuth = filters.author.length === 0 || filters.author.includes(item.dataset.author);
+            return matchesNew && matchesColl && matchesAge && matchesAuth;
+        });
+
+        allItems.forEach(i => i.style.display = 'none');
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageItems = filteredItems.slice(start, end);
+        pageItems.forEach(i => i.style.display = 'block');
+
+        // Only build List View if screen is not mobile (optimization)
+        if (window.innerWidth > 991) {
+            const listContainer = document.getElementById('list-container');
+            listContainer.innerHTML = '';
+            pageItems.forEach(item => {
+                const title = item.querySelector('h3').innerText;
+                const subtitle = item.querySelector('p').innerText;
+                const img = item.querySelector('img').src;
+                const isNew = item.dataset.new === "true" ? `<span class="badge ms-2 text-white" style="background-color: #0A2472;">New</span>` : '';
+                listContainer.innerHTML += `
+                    <div class="col-12">
+                        <div class="list-item-custom">
+                            <img src="${img}" class="list-item-img">
+                            <div class="list-item-content">
+                                <h3>${title} ${isNew}</h3>
+                                <p>${subtitle}</p>
+                                <span class="badge text-white" style="background-color: #0A2472;">${item.dataset.collection}</span>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        document.getElementById('visible-count').innerText = filteredItems.length;
+        renderPagination(filteredItems.length);
+    }
+
+    function getCheckedValues(type) {
+        return Array.from(document.querySelectorAll(`.filter-group[data-filter-type="${type}"] .filter-check:checked`)).map(c => c.value);
+    }
+
+    function renderPagination(total) {
+        const pages = Math.ceil(total / itemsPerPage);
+        const container = document.getElementById('pagination-controls');
+        container.innerHTML = '';
+        if (pages <= 1) return;
+
+        for (let i = 1; i <= pages; i++) {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="javascript:void(0)" class="${i === currentPage ? 'active-page' : ''}">${i}</a>`;
+            li.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo(0, 200); };
+            container.appendChild(li);
+        }
+    }
+
+    function resetFilters() {
+        document.querySelectorAll('.filter-check').forEach(cb => cb.checked = false);
+        currentPage = 1;
+        updateDisplay();
+    }
+
+    document.querySelectorAll('.filter-check').forEach(cb => {
+        cb.addEventListener('change', () => { currentPage = 1; updateDisplay(); });
+    });
+
+    document.addEventListener('DOMContentLoaded', updateDisplay);
+</script>
+{% endblock %}
